@@ -1,0 +1,9 @@
+C:\Users\ASUS\Desktop\teste\teste\bin\Debug\netcoreapp1.1\teste.deps.json
+C:\Users\ASUS\Desktop\teste\teste\bin\Debug\netcoreapp1.1\teste.runtimeconfig.json
+C:\Users\ASUS\Desktop\teste\teste\bin\Debug\netcoreapp1.1\teste.runtimeconfig.dev.json
+C:\Users\ASUS\Desktop\teste\teste\bin\Debug\netcoreapp1.1\teste.dll
+C:\Users\ASUS\Desktop\teste\teste\bin\Debug\netcoreapp1.1\teste.pdb
+C:\Users\ASUS\Desktop\teste\teste\obj\Debug\netcoreapp1.1\teste.csprojResolveAssemblyReference.cache
+C:\Users\ASUS\Desktop\teste\teste\obj\Debug\netcoreapp1.1\teste.AssemblyInfo.cs
+C:\Users\ASUS\Desktop\teste\teste\obj\Debug\netcoreapp1.1\teste.dll
+C:\Users\ASUS\Desktop\teste\teste\obj\Debug\netcoreapp1.1\teste.pdb
