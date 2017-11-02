@@ -1537,7 +1537,7 @@ a:hover {
   background-repeat: no-repeat;
   background-attachment: fixed;
   padding-bottom: 0;
-  border-bottom: 2px solid #ff5821;
+  border-bottom: 2px solid #000000;
 }
 .benches {
   background-image: url(../img/backgrounds/benches.png);
