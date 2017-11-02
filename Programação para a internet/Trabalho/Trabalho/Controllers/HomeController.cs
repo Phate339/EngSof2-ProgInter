@@ -13,6 +13,11 @@ namespace Trabalho.Controllers
             return View();
         }
 
+        public IActionResult login()
+        {
+            return View();
+        }
+
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
