@@ -23,6 +23,11 @@ namespace Trabalho.Controllers
             return View();
         }
 
+        public IActionResult Surveys()
+        {
+            return View();
+        }
+
         public IActionResult conditions()
         {
             return View();
