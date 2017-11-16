@@ -46,7 +46,7 @@ namespace Trabalho.Controllers
 
         public ViewResult SurveysList()
         {
-            return View();
+            return View(Repository.Responses.Where(r => r.Height ==12));
         }
 
         public IActionResult conditions()
