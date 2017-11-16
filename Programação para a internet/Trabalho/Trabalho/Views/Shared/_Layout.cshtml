@@ -36,10 +36,10 @@
         <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Libraries CSS Files -->
-        <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-        <link href="lib/owlcarousel/owl.carousel.min.css" rel="stylesheet">
-        <link href="lib/owlcarousel/owl.theme.min.css" rel="stylesheet">
-        <link href="lib/owlcarousel/owl.transitions.min.css" rel="stylesheet">
+        <link href="~/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+        <link href="~/lib/owlcarousel/owl.carousel.min.css" rel="stylesheet" />
+        <link href="~/lib/owlcarousel/owl.theme.min.css" rel="stylesheet" />
+        <link href="~/lib/owlcarousel/owl.transitions.min.css" rel="stylesheet" />
 
         <!--Your custom colour override - predefined colours are: colour-blue.css, colour-green.css, colour-lavander.css, orange is default-->
         <link href="#" id="colour-scheme" rel="stylesheet">
@@ -74,10 +74,10 @@
         <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Libraries CSS Files -->
-        <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-        <link href="lib/owlcarousel/owl.carousel.min.css" rel="stylesheet">
-        <link href="lib/owlcarousel/owl.theme.min.css" rel="stylesheet">
-        <link href="lib/owlcarousel/owl.transitions.min.css" rel="stylesheet">
+        <link href="~/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+        <link href="~/lib/owlcarousel/owl.carousel.min.css" rel="stylesheet" />
+        <link href="~/lib/owlcarousel/owl.theme.min.css" rel="stylesheet" />
+        <link href="~/lib/owlcarousel/owl.transitions.min.css" rel="stylesheet" />
 
         <!--Your custom colour override - predefined colours are: colour-blue.css, colour-green.css, colour-lavander.css, orange is default-->
         <link href="#" id="colour-scheme" rel="stylesheet">
@@ -121,7 +121,7 @@
                     <!--mobile collapse menu button-->
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
                     <!--everything within this div is collapsed on mobile-->
-                    <li class="navbar-collapse collapse">
+                    <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav" id="main-menu">
                             <li class="icon-link">
                                 <a  asp-area="" asp-controller="Home" asp-action="index"><i class="fa fa-home"></i></a>
@@ -152,7 +152,7 @@
                             </li>
                             <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                         </ul>
-                    </li>
+                    </div>
                     <!--/.navbar-collapse -->
                 </div>
             </div>
@@ -182,22 +182,22 @@
 
     
     <!-- Required JavaScript Libraries -->
-    <script src="lib/jquery/jquery.min.js"></script>
-    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/stellar/stellar.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/counterup/counterup.min.js"></script>
-    <script src="contactform/contactform.js"></script>
-
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="~/lib/stellar/stellar.min.js"></script>
+    <script src="~/lib/waypoints/waypoints.min.js"></script>
+    <script src="~/lib/counterup/counterup.min.js"></script>
+   
+  
     <!-- Template Specisifc Custom Javascript File -->
-    <script src="js/custom.js"></script>
+    <script src="~/js/custom.js"></script>
 
     <!--Custom scripts demo background & colour switcher - OPTIONAL -->
-    <script src="js/color-switcher.js"></script>
+    <script src="~/js/color-switcher.js"></script>
 
     <!--Contactform script -->
-    <script src="contactform/contactform.js"></script>
+    <script src="~/contactform/contactform.js"></script>
 
 
 </body>
