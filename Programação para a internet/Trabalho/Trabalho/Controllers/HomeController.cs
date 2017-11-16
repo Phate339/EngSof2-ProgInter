@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Trabalho.Models;
 
 namespace Trabalho.Controllers
 {
@@ -22,8 +23,28 @@ namespace Trabalho.Controllers
         {
             return View();
         }
-
+        [HttpGet]
         public IActionResult Surveys()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ViewResult Surveys(SurveysResponse response)
+        {
+            if (ModelState.IsValid)
+            {
+                Repository.AddResponse(response);
+                return View("Thanks", response);
+            }
+            else
+            {
+                // There are validation errors
+                return View();
+            }
+        }
+
+        public ViewResult SurveysList()
         {
             return View();
         }

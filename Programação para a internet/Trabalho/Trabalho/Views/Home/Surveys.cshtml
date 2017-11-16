@@ -1,4 +1,5 @@
-﻿@{
+﻿
+@{
     ViewData["Title"] = "Surveys";
 }
 <!DOCTYPE html>
@@ -92,31 +93,33 @@
                                     <div class="form-group">
                                         <div class="input-group input-group-lg">
                                             <span class="input-group-addon"><i class="fa fa-fw fa-envelope"></i></span>
-                                            <input type="date" class="form-control" placeholder="Data de Nascimento">
+                                            <!--<input asp-for="Birthday" class="form-control" placeholder="Birthday"/>-->
+                                       
+                                            
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <div class="input-group input-group-lg">
                                             <span class="input-group-addon"><i class="fa fa-fw fa-envelope"></i></span>
-                                            <input type="text" class="form-control" placeholder="Peso">
+                                           <!-- <input asp-for="Weight" class="form-control" placeholder="Weight" />-->
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <div class="input-group input-group-lg">
                                             <span class="input-group-addon"><i class="fa fa-fw fa-envelope"></i></span>
-                                            <input type="text" class="form-control" placeholder="Altura">
+                                            <!--<input asp-for="Height" class="form-control" placeholder="Height" />-->
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <div class="input-group input-group-lg">
                                             <span class="input-group-addon"><i class="fa fa-fw fa-envelope"></i></span>
-                                            <input type="text" class="form-control" placeholder="Doenças">
+                                           <!-- <input asp-for="Diseases" class="form-control" placeholder="Diseases"/>-->
                                         </div>
                                     </div>
-
+                                    <div asp-validation-summary="All"></div>
                                     
                                     <input class="btn btn-lg btn-primary btn-block" type="submit" value="Submit">
                                 </fieldset>
