@@ -8,13 +8,13 @@ namespace Trabalho.Models{
     public class SurveysResponse{
 
         [Required(ErrorMessage = "Please enter your birthday")]
-        public string Birthday { get; set; }
+        public int Birthday { get; set; }
 
         [Required(ErrorMessage = "Please enter your wheight")]
-        public string Weight { get; set; }
+        public int Weight { get; set; }
 
         [Required(ErrorMessage = "Please enter your height")]
-        public string Height { get; set; }
+        public int Height { get; set; }
 
         [Required(ErrorMessage = "Please specify if and what disease u have")]
         public string Diseases { get; set; }
