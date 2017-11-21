@@ -7,5 +7,8 @@ namespace Trabalho.Models
 {
     public class Type_Client
     {
+        public int ID_Type_Client { get; set; }
+        public string TypeClient { get; set; }
+
     }
 }
