@@ -10,7 +10,7 @@ namespace Trabalho.Models
     
     {
         public int Sur_DisID { get; set; }
-        public int QuestionID { get; set; }
+        public int SurveyID { get; set; }
         public int DiseasesID { get; set; }
         public int AnswerID { get; set; }
         public Boolean ? YES_NO { get; set; }

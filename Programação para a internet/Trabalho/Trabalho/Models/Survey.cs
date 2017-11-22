@@ -7,7 +7,7 @@ namespace Trabalho.Models
 {
     public class Survey
     {
-        public int ID { get; set; }
+        public int SurveyID { get; set; }
         public string Question { get; set; }
         public Boolean ? QuestionState { get; set; }
 
