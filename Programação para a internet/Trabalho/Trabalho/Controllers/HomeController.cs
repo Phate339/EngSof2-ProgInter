@@ -29,6 +29,7 @@ namespace Trabalho.Controllers
             return View();
         }
 
+        /*
         [HttpPost]
         public ViewResult Surveys(SurveysResponse response)
         {
@@ -44,10 +45,7 @@ namespace Trabalho.Controllers
             }
         }
 
-        public ViewResult SurveysList()
-        {
-            return View(Repository.Responses.Where(r => r.Height < 180));
-        }
+     */
 
         public IActionResult conditions()
         {

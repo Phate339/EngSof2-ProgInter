@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;using Trabalho.Models;
 
 namespace Trabalho
 {
@@ -27,9 +28,22 @@ namespace Trabalho
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Add framework services.
+            // Add framework services.                                  
             services.AddMvc();
+            services.AddTransient<ClientRepository, EFClientRepository>();
+            services.AddTransient<SurveyRepository, EFSurveyRepository>();
+            services.AddTransient<AnswerRepository, EFAnswerRepository>();
+            services.AddTransient<DiseasesRepository, EFDiseasesRepository>();
+            services.AddTransient<Sur_DisRepository, EFSur_DisRepository>();
+            services.AddTransient<Type_ClientRepository, EFType_ClientRepository>();
+
+            services.AddDbContext<ApplicationDbContext>(
+                options => options.UseSqlServer(
+                    Configuration.GetConnectionString("ConnectionStringTrabalho")
+                )
+            );
         }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
@@ -55,6 +69,8 @@ namespace Trabalho
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            SeedData.EnsurePopulated(app.ApplicationServices);
         }
     }
 }

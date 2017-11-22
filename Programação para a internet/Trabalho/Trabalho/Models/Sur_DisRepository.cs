@@ -5,7 +5,10 @@ using System.Threading.Tasks;
 
 namespace Trabalho.Models
 {
-    public class Sur_DisRepository
+    public interface Sur_DisRepository
     {
+
+        IEnumerable<Sur_Dis> Sur_Dis { get; }
+
     }
 }

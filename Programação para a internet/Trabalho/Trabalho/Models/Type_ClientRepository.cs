@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 
 namespace Trabalho.Models
 {
-    public class Type_ClientRepository
+    public interface Type_ClientRepository
     {
+
+        IEnumerable<Type_Client> Type_Client { get; }
     }
 }

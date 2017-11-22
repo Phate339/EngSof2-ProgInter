@@ -3,9 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Trabalho.Data
+namespace Trabalho.Models
 {
-    public class EFAnswerRepository
+    public class EFAnswerRepository : AnswerRepository
     {
+
+        private ApplicationDbContext dbContext;
+
+        public EFAnswerRepository(ApplicationDbContext dbContext)
+        {
+            this.dbContext = dbContext;
+        }
+
+        public IEnumerable<Answer> Answer => dbContext.Answer;
+
+
     }
 }

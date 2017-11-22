@@ -3,9 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Trabalho.Data
+namespace Trabalho.Models
 {
-    public class EFSurveyRepository
+    public class EFSurveyRepository : SurveyRepository
     {
+
+        private ApplicationDbContext dbContext;
+
+        public EFSurveyRepository(ApplicationDbContext dbContext)
+        {
+            this.dbContext = dbContext;
+        }
+
+        public IEnumerable<Survey> Survey => dbContext.Survey;
     }
 }
+

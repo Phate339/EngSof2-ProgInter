@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 
 namespace Trabalho.Models
 {
-    public class SurveyRepository
+    public interface SurveyRepository
     {
+
+        IEnumerable<Survey> Survey { get; }
     }
 }
