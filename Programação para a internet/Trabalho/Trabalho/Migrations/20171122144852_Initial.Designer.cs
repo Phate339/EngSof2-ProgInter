@@ -8,7 +8,7 @@ using Trabalho.Models;
 namespace Trabalho.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20171122140854_Initial")]
+    [Migration("20171122144852_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,9 +26,13 @@ namespace Trabalho.Migrations
 
                     b.Property<int>("ClientID");
 
+                    b.Property<int>("SurveyID");
+
                     b.HasKey("AnswerID");
 
                     b.HasIndex("ClientID");
+
+                    b.HasIndex("SurveyID");
 
                     b.ToTable("Answer");
                 });
@@ -58,6 +62,8 @@ namespace Trabalho.Migrations
 
                     b.HasKey("ClientID");
 
+                    b.HasIndex("Type_ClientID");
+
                     b.ToTable("Client");
                 });
 
@@ -82,29 +88,31 @@ namespace Trabalho.Migrations
                     b.Property<int>("Sur_DisID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("AnswerID");
-
                     b.Property<int>("DiseasesID");
 
-                    b.Property<int>("QuestionID");
+                    b.Property<int>("SurveyID");
 
                     b.Property<bool?>("YES_NO");
 
                     b.HasKey("Sur_DisID");
+
+                    b.HasIndex("DiseasesID");
+
+                    b.HasIndex("SurveyID");
 
                     b.ToTable("Sur_Dis");
                 });
 
             modelBuilder.Entity("Trabalho.Models.Survey", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("SurveyID")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Question");
 
                     b.Property<bool?>("QuestionState");
 
-                    b.HasKey("ID");
+                    b.HasKey("SurveyID");
 
                     b.ToTable("Survey");
                 });
@@ -123,9 +131,35 @@ namespace Trabalho.Migrations
 
             modelBuilder.Entity("Trabalho.Models.Answer", b =>
                 {
-                    b.HasOne("Trabalho.Models.Client")
+                    b.HasOne("Trabalho.Models.Client", "Client")
                         .WithMany("Answer")
                         .HasForeignKey("ClientID")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Trabalho.Models.Survey", "Survey")
+                        .WithMany("Answer")
+                        .HasForeignKey("SurveyID")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Trabalho.Models.Client", b =>
+                {
+                    b.HasOne("Trabalho.Models.Type_Client", "Type_Client")
+                        .WithMany("Client")
+                        .HasForeignKey("Type_ClientID")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Trabalho.Models.Sur_Dis", b =>
+                {
+                    b.HasOne("Trabalho.Models.Diseases", "Diseases")
+                        .WithMany("Sur_Dis")
+                        .HasForeignKey("DiseasesID")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Trabalho.Models.Survey", "Survey")
+                        .WithMany("Sur_Dis")
+                        .HasForeignKey("SurveyID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
         }

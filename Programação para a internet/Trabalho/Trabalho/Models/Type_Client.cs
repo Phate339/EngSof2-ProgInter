@@ -10,5 +10,6 @@ namespace Trabalho.Models
         public int Type_ClientID { get; set; }
         public string TypeClient { get; set; }
 
+        public List<Client> Client { get; set; }
     }
 }

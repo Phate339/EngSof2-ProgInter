@@ -11,5 +11,7 @@ namespace Trabalho.Models
         public string Question { get; set; }
         public Boolean ? QuestionState { get; set; }
 
+        public List<Answer> Answer { get; set; }
+        public List<Sur_Dis> Sur_Dis { get; set; }
     }
 }

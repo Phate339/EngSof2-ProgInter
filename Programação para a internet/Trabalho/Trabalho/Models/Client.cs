@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -15,13 +16,14 @@ namespace Trabalho.Models
         public int NIF { get; set; }
         public string Email { get; set; }
         public int Emergency_Contact { get; set; }
-        public int Type_ClientID { get; set; }
         public Boolean ? ClientState { get; set; }
-
 
 
         public List<Answer> Answer { get; set; }
 
+        public int Type_ClientID { get; set; }
+        [ForeignKey("Type_ClientID")]
+        public Type_Client Type_Client { get; set; }
 
 
     }
