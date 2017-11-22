@@ -7,7 +7,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.EntityFrameworkCore;using Trabalho.Models;
+using Microsoft.EntityFrameworkCore;
+using Trabalho.Models;
+
 
 namespace Trabalho
 {
@@ -30,12 +32,12 @@ namespace Trabalho
         {
             // Add framework services.                                  
             services.AddMvc();
-            services.AddTransient<ClientRepository, EFClientRepository>();
-            services.AddTransient<SurveyRepository, EFSurveyRepository>();
-            services.AddTransient<AnswerRepository, EFAnswerRepository>();
-            services.AddTransient<DiseasesRepository, EFDiseasesRepository>();
-            services.AddTransient<Sur_DisRepository, EFSur_DisRepository>();
-            services.AddTransient<Type_ClientRepository, EFType_ClientRepository>();
+            services.AddTransient<IClientRepository, EFClientRepository>();
+            services.AddTransient<ISurveyRepository, EFSurveyRepository>();
+            services.AddTransient<IAnswerRepository, EFAnswerRepository>();
+            services.AddTransient<IDiseasesRepository, EFDiseasesRepository>();
+            services.AddTransient<ISur_DisRepository, EFSur_DisRepository>();
+            services.AddTransient<IType_ClientRepository, EFType_ClientRepository>();
 
             services.AddDbContext<ApplicationDbContext>(
                 options => options.UseSqlServer(

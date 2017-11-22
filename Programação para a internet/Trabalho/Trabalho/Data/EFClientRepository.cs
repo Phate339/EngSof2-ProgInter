@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Trabalho.Models
 {
-    public class EFClientRepository : ClientRepository
+    public class EFClientRepository : IClientRepository
     {
 
         private ApplicationDbContext dbContext;

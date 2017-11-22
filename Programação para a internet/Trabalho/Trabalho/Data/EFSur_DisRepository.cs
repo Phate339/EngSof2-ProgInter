@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Trabalho.Models
 {
-    public class EFSur_DisRepository :Sur_DisRepository
+    public class EFSur_DisRepository :ISur_DisRepository
     {
 
         private ApplicationDbContext dbContext;

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Trabalho.Models
 {
-    public class EFSurveyRepository : SurveyRepository
+    public class EFSurveyRepository : ISurveyRepository
     {
 
         private ApplicationDbContext dbContext;

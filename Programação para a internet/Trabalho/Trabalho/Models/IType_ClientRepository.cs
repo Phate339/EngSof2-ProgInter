@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 
 namespace Trabalho.Models
 {
-    public interface DiseasesRepository
+    public interface IType_ClientRepository
     {
-        IEnumerable<Diseases> Diseases { get; }
+
+        IEnumerable<Type_Client> Type_Client { get; }
     }
 }

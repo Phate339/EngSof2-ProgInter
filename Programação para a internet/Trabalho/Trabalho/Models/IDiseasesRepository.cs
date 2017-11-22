@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace Trabalho.Models
 {
-    public interface SurveyRepository
+    public interface IDiseasesRepository
     {
-
-        IEnumerable<Survey> Survey { get; }
+        IEnumerable<Diseases> Diseases { get; }
     }
 }

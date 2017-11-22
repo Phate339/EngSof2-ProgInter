@@ -9,9 +9,10 @@ namespace Trabalho.Models
     
     
     {
-        public int ID_Sur_Dis { get; set; }
-        public int ID_Question { get; set; }
-        public int ID_Diseases { get; set; }
+        public int Sur_DisID { get; set; }
+        public int QuestionID { get; set; }
+        public int DiseasesID { get; set; }
+        public int AnswerID { get; set; }
         public Boolean ? YES_NO { get; set; }
 
     }
