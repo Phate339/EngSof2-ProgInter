@@ -10,7 +10,9 @@ namespace Trabalho.Controllers
 {
     public class SurveysController : Controller
     {
-        // GET: /<controller>/
+       
+
+
         public IActionResult Index()
         {
             return View();

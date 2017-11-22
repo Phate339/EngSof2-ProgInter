@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Trabalho.Models;
+using Trabalho.Models.ViewModels;
 
 namespace Trabalho.Controllers
 {
@@ -29,36 +30,41 @@ namespace Trabalho.Controllers
             return View();
         }
 
-        /*
-        [HttpPost]
-        public ViewResult Surveys(SurveysResponse response)
-        {
-            if (ModelState.IsValid)
-            {
-                Repository.AddResponse(response);
-                return View("Thanks", response);
-            }
-            else
-            {
-                // There are validation errors
-                return View();
-            }
-        }
-
-     */
+     
 
         public IActionResult conditions()
         {
             return View();
         }
 
-        public IActionResult About()
+
+        private ISurveyRepository repository;
+      
+
+        public HomeController(ISurveyRepository repository)
+        {
+            this.repository = repository;
+        }
+
+        public ViewResult SurveysList()
+        {
+            return View(
+                new SurveysListViewModels
+                {
+                    Survey = repository.Survey,
+                      
+
+                }
+            );
+        }
+            
+            public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
 
             return View();
         }
-
+        
         public IActionResult Contact()
         {
             ViewData["Message"] = "Your contact page.";

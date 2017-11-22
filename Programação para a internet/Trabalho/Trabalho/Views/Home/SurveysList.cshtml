@@ -1,40 +1,18 @@
-﻿@model IEnumerable<SurveysResponse>
+﻿@model Trabalho.Models.ViewModels.SurveysListViewModels
 
 @{
     ViewData["Title"] = "SurveysList";
 }
 
-<h2>SurveysList</h2>
 
-@if (Model.Count() == 0)
-{
-    <p>
-        U dont have any surveys...
-    </p>
-}
-else
-{
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Birthday</th>
-                <th>Weight</th>
-                <th>Height</th>
-                <th>Diseases</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var r in Model)
-            {
-                <tr>
-                    <td>@r.Birthday</td>
-                    <td>@r.Weight</td>
-                    <td>@r.Height</td>
-                    <td>@r.Diseases</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
+<h2>Surveys List</h2>
 
-<hr />
+@foreach (Survey p in Model.Survey)
+{
+    <div>
+        <h3>@p.Question</h3>
+        <input id="Button1" type="button" value="Edit" />
+    </div>
+    <hr />
+}<input id="Button1" type="button" value="New" />
+
