@@ -12,13 +12,14 @@ namespace Trabalho.Models
         {
             ApplicationDbContext context = (ApplicationDbContext)appServices.GetService(typeof(ApplicationDbContext));
             
-             if (context.Survey.Any()) return;
-            context.Survey.AddRange(
-            new Survey { SurveyID =1, Question = "Qual é a sua idade?",QuestionState = true  },
-            new Survey { SurveyID = 2, Question = "Qual é o seu peso?", QuestionState = false }
+             if (context.Client.Any()) return;
+            context.Client.AddRange(
+           //new Client { ClientName="Joao",Email="jelfreire@sapo.pt",Emergency_Contact=54343095,NIF=13231223,Genre=true }
 
             );
             context.SaveChanges();
+
+      
 /*
             context.Answer.AddRange(
             new Answer { AnswerToClient = "21",  },

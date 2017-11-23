@@ -137,19 +137,30 @@
                                   
                                 </ul>
                             </li>
-                
-
 
                             <li class="dropdown dropdown-mm">
                                 <a href ="#" class="dropdown-toggle" data-toggle="dropdown">Surveys<b class="caret"></b></a>
             
                                 <ul class="dropdown-menu">
                                     <li class="dropdown-header">Surveys</li>
-                                    <li><a asp-area="" asp-controller="Surveys" asp-action="Index">Create Survey</a></li>
-                                    <li><a asp-area="" asp-controller="Home" asp-action="SurveysList">My Surveys</a></li>
+                                    <li><a asp-area="" asp-controller="Surveys" asp-action="Create">Create Survey</a></li>
+                                    <li><a asp-area="" asp-controller="Surveys" asp-action="Index">My Surveys</a></li>
 
                                 </ul>
                             </li>
+
+                            <li class="dropdown dropdown-mm">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Answers<b class="caret"></b></a>
+
+                                <ul class="dropdown-menu">
+                                    <li class="dropdown-header">Surveys</li>
+                                    <li><a asp-area="" asp-controller="Answers" asp-action="Create">Create Answer</a></li>
+                                    <li><a asp-area="" asp-controller="Answers" asp-action="Index">My Answers</a></li>
+
+                                </ul>
+                            </li>
+
+
                             <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                         </ul>
                     </div>
@@ -198,6 +209,8 @@
 
     <!--Contactform script -->
     <script src="~/contactform/contactform.js"></script>
+
+    <script src=""></script>
 
 
 </body>
