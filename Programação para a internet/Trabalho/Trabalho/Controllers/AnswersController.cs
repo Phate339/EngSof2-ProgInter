@@ -64,7 +64,7 @@ namespace Trabalho.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewData["SurveyID"] = new SelectList(_context.Survey, "SurveyID", "SurveyID", answer.SurveyID);
+            ViewData["SurveyID"] = new SelectList(_context.Survey, "SurveyID", "Question", answer.SurveyID);
             return View(answer);
         }
 
@@ -81,7 +81,7 @@ namespace Trabalho.Controllers
             {
                 return NotFound();
             }
-            ViewData["SurveyID"] = new SelectList(_context.Survey, "SurveyID", "SurveyID", answer.SurveyID);
+            ViewData["SurveyID"] = new SelectList(_context.Survey, "SurveyID", "Question", answer.SurveyID);
             return View(answer);
         }
 
@@ -117,7 +117,7 @@ namespace Trabalho.Controllers
                 }
                 return RedirectToAction("Index");
             }
-            ViewData["SurveyID"] = new SelectList(_context.Survey, "SurveyID", "SurveyID", answer.SurveyID);
+            ViewData["SurveyID"] = new SelectList(_context.Survey, "SurveyID", "Question", answer.SurveyID);
             return View(answer);
         }
 
