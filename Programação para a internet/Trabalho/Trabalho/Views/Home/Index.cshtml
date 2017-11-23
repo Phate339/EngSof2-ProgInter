@@ -3,14 +3,68 @@
 }
 
 
+
+<head>
+  <meta charset="utf-8">
+  <title>Flexor Bootstrap Theme</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  <!-- Facebook Opengraph integration: https://developers.facebook.com/docs/sharing/opengraph -->
+  <meta property="og:title" content="">
+  <meta property="og:image" content="">
+  <meta property="og:url" content="">
+  <meta property="og:site_name" content="">
+  <meta property="og:description" content="">
+
+  <!-- Twitter Cards integration: https://dev.twitter.com/cards/  -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="">
+  <meta name="twitter:title" content="">
+  <meta name="twitter:description" content="">
+  <meta name="twitter:image" content="">
+
+  <!-- Fav and touch icons -->
+  <link rel="shortcut icon" href="img/icons/favicon.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/icons/114x114.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/icons/72x72.png">
+  <link rel="apple-touch-icon-precomposed" href="img/icons/default.png">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900" rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="lib/owlcarousel/owl.carousel.min.css" rel="stylesheet">
+  <link href="lib/owlcarousel/owl.theme.min.css" rel="stylesheet">
+  <link href="lib/owlcarousel/owl.transitions.min.css" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="css/style.css" rel="stylesheet">
+
+  <!--Your custom colour override - predefined colours are: colour-blue.css, colour-green.css, colour-lavander.css, orange is default-->
+  <link href="#" id="colour-scheme" rel="stylesheet">
+
+  <!-- =======================================================
+    Theme Name: Flexor
+    Theme URL: https://bootstrapmade.com/flexor-free-multipurpose-bootstrap-template/
+    Author: BootstrapMade.com
+    Author URL: https://bootstrapmade.com
+  ======================================================= -->
+</head>
  <!--Slideshow-->
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <div id="highlighted-slider" class="container">
-    <div class="item-slider owl-carousel owl-theme" data-toggle="owlcarousel" data-owlcarousel-settings="{&quot;singleItem&quot;:true, &quot;navigation&quot;:true, &quot;transitionStyle&quot;:&quot;fadeUp&quot;}" style="opacity: 1; display: block;">
+   <div class="item-slider" data-toggle="owlcarousel" data-owlcarousel-settings='{"singleItem":true, "navigation":true, "transitionStyle":"fadeUp"}'>
         <!--Slideshow content-->
-        <!--Slide 1-->
+        <!--Slide 1
         <div class="owl-wrapper-outer">
             <div class="owl-wrapper" style="width: 4560px; left: 0px; display: block;">
-                <div class="owl-item" style="width: 1140px;">
+                <div class="owl-item" style="width: 1140px;">-->
                     <div class="item">
                         <div class="row">
                             <div class="col-md-6 col-md-push-6 item-caption">
@@ -24,34 +78,56 @@
                                 <!--<a href="https://bootstrapmade.com" class="btn btn-more btn-lg i-right">Buy Now <i class="fa fa-plus"></i></a>-->
                             </div>
                             <div class="col-md-6 col-md-pull-6 hidden-xs">
-                                <img src="img/slides/slide1.png" alt="Slide 1" class="center-block img-responsive">
+                                <img src="~/images/Slide1.jpg"  alt="Slide 1" class="center-block img-responsive">
+                                <img src="~/images/Slide2.jpg" />
+                                <img src="~/images/Slide3.jpg" />
+
+                               <!-- <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+                                <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>-->
+                            </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="owl-item" style="width: 1140px;">
+                    <!--
+                            <script>
+                              var slideIndex = 1;
+                              showDivs(slideIndex);
+
+                              function plusDivs(n) {
+                                  showDivs(slideIndex += n);
+                              }
+
+                              function showDivs(n) {
+                                  var i;
+                                  var x = document.getElementsByClassName("myslides");
+                                  if (n > x.length) { slideIndex = 1 }
+                                  if (n < 1) { slideIndex = x.length }
+                                  for (i = 0; i < x.length; i++) {
+                                      x[i].style.display = "none";
+                                  }
+                                  x[slideIndex - 1].style.display = "block";
+                              }
+                            </script>
+                        -->
+                           
                     <div class="item">
-                        <!--<div class="row">
+                        <div class="row">
                             <div class="col-md-6 text-right-md item-caption">
                                 <h2 class="h1 text-weight-light">
-                                    <span class="text-primary">Flexor</span> Bootstrap Theme
+                                    <span class="text-primary">Trilhos</span> Bootstrap Theme
                                 </h2>
                                 <h4>
-                                    High quality, responsive theme!
+                                   You can check and select rails basead on your evaluation
                                 </h4>
                                 <p>Perfect for your App, Web service, company or portfolio! Magna tincidunt sociis ac integer amet non. Rhoncus augue? Tempor porttitor sed, aliquet phasellus a, nisi nunc aliquet nec rhoncus enim porttitor ultrices lacus tristique?</p>
                                 <a href="https://bootstrapmade.com" class="btn btn-more btn-lg"><i class="fa fa-plus"></i> Learn More</a>
                             </div>
                             <div class="col-md-6 hidden-xs">
-                                <img src="img/slides/slide2.png" alt="Slide 2" class="center-block img-responsive">
+                                <img src="~/images/Slide2.jpg" alt="Slide 2" class="center-block img-responsive">
                             </div>
-                        </div>-->
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!--Slide 2
-
-        <div class="owl-controls clickable"><div class="owl-pagination"><div class="owl-page active"><span class=""></span></div><div class="owl-page"><span class=""></span></div></div><div class="owl-buttons"><div class="owl-prev">prev</div><div class="owl-next">next</div></div></div>-->
     </div>
 </div>
