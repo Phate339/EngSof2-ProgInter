@@ -10,6 +10,9 @@ namespace Trabalho.Models
     {
         public int SurveyID { get; set; }
         [Required(ErrorMessage = "Please enter your question!")]
+        //[StringLength(MinimumLength = 4)]
+      
+          //  [RegularExpression("[a-zA-Z0-9?]{3,}", ErrorMessage = "Invalid License Plate")]
         public string Question { get; set; }
         public Boolean ? QuestionState { get; set; }
 
