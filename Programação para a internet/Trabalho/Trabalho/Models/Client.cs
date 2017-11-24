@@ -19,7 +19,7 @@ namespace Trabalho.Models
         public Boolean ? ClientState { get; set; }
 
 
-        public List<Answer> Answer { get; set; }
+       // public List<Answer> Answer { get; set; }
 
         public int Type_ClientID { get; set; }
         [ForeignKey("Type_ClientID")]
