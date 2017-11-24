@@ -4,32 +4,26 @@
     ViewData["Title"] = "Delete";
 }
 
-<h2>Delete</h2>
-
+<div class="alert alert-info">
+    <h1 class="block-title text-left-lg">Delete Survey</h1>
+</div> 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Survey</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <input type="hidden" asp-for="SurveyID" />
-        <dt>
-            @Html.DisplayNameFor(model => model.Question)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Question)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.QuestionState)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.QuestionState)
-        </dd>
-    </dl>
-    
+    <div class="alert alert-warning">
+        <dl class="dl-horizontal">
+            <input type="hidden" asp-for="SurveyID" />
+            <dt>
+                @Html.DisplayNameFor(model => model.Question)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Question)
+            </dd>
+        </dl>
+    </div>
     <form asp-action="Delete">
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            <a asp-action="Index">Back to List</a>
+            <input type="submit" value="Delete" class="btn btn-lg btn-danger" /> |
+            <a asp-action="Index" class="btn btn-lg btn-primary">Back to List</a>
         </div>
     </form>
 </div>

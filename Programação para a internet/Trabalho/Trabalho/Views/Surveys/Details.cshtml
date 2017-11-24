@@ -4,11 +4,11 @@
     ViewData["Title"] = "Details";
 }
 
-<h2>Details</h2>
-
+<div class="alert alert-info">
+    <h1 class="block-title text-left-lg">Details Survey</h1>
+</div>
 <div>
-    <h4>Survey</h4>
-    <hr />
+    <div class="alert alert-warning"> 
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Question)
@@ -16,15 +16,10 @@
         <dd>
             @Html.DisplayFor(model => model.Question)
         </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.QuestionState)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.QuestionState)
-        </dd>
     </dl>
+        </div>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.SurveyID">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.SurveyID" class="btn btn-lg btn-primary">Edit</a> |
+    <a asp-action="Index" class="btn btn-lg btn-primary">Back to List</a>
 </div>

@@ -4,38 +4,32 @@
     ViewData["Title"] = "Edit";
 }
 
-<h2>Edit</h2>
-
+<div class="alert alert-info">
+    <h1 class="block-title text-left-lg">Edit Surveys</h1>
+</div>
 <form asp-action="Edit">
     <div class="form-horizontal">
-        <h4>Survey</h4>
-        <hr />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <input type="hidden" asp-for="SurveyID" />
-        <div class="form-group">
-            <label asp-for="Question" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Question" class="form-control" />
-                <span asp-validation-for="Question" class="text-danger"></span>
+        <div class="alert alert-warning">
+            <input type="hidden" asp-for="SurveyID" />
+            <div class="form-group">
+                <label asp-for="Question" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="Question" class="form-control" />
+                    <span asp-validation-for="Question" class="text-danger"></span>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="Answer" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Answer" class="form-control" />
-                <span asp-validation-for="Answer" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-success" />
+                </div>
             </div>
         </div>
     </div>
 </form>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="btn btn-lg btn-primary">Back to List</a>
 </div>
 
 @section Scripts {
