@@ -20,6 +20,8 @@ namespace Trabalho.Models
 
         public List<Type_Answer> Type_Answer { get; set; }
 
+        public List<Tra_An> Tra_An { get; set; }
+
 
 
     }

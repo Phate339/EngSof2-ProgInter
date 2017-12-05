@@ -9,6 +9,8 @@ namespace Trabalho.Models
     {
         public int TrailsID { get; set; }
         public string TrailsName { get; set; }
+        public List<Tra_An> Tra_An { get; set; }
+
 
 
 

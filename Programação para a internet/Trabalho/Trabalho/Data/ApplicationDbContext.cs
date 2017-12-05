@@ -17,7 +17,10 @@ namespace Trabalho.Models
         public DbSet<Que_Dis> Que_Dis { get; set; }
         public DbSet<Type_Client> Type_Client { get; set; }
         public DbSet<Type_Answer> Type_Answer { get; set; }
-
+        public DbSet<TrailsStatus> TrailsStatus { get; set; }
+        public DbSet<Difficulty> Difficulty { get; set; }
+        public DbSet<Status> Status { get; set; }
+        public DbSet<Tra_An> Tra_An { get; set; }
 
 
     }
