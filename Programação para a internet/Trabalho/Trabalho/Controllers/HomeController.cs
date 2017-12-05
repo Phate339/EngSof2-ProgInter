@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Trabalho.Models;
-using Trabalho.Models.ViewModels;
+//using Trabalho.Models.ViewModels;
 
 namespace Trabalho.Controllers
 {
@@ -37,7 +37,7 @@ namespace Trabalho.Controllers
             return View();
         }
 
-
+        /*
         private ISurveyRepository repository;
       
 
@@ -45,7 +45,7 @@ namespace Trabalho.Controllers
         {
             this.repository = repository;
         }
-
+        
         public ViewResult SurveysList()
         {
             return View(
@@ -56,7 +56,7 @@ namespace Trabalho.Controllers
 
                 }
             );
-        }
+        }*/
             
             public IActionResult About()
         {

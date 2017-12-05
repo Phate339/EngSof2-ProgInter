@@ -12,6 +12,6 @@ namespace Trabalho.Models
         public string Description { get; set; }
         public string Care { get; set; }
 
-        public List<Sur_Dis>  Sur_Dis { get; set; }
+        public List<Que_Dis> Que_Dis { get; set; }
     }
 }

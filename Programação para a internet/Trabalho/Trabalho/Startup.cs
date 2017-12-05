@@ -33,11 +33,12 @@ namespace Trabalho
             // Add framework services.                                  
             services.AddMvc();
             services.AddTransient<IClientRepository, EFClientRepository>();
-            services.AddTransient<ISurveyRepository, EFSurveyRepository>();
+            services.AddTransient<IQuestionRepository, EFQuestionRepository>();
             services.AddTransient<IAnswerRepository, EFAnswerRepository>();
             services.AddTransient<IDiseasesRepository, EFDiseasesRepository>();
-            services.AddTransient<ISur_DisRepository, EFSur_DisRepository>();
+            services.AddTransient<IQue_DisRepository, EFQues_DisRepository>();
             services.AddTransient<IType_ClientRepository, EFType_ClientRepository>();
+            services.AddTransient<IType_AnswerRepository, EFType_AnswerRepository>();
 
             services.AddDbContext<ApplicationDbContext>(
                 options => options.UseSqlServer(

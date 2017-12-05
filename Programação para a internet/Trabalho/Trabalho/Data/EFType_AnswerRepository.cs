@@ -5,18 +5,17 @@ using System.Threading.Tasks;
 
 namespace Trabalho.Models
 {
-    public class EFSur_DisRepository :ISur_DisRepository
+    public class EFType_AnswerRepository : IType_AnswerRepository
     {
 
         private ApplicationDbContext dbContext;
 
-        public EFSur_DisRepository(ApplicationDbContext dbContext)
+        public EFType_AnswerRepository(ApplicationDbContext dbContext)
         {
             this.dbContext = dbContext;
         }
 
-        public IEnumerable<Sur_Dis> Sur_Dis => dbContext.Sur_Dis;
-
+        public IEnumerable<Type_Answer> Type_Answer => dbContext.Type_Answer;
 
     }
 }

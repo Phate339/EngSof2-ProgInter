@@ -5,17 +5,16 @@ using System.Threading.Tasks;
 
 namespace Trabalho.Models
 {
-    public class EFSurveyRepository : ISurveyRepository
+    public class EFQues_DisRepository : IQue_DisRepository
     {
-
         private ApplicationDbContext dbContext;
 
-        public EFSurveyRepository(ApplicationDbContext dbContext)
+        public EFQues_DisRepository(ApplicationDbContext dbContext)
         {
             this.dbContext = dbContext;
         }
 
-        public IEnumerable<Survey> Survey => dbContext.Survey;
+        public IEnumerable<Que_Dis> Que_Dis => dbContext.Que_Dis;
+
     }
 }
-

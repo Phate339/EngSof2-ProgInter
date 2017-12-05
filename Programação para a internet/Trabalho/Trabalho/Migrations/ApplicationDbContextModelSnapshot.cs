@@ -21,17 +21,14 @@ namespace Trabalho.Migrations
                     b.Property<int>("AnswerID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("AnswerToClient");
+                    b.Property<string>("AnswerToClient")
+                        .IsRequired();
 
                     b.Property<int>("ClientID");
-
-                    b.Property<int>("SurveyID");
 
                     b.HasKey("AnswerID");
 
                     b.HasIndex("ClientID");
-
-                    b.HasIndex("SurveyID");
 
                     b.ToTable("Answer");
                 });
@@ -82,38 +79,58 @@ namespace Trabalho.Migrations
                     b.ToTable("Diseases");
                 });
 
-            modelBuilder.Entity("Trabalho.Models.Sur_Dis", b =>
+            modelBuilder.Entity("Trabalho.Models.Que_Dis", b =>
                 {
-                    b.Property<int>("Sur_DisID")
+                    b.Property<int>("Que_DisID")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("DiseasesID");
 
-                    b.Property<int>("SurveyID");
+                    b.Property<int>("QuestionID");
 
                     b.Property<bool?>("YES_NO");
 
-                    b.HasKey("Sur_DisID");
+                    b.HasKey("Que_DisID");
 
                     b.HasIndex("DiseasesID");
 
-                    b.HasIndex("SurveyID");
+                    b.HasIndex("QuestionID");
 
-                    b.ToTable("Sur_Dis");
+                    b.ToTable("Que_Dis");
                 });
 
-            modelBuilder.Entity("Trabalho.Models.Survey", b =>
+            modelBuilder.Entity("Trabalho.Models.Question", b =>
                 {
-                    b.Property<int>("SurveyID")
+                    b.Property<int>("QuestionID")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Question");
 
                     b.Property<bool?>("QuestionState");
 
-                    b.HasKey("SurveyID");
+                    b.Property<string>("QuestionToClient");
 
-                    b.ToTable("Survey");
+                    b.HasKey("QuestionID");
+
+                    b.ToTable("Question");
+                });
+
+            modelBuilder.Entity("Trabalho.Models.Type_Answer", b =>
+                {
+                    b.Property<int>("Type_AnswerID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("AnswerID");
+
+                    b.Property<int>("QuestionID");
+
+                    b.Property<bool?>("Type");
+
+                    b.HasKey("Type_AnswerID");
+
+                    b.HasIndex("AnswerID");
+
+                    b.HasIndex("QuestionID");
+
+                    b.ToTable("Type_Answer");
                 });
 
             modelBuilder.Entity("Trabalho.Models.Type_Client", b =>
@@ -131,13 +148,8 @@ namespace Trabalho.Migrations
             modelBuilder.Entity("Trabalho.Models.Answer", b =>
                 {
                     b.HasOne("Trabalho.Models.Client", "Client")
-                        .WithMany("Answer")
+                        .WithMany()
                         .HasForeignKey("ClientID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Trabalho.Models.Survey", "Survey")
-                        .WithMany("Answer")
-                        .HasForeignKey("SurveyID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -149,16 +161,29 @@ namespace Trabalho.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Trabalho.Models.Sur_Dis", b =>
+            modelBuilder.Entity("Trabalho.Models.Que_Dis", b =>
                 {
                     b.HasOne("Trabalho.Models.Diseases", "Diseases")
-                        .WithMany("Sur_Dis")
+                        .WithMany("Que_Dis")
                         .HasForeignKey("DiseasesID")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Trabalho.Models.Survey", "Survey")
-                        .WithMany("Sur_Dis")
-                        .HasForeignKey("SurveyID")
+                    b.HasOne("Trabalho.Models.Question", "Question")
+                        .WithMany("Que_Dis")
+                        .HasForeignKey("QuestionID")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Trabalho.Models.Type_Answer", b =>
+                {
+                    b.HasOne("Trabalho.Models.Answer", "Answer")
+                        .WithMany("Type_Answer")
+                        .HasForeignKey("AnswerID")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Trabalho.Models.Question", "Question")
+                        .WithMany("Type_Answer")
+                        .HasForeignKey("QuestionID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
         }

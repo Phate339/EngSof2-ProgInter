@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Trabalho.Models
+namespace Trabalho.Models.ViewModels
 {
-    public interface ISurveyRepository
+    public class QuestionListViewModel
     {
-
-        IEnumerable<Survey> Survey { get; }
     }
 }
