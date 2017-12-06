@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Trabalho.Models
 {
-    public class IDifficultyRepository
+    public interface IDifficultyRepository
     {
         IEnumerable<Difficulty> Difficulty { get; }
     }

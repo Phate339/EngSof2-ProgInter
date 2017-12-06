@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Trabalho.Models
 {
-    public class EFTra_AnRepository
+    public class EFTra_AnRepository : ITra_AnRepository
     {
         private ApplicationDbContext dbContext;
 

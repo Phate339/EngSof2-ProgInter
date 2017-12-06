@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Trabalho.Models
 {
-    public class EFTrailsStatusRepository
+    public class EFTrailsStatusRepository : ITrailsStatusRepository
     {
 
         private ApplicationDbContext dbContext;

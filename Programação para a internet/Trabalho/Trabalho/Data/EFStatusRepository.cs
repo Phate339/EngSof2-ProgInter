@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Trabalho.Models
 {
-    public class EFStatusRepository
+    public class EFStatusRepository : IStatusRepository
     {
         private ApplicationDbContext dbContext;
 

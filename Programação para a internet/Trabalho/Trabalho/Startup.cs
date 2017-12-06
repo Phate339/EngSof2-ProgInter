@@ -4,12 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using Trabalho.Models;
-
+using Trabalho.Services;
 
 namespace Trabalho
 {
@@ -20,8 +22,15 @@ namespace Trabalho
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-                .AddEnvironmentVariables();
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
+
+            if (env.IsDevelopment())
+            {
+                // For more details on using the user secret store see https://go.microsoft.com/fwlink/?LinkID=532709
+                builder.AddUserSecrets<Startup>();
+            }
+
+            builder.AddEnvironmentVariables();
             Configuration = builder.Build();
         }
 
@@ -30,7 +39,14 @@ namespace Trabalho
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Add framework services.                                  
+            // Add framework services.
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
+
             services.AddMvc();
             services.AddTransient<IClientRepository, EFClientRepository>();
             services.AddTransient<IQuestionRepository, EFQuestionRepository>();
@@ -40,11 +56,22 @@ namespace Trabalho
             services.AddTransient<IType_ClientRepository, EFType_ClientRepository>();
             services.AddTransient<IType_AnswerRepository, EFType_AnswerRepository>();
 
+            services.AddTransient<IDifficultyRepository, EFDifficultyRepository>();
+            services.AddTransient<ITrailsStatusRepository, EFTrailsStatusRepository>();
+            services.AddTransient<IStatusRepository, EFStatusRepository>();
+            services.AddTransient<ITra_AnRepository, EFTra_AnRepository>();
+
+
+
             services.AddDbContext<ApplicationDbContext>(
                 options => options.UseSqlServer(
                     Configuration.GetConnectionString("ConnectionStringTrabalho")
                 )
             );
+
+            // Add application services.
+            services.AddTransient<IEmailSender, AuthMessageSender>();
+            services.AddTransient<ISmsSender, AuthMessageSender>();
         }
 
 
@@ -57,6 +84,7 @@ namespace Trabalho
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
                 app.UseBrowserLink();
             }
             else
@@ -65,6 +93,10 @@ namespace Trabalho
             }
 
             app.UseStaticFiles();
+
+            app.UseIdentity();
+
+            // Add external authentication middleware below. To configure them please see https://go.microsoft.com/fwlink/?LinkID=532715
 
             app.UseMvc(routes =>
             {

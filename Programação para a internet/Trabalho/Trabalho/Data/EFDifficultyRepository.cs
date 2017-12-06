@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Trabalho.Models
 {
-    public class EFDifficultyRepository
+    public class EFDifficultyRepository : IDifficultyRepository
     {
         private ApplicationDbContext dbContext;
 

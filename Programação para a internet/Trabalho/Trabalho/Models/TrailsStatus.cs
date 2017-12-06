@@ -8,6 +8,7 @@ namespace Trabalho.Models
 {
     public class TrailsStatus
     {
+        public int TrailsStatusID { get; set; }
         public int StatusID { get; set; }
         [ForeignKey("StatusID")]
         public Question Status { get; set; }

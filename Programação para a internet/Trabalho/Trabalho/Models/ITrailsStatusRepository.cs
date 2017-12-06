@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Trabalho.Models
 {
-    public class ITrailsStatusRepository
+    public interface ITrailsStatusRepository
     {
         IEnumerable<TrailsStatus> TrailsStatus { get; }
     }
