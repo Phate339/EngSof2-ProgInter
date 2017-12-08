@@ -9,7 +9,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.EntityFrameworkCore;
 using Trabalho.Models;
 using Trabalho.Services;
 
@@ -40,11 +39,11 @@ namespace Trabalho
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddDbContext<ApplicationDbContext>(options =>
+            services.AddDbContext<TrabalhoDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("ConnectionStringTrabalhoLogins")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddEntityFrameworkStores<TrabalhoDbContext>()
                 .AddDefaultTokenProviders();
 
             services.AddMvc();
@@ -54,16 +53,17 @@ namespace Trabalho
             services.AddTransient<IDiseasesRepository, EFDiseasesRepository>();
             services.AddTransient<IQue_DisRepository, EFQues_DisRepository>();
             services.AddTransient<IType_ClientRepository, EFType_ClientRepository>();
-            services.AddTransient<IType_AnswerRepository, EFType_AnswerRepository>();
-
+            services.AddTransient<ISur_QueRepository, EFSur_QueRepository>();
+            services.AddTransient<ISurveyRepository, EFSurveyRepository>();
             services.AddTransient<IDifficultyRepository, EFDifficultyRepository>();
             services.AddTransient<ITrailsStatusRepository, EFTrailsStatusRepository>();
             services.AddTransient<IStatusRepository, EFStatusRepository>();
             services.AddTransient<ITra_AnRepository, EFTra_AnRepository>();
+            services.AddTransient<IAns_QueRepository, EFAns_QueRepository>();
+            services.AddTransient<ITrailsRepository, EFTrailsRepository>();
 
 
-
-            services.AddDbContext<ApplicationDbContext>(
+            services.AddDbContext<TrabalhoDbContext>(
                 options => options.UseSqlServer(
                     Configuration.GetConnectionString("ConnectionStringTrabalho")
                 )

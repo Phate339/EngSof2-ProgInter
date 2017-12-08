@@ -8,9 +8,9 @@ namespace Trabalho.Models
     public class EFTrailsStatusRepository : ITrailsStatusRepository
     {
 
-        private ApplicationDbContext dbContext;
+        private TrabalhoDbContext dbContext;
 
-        public EFTrailsStatusRepository(ApplicationDbContext dbContext)
+        public EFTrailsStatusRepository(TrabalhoDbContext dbContext)
         {
             this.dbContext = dbContext;
         }

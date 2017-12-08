@@ -7,9 +7,9 @@ namespace Trabalho.Models
 {
     public class EFQues_DisRepository : IQue_DisRepository
     {
-        private ApplicationDbContext dbContext;
+        private TrabalhoDbContext dbContext;
 
-        public EFQues_DisRepository(ApplicationDbContext dbContext)
+        public EFQues_DisRepository(TrabalhoDbContext dbContext)
         {
             this.dbContext = dbContext;
         }
@@ -18,3 +18,4 @@ namespace Trabalho.Models
 
     }
 }
+

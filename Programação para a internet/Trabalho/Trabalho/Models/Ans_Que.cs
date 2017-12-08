@@ -6,19 +6,18 @@ using System.Threading.Tasks;
 
 namespace Trabalho.Models
 {
-    public class Type_Answer
+    public class Ans_Que
     {
 
-        public int Type_AnswerID { get; set; }
-        public Boolean? Type { get; set; }
+        public int Ans_QueID { get; set; }
+
+        public string ResPer { get; set; }
+
 
         public int QuestionID { get; set; }
         [ForeignKey("QuestionID")]
         public Question Question { get; set; }
 
-        public int AnswerID { get; set; }
-        [ForeignKey("AnswerID")]
-        public Answer Answer { get; set; }
 
     }
 }

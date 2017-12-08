@@ -7,9 +7,9 @@ namespace Trabalho.Models
 {
     public class EFDifficultyRepository : IDifficultyRepository
     {
-        private ApplicationDbContext dbContext;
+        private TrabalhoDbContext dbContext;
 
-        public EFDifficultyRepository(ApplicationDbContext dbContext)
+        public EFDifficultyRepository(TrabalhoDbContext dbContext)
         {
             this.dbContext = dbContext;
         }

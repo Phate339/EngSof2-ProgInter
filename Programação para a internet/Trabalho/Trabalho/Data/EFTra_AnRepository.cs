@@ -7,9 +7,9 @@ namespace Trabalho.Models
 {
     public class EFTra_AnRepository : ITra_AnRepository
     {
-        private ApplicationDbContext dbContext;
+        private TrabalhoDbContext dbContext;
 
-        public EFTra_AnRepository(ApplicationDbContext dbContext)
+        public EFTra_AnRepository(TrabalhoDbContext dbContext)
         {
             this.dbContext = dbContext;
         }

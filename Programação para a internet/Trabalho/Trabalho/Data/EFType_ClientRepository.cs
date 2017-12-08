@@ -7,9 +7,9 @@ namespace Trabalho.Models
 {
     public class EFType_ClientRepository : IType_ClientRepository
     {
-        private ApplicationDbContext dbContext;
+        private TrabalhoDbContext dbContext;
 
-        public EFType_ClientRepository(ApplicationDbContext dbContext)
+        public EFType_ClientRepository(TrabalhoDbContext dbContext)
         {
             this.dbContext = dbContext;
         }

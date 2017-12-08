@@ -8,9 +8,9 @@ namespace Trabalho.Models
     public class EFAnswerRepository : IAnswerRepository
     {
 
-        private ApplicationDbContext dbContext;
+        private TrabalhoDbContext dbContext;
 
-        public EFAnswerRepository(ApplicationDbContext dbContext)
+        public EFAnswerRepository(TrabalhoDbContext dbContext)
         {
             this.dbContext = dbContext;
         }

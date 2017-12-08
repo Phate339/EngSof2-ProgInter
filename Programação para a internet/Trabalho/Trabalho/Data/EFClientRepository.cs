@@ -8,9 +8,9 @@ namespace Trabalho.Models
     public class EFClientRepository : IClientRepository
     {
 
-        private ApplicationDbContext dbContext;
+        private TrabalhoDbContext dbContext;
 
-        public EFClientRepository(ApplicationDbContext dbContext)
+        public EFClientRepository(TrabalhoDbContext dbContext)
         {
             this.dbContext = dbContext;
         }

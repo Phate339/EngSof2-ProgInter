@@ -10,7 +10,7 @@ namespace Trabalho.Models
     {
         public static void EnsurePopulated(IServiceProvider appServices)
         {
-            ApplicationDbContext context = (ApplicationDbContext)appServices.GetService(typeof(ApplicationDbContext));
+            TrabalhoDbContext context = (TrabalhoDbContext)appServices.GetService(typeof(TrabalhoDbContext));
             
              if (context.Client.Any()) return;
             context.Client.AddRange(

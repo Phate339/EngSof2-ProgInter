@@ -10,6 +10,7 @@ namespace Trabalho.Models
     public class Answer
     {
         public int AnswerID{ get; set; }
+
         [Required(ErrorMessage = "Please enter your answer!")]
         public string AnswerToClient { get; set; }
 
@@ -18,7 +19,6 @@ namespace Trabalho.Models
         [ForeignKey("ClientID")]
         public Client Client { get; set; }
 
-        public List<Type_Answer> Type_Answer { get; set; }
 
         public List<Tra_An> Tra_An { get; set; }
 

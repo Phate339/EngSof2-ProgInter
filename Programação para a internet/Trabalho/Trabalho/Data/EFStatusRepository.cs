@@ -7,9 +7,9 @@ namespace Trabalho.Models
 {
     public class EFStatusRepository : IStatusRepository
     {
-        private ApplicationDbContext dbContext;
+        private TrabalhoDbContext dbContext;
 
-        public EFStatusRepository(ApplicationDbContext dbContext)
+        public EFStatusRepository(TrabalhoDbContext dbContext)
         {
             this.dbContext = dbContext;
         }

@@ -5,16 +5,17 @@ using System.Threading.Tasks;
 
 namespace Trabalho.Models
 {
-    public class EFDiseasesRepository : IDiseasesRepository
+    public class EFTrailsRepository : ITrailsRepository
     {
+
+
         private TrabalhoDbContext dbContext;
 
-        public EFDiseasesRepository(TrabalhoDbContext dbContext)
+        public EFTrailsRepository(TrabalhoDbContext dbContext)
         {
             this.dbContext = dbContext;
         }
 
-        public IEnumerable<Diseases> Diseases => dbContext.Diseases;
-
+        public IEnumerable<Trails> Client => dbContext.Trails;
     }
 }
