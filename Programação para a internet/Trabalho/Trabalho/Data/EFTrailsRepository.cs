@@ -16,6 +16,6 @@ namespace Trabalho.Models
             this.dbContext = dbContext;
         }
 
-        public IEnumerable<Trails> Client => dbContext.Trails;
+        public IEnumerable<Trails> Trails => dbContext.Trails;
     }
 }

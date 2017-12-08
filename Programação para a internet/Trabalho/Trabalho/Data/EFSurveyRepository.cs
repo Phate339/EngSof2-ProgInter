@@ -15,6 +15,6 @@ namespace Trabalho.Models
             this.dbContext = dbContext;
         }
 
-        public IEnumerable<Survey> Client => dbContext.Survey;
+        public IEnumerable<Survey> Survey => dbContext.Survey;
     }
 }

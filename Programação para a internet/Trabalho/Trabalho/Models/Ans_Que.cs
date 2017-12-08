@@ -10,7 +10,6 @@ namespace Trabalho.Models
     {
 
         public int Ans_QueID { get; set; }
-
         public string ResPer { get; set; }
 
 

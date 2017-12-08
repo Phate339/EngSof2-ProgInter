@@ -19,6 +19,9 @@ namespace Trabalho.Models
         [ForeignKey("ClientID")]
         public Client Client { get; set; }
 
+        public int SurveyID { get; set; }
+        [ForeignKey("SurveyID ")]
+        public Survey Survey { get; set; }
 
         public List<Tra_An> Tra_An { get; set; }
 

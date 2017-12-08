@@ -15,7 +15,7 @@ namespace Trabalho.Models
                 this.dbContext = dbContext;
             }
 
-            public IEnumerable<Sur_Que> Status => dbContext.Sur_Que;
+            public IEnumerable<Sur_Que> Sur_Que => dbContext.Sur_Que;
 
         
 

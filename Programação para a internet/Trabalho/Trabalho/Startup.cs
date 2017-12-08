@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Trabalho.Models;
 using Trabalho.Services;
+using Trabalho.Data;
 
 namespace Trabalho
 {
@@ -39,8 +40,8 @@ namespace Trabalho
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddDbContext<TrabalhoDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("ConnectionStringTrabalhoLogins")));
+            services.AddDbContext<TrabalhoUsersDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("ConnectionStringTrabalhoUsers")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<TrabalhoDbContext>()
@@ -56,8 +57,6 @@ namespace Trabalho
             services.AddTransient<ISur_QueRepository, EFSur_QueRepository>();
             services.AddTransient<ISurveyRepository, EFSurveyRepository>();
             services.AddTransient<IDifficultyRepository, EFDifficultyRepository>();
-            services.AddTransient<ITrailsStatusRepository, EFTrailsStatusRepository>();
-            services.AddTransient<IStatusRepository, EFStatusRepository>();
             services.AddTransient<ITra_AnRepository, EFTra_AnRepository>();
             services.AddTransient<IAns_QueRepository, EFAns_QueRepository>();
             services.AddTransient<ITrailsRepository, EFTrailsRepository>();

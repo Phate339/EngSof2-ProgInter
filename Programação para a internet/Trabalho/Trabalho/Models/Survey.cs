@@ -10,8 +10,9 @@ namespace Trabalho.Models
         public int SurveyID { get; set; }
         public Boolean? SurveyState { get; set; }
 
-        public List<Sur_Que> Sur_Que { get; set; }
 
+        public List<Answer> Answer { get; set; }
+        public List<Sur_Que> Sur_Que { get; set; }
 
     }
 }
