@@ -1,4 +1,4 @@
-﻿
+﻿@model RegisterViewModel
 
 @{
     ViewData["Title"] = "Register";
@@ -39,12 +39,15 @@
                                             <input type="text" class="form-control" placeholder="Username">
                                         </div>
                                     </div>
+    
                                     <div class="form-group">
                                         <div class="input-group input-group-lg">
                                             <span class="input-group-addon"><i class="fa fa-fw fa-envelope"></i></span>
-                                            <input type="text" class="form-control" placeholder="Email">
-                                        </div>
+                                                <input asp-for="Email" class="form-control" placeholder="Email" />
+                                                <span asp-validation-for="Email" class="text-danger"></span>
+                                           </div>
                                     </div>
+
                                     <div class="form-group">
                                         <div class="input-group input-group-lg">
                                             <span class="input-group-addon"><i class="fa fa-fw fa-lock"></i></span>

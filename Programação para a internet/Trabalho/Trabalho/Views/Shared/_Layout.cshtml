@@ -109,7 +109,8 @@
                         <div class="col-md-4">
                             <!--user menu-->
                             <ul class="list-inline user-menu pull-right">
-                                <li class="hidden-xs"><i class="fa fa-edit text-primary"></i> <a asp-area="" asp-controller="Home" asp-action="register">Registar</a></li>
+                                <li class="hidden-xs"><i class="fa fa-edit text-primary"></i> <a asp-area="" asp-controller="Home" asp-action="register">Registar</a> </li>
+                        
                                 <li class="hidden-xs"><i class="fa fa-sign-in text-primary"></i> <a asp-area="" asp-controller="Home" asp-action="login">Login</a></li>
                             </ul>
                         </div>
@@ -140,9 +141,9 @@
                                 <a href ="#" class="dropdown-toggle" data-toggle="dropdown">Perguntas<b class="caret"></b></a>
             
                                 <ul class="dropdown-menu">
-                                    <li class="dropdown-header">Surveys</li>
-                                    <li><a asp-area="" asp-controller="Surveys" asp-action="Create">Criar Pergunta</a></li>
-                                    <li><a asp-area="" asp-controller="Surveys" asp-action="Index">As minhas Perguntas</a></li>
+                                    <li class="dropdown-header">Perguntas</li>
+                                    <li><a asp-area="" asp-controller="Questions" asp-action="Create">Criar Pergunta</a></li>
+                                    <li><a asp-area="" asp-controller="Questions" asp-action="Index">As minhas Perguntas</a></li>
 
                                 </ul>
                             </li>
@@ -152,8 +153,8 @@
 
                                 <ul class="dropdown-menu">
                                     <li class="dropdown-header">Surveys</li>
-                                    <li><a asp-area="" asp-controller="Answers" asp-action="Create">Criar Questinário</a></li>
-                                    <li><a asp-area="" asp-controller="Answers" asp-action="Index">Os meus Questionários </a></li>
+                                    <li><a asp-area="" asp-controller="Answer" asp-action="Create">Criar Questinário</a></li>
+                                    <li><a asp-area="" asp-controller="Answer" asp-action="Index">Os meus Questionários </a></li>
 
                                 </ul>
                             </li>
