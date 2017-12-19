@@ -1,0 +1,12 @@
+Para esta semana (22-12-2017), devem colocar relatorio com:
+
+-Diagrama componentes
+
+-Definição Semantica de uma classe
+	. Dicionario de dados dos atributos
+
+	. Descrição das operações da classe
+
+	. Identificar os diagramas de sequencia em que a classe participa
+
+

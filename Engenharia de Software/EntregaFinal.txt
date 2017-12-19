@@ -1,0 +1,18 @@
+Para a entregar final, incluir:
+
+Novo- Atribuirem o tamannho a cada caso de uso - fibonnaci
+
+
+- 1 ou + diagrama de atividades
+
+- 1 Diagrama Componentes
+
+- 1 Diagrama Pacotes
+
+- 1 Diagrama Instalação
+
+- Semântica completa das 3 classes mais importantes
+	-Descrição dicionario de dados atributos
+	-Descrição operações
+	-Diagrama de sequencia em que a classe participa
+-Prototipo(prints)
