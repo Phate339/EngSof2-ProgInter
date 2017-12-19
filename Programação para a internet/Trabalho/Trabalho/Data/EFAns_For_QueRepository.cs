@@ -5,18 +5,16 @@ using System.Threading.Tasks;
 
 namespace Trabalho.Models
 {
-    public class EFAnswerRepository : IAnswerRepository
+    public class EFAns_For_QueRepository : IAns_For_QueRepository
     {
 
         private TrabalhoDbContext dbContext;
 
-        public EFAnswerRepository(TrabalhoDbContext dbContext)
+        public EFAns_For_QueRepository(TrabalhoDbContext dbContext)
         {
             this.dbContext = dbContext;
         }
 
-        public IEnumerable<Answer> Answer => dbContext.Answer;
-
-
+        public IEnumerable<Ans_For_Que> Ans_For_Que => dbContext.Ans_For_Que;
     }
 }

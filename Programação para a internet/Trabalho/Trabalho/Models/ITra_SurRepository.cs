@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 
 namespace Trabalho.Models
 {
-    public interface ISur_QueRepository
+    public interface ITra_SurRepository
     {
-        IEnumerable<Sur_Que> Sur_Que { get; }
+
+
+        IEnumerable<Tra_Sur> Tra_Sur { get; }
 
     }
 }

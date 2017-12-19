@@ -15,9 +15,8 @@ namespace Trabalho.Models
 
     
         public List<Que_Dis> Que_Dis { get; set; }
-        public List<Ans_Que> Ans_Que { get; set; }
-        public List<Sur_Que> Sur_Que { get; set; }
-
+        public List<Ans_For_Que> Ans_For_Que { get; set; }
+        public List<Survey> Survey { get; set; }    
 
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,12 +8,24 @@ namespace Trabalho.Models
 {
     public class Survey
     {
+
         public int SurveyID { get; set; }
-        public Boolean? SurveyState { get; set; }
+        public int Type_AnswerID { get; set; }
+        public int DiseasesID { get; set; }
+        public DateTime DateAnswer { get; set; }
 
 
-        public List<Answer> Answer { get; set; }
-        public List<Sur_Que> Sur_Que { get; set; }
+
+        public int TuristID { get; set; }
+        [ForeignKey("TuristID")]
+        public Turist Turist { get; set; }
+
+
+        public int QuestionID { get; set; }
+        [ForeignKey("QuestionID")]
+        public Question Question { get; set; }      
+
+
 
     }
 }

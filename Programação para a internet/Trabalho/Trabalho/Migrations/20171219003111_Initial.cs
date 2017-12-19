@@ -15,8 +15,7 @@ namespace Trabalho.Migrations
                 {
                     DifficultyID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    DifficultyName = table.Column<string>(nullable: true),
-                    Observation = table.Column<string>(nullable: true)
+                    DifficultyName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -53,29 +52,36 @@ namespace Trabalho.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Survey",
+                name: "Turist",
                 columns: table => new
                 {
-                    SurveyID = table.Column<int>(nullable: false)
+                    TuristID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    SurveyState = table.Column<bool>(nullable: true)
+                    Birthday = table.Column<DateTime>(nullable: false),
+                    Email = table.Column<string>(nullable: true),
+                    EmergencyContact = table.Column<int>(nullable: false),
+                    Genre = table.Column<bool>(nullable: true),
+                    NIF = table.Column<int>(nullable: false),
+                    Phone = table.Column<int>(nullable: false),
+                    TuristName = table.Column<string>(nullable: true),
+                    TuristState = table.Column<bool>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Survey", x => x.SurveyID);
+                    table.PrimaryKey("PK_Turist", x => x.TuristID);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Type_Client",
+                name: "Type_Answer",
                 columns: table => new
                 {
-                    Type_ClientID = table.Column<int>(nullable: false)
+                    Type_AnswerID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    TypeClient = table.Column<string>(nullable: true)
+                    PossibleAnswer = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Type_Client", x => x.Type_ClientID);
+                    table.PrimaryKey("PK_Type_Answer", x => x.Type_AnswerID);
                 });
 
             migrationBuilder.CreateTable(
@@ -84,6 +90,7 @@ namespace Trabalho.Migrations
                 {
                     TrailsID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Description = table.Column<string>(nullable: true),
                     DifficultyID = table.Column<int>(nullable: false),
                     Distance = table.Column<int>(nullable: false),
                     TrailsName = table.Column<string>(nullable: true)
@@ -96,26 +103,6 @@ namespace Trabalho.Migrations
                         column: x => x.DifficultyID,
                         principalTable: "Difficulty",
                         principalColumn: "DifficultyID",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Ans_Que",
-                columns: table => new
-                {
-                    Ans_QueID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    QuestionID = table.Column<int>(nullable: false),
-                    ResPer = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Ans_Que", x => x.Ans_QueID);
-                    table.ForeignKey(
-                        name: "FK_Ans_Que_Question_QuestionID",
-                        column: x => x.QuestionID,
-                        principalTable: "Question",
-                        principalColumn: "QuestionID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -147,106 +134,89 @@ namespace Trabalho.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Sur_Que",
+                name: "Survey",
                 columns: table => new
                 {
-                    Sur_QueID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    QuestionID = table.Column<int>(nullable: false),
                     SurveyID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    AnswerToTurist = table.Column<string>(nullable: true),
+                    DateAnswer = table.Column<DateTime>(nullable: false),
+                    DiseasesID = table.Column<int>(nullable: false),
+                    QuestionID = table.Column<int>(nullable: false),
+                    TuristID = table.Column<int>(nullable: false),
+                    Type_AnswerID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Sur_Que", x => x.Sur_QueID);
+                    table.PrimaryKey("PK_Survey", x => x.SurveyID);
                     table.ForeignKey(
-                        name: "FK_Sur_Que_Question_QuestionID",
+                        name: "FK_Survey_Question_QuestionID",
                         column: x => x.QuestionID,
                         principalTable: "Question",
                         principalColumn: "QuestionID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Sur_Que_Survey_SurveyID",
-                        column: x => x.SurveyID,
-                        principalTable: "Survey",
-                        principalColumn: "SurveyID",
+                        name: "FK_Survey_Turist_TuristID",
+                        column: x => x.TuristID,
+                        principalTable: "Turist",
+                        principalColumn: "TuristID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Client",
+                name: "Ans_For_Que",
                 columns: table => new
                 {
-                    ClientID = table.Column<int>(nullable: false)
+                    Ans_For_QueID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Birthday = table.Column<DateTime>(nullable: false),
-                    ClientName = table.Column<string>(nullable: true),
-                    ClientState = table.Column<bool>(nullable: true),
-                    Email = table.Column<string>(nullable: true),
-                    Emergency_Contact = table.Column<int>(nullable: false),
-                    Genre = table.Column<bool>(nullable: true),
-                    NIF = table.Column<int>(nullable: false),
-                    PhoneNumber = table.Column<int>(nullable: false),
-                    Type_ClientID = table.Column<int>(nullable: false)
+                    QuestionID = table.Column<int>(nullable: false),
+                    Type_AnswerID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Client", x => x.ClientID);
+                    table.PrimaryKey("PK_Ans_For_Que", x => x.Ans_For_QueID);
                     table.ForeignKey(
-                        name: "FK_Client_Type_Client_Type_ClientID",
-                        column: x => x.Type_ClientID,
-                        principalTable: "Type_Client",
-                        principalColumn: "Type_ClientID",
+                        name: "FK_Ans_For_Que_Question_QuestionID",
+                        column: x => x.QuestionID,
+                        principalTable: "Question",
+                        principalColumn: "QuestionID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Ans_For_Que_Type_Answer_Type_AnswerID",
+                        column: x => x.Type_AnswerID,
+                        principalTable: "Type_Answer",
+                        principalColumn: "Type_AnswerID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Answer",
+                name: "Tra_Sur",
                 columns: table => new
                 {
-                    AnswerID = table.Column<int>(nullable: false)
+                    Tra_SurID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    AnswerToClient = table.Column<string>(nullable: false),
-                    ClientID = table.Column<int>(nullable: false),
-                    SurveyID = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Answer", x => x.AnswerID);
-                    table.ForeignKey(
-                        name: "FK_Answer_Client_ClientID",
-                        column: x => x.ClientID,
-                        principalTable: "Client",
-                        principalColumn: "ClientID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Answer_Survey_SurveyID",
-                        column: x => x.SurveyID,
-                        principalTable: "Survey",
-                        principalColumn: "SurveyID",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Tra_An",
-                columns: table => new
-                {
-                    Tra_AnID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    AnswerID = table.Column<int>(nullable: false),
-                    Recomendation = table.Column<string>(nullable: true),
+                    QuestionID = table.Column<int>(nullable: true),
+                    Recommended = table.Column<bool>(nullable: true),
+                    SurveyID = table.Column<int>(nullable: false),
                     TrailsID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Tra_An", x => x.Tra_AnID);
+                    table.PrimaryKey("PK_Tra_Sur", x => x.Tra_SurID);
                     table.ForeignKey(
-                        name: "FK_Tra_An_Answer_AnswerID",
-                        column: x => x.AnswerID,
-                        principalTable: "Answer",
-                        principalColumn: "AnswerID",
+                        name: "FK_Tra_Sur_Question_QuestionID",
+                        column: x => x.QuestionID,
+                        principalTable: "Question",
+                        principalColumn: "QuestionID",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Tra_Sur_Survey_SurveyID",
+                        column: x => x.SurveyID,
+                        principalTable: "Survey",
+                        principalColumn: "SurveyID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Tra_An_Trails_TrailsID",
+                        name: "FK_Tra_Sur_Trails_TrailsID",
                         column: x => x.TrailsID,
                         principalTable: "Trails",
                         principalColumn: "TrailsID",
@@ -254,24 +224,14 @@ namespace Trabalho.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Ans_Que_QuestionID",
-                table: "Ans_Que",
+                name: "IX_Ans_For_Que_QuestionID",
+                table: "Ans_For_Que",
                 column: "QuestionID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Answer_ClientID",
-                table: "Answer",
-                column: "ClientID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Answer_SurveyID",
-                table: "Answer",
-                column: "SurveyID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Client_Type_ClientID",
-                table: "Client",
-                column: "Type_ClientID");
+                name: "IX_Ans_For_Que_Type_AnswerID",
+                table: "Ans_For_Que",
+                column: "Type_AnswerID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Que_Dis_DiseasesID",
@@ -284,23 +244,28 @@ namespace Trabalho.Migrations
                 column: "QuestionID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Sur_Que_QuestionID",
-                table: "Sur_Que",
+                name: "IX_Survey_QuestionID",
+                table: "Survey",
                 column: "QuestionID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Sur_Que_SurveyID",
-                table: "Sur_Que",
+                name: "IX_Survey_TuristID",
+                table: "Survey",
+                column: "TuristID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Tra_Sur_QuestionID",
+                table: "Tra_Sur",
+                column: "QuestionID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Tra_Sur_SurveyID",
+                table: "Tra_Sur",
                 column: "SurveyID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Tra_An_AnswerID",
-                table: "Tra_An",
-                column: "AnswerID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Tra_An_TrailsID",
-                table: "Tra_An",
+                name: "IX_Tra_Sur_TrailsID",
+                table: "Tra_Sur",
                 column: "TrailsID");
 
             migrationBuilder.CreateIndex(
@@ -312,40 +277,34 @@ namespace Trabalho.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Ans_Que");
+                name: "Ans_For_Que");
 
             migrationBuilder.DropTable(
                 name: "Que_Dis");
 
             migrationBuilder.DropTable(
-                name: "Sur_Que");
+                name: "Tra_Sur");
 
             migrationBuilder.DropTable(
-                name: "Tra_An");
+                name: "Type_Answer");
 
             migrationBuilder.DropTable(
                 name: "Diseases");
 
             migrationBuilder.DropTable(
-                name: "Question");
-
-            migrationBuilder.DropTable(
-                name: "Answer");
+                name: "Survey");
 
             migrationBuilder.DropTable(
                 name: "Trails");
 
             migrationBuilder.DropTable(
-                name: "Client");
+                name: "Question");
 
             migrationBuilder.DropTable(
-                name: "Survey");
+                name: "Turist");
 
             migrationBuilder.DropTable(
                 name: "Difficulty");
-
-            migrationBuilder.DropTable(
-                name: "Type_Client");
         }
     }
 }

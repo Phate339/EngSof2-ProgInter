@@ -5,8 +5,10 @@ using System.Threading.Tasks;
 
 namespace Trabalho.Models
 {
-    public interface ITra_AnRepository
+    public interface ITuristRepository
     {
-        IEnumerable<Tra_An> Tra_An { get; }
+     
+            IEnumerable<Turist> Turist { get; }
+        
     }
 }

@@ -10,7 +10,6 @@ namespace Trabalho.Models
 
         public int DifficultyID { get; set; }
         public string DifficultyName { get; set; }
-        public string Observation { get; set; }
 
         public List<Trails> Trails { get; set; }
 

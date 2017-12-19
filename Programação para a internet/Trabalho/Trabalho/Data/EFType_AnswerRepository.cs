@@ -5,17 +5,17 @@ using System.Threading.Tasks;
 
 namespace Trabalho.Models
 {
-    public class EFClientRepository : IClientRepository
+    public class EFType_AnswerRepository :IType_AnswerRepository
     {
 
         private TrabalhoDbContext dbContext;
 
-        public EFClientRepository(TrabalhoDbContext dbContext)
+        public EFType_AnswerRepository(TrabalhoDbContext dbContext)
         {
             this.dbContext = dbContext;
         }
 
-        public IEnumerable<Client> Client => dbContext.Client;
+        public IEnumerable<Type_Answer> Type_Answer => dbContext.Type_Answer;
+
     }
 }
-

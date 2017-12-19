@@ -16,71 +16,22 @@ namespace Trabalho.Migrations
                 .HasAnnotation("ProductVersion", "1.1.2")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Trabalho.Models.Ans_Que", b =>
+            modelBuilder.Entity("Trabalho.Models.Ans_For_Que", b =>
                 {
-                    b.Property<int>("Ans_QueID")
+                    b.Property<int>("Ans_For_QueID")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("QuestionID");
 
-                    b.Property<string>("ResPer");
+                    b.Property<int>("Type_AnswerID");
 
-                    b.HasKey("Ans_QueID");
+                    b.HasKey("Ans_For_QueID");
 
                     b.HasIndex("QuestionID");
 
-                    b.ToTable("Ans_Que");
-                });
+                    b.HasIndex("Type_AnswerID");
 
-            modelBuilder.Entity("Trabalho.Models.Answer", b =>
-                {
-                    b.Property<int>("AnswerID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("AnswerToClient")
-                        .IsRequired();
-
-                    b.Property<int>("ClientID");
-
-                    b.Property<int>("SurveyID");
-
-                    b.HasKey("AnswerID");
-
-                    b.HasIndex("ClientID");
-
-                    b.HasIndex("SurveyID");
-
-                    b.ToTable("Answer");
-                });
-
-            modelBuilder.Entity("Trabalho.Models.Client", b =>
-                {
-                    b.Property<int>("ClientID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("Birthday");
-
-                    b.Property<string>("ClientName");
-
-                    b.Property<bool?>("ClientState");
-
-                    b.Property<string>("Email");
-
-                    b.Property<int>("Emergency_Contact");
-
-                    b.Property<bool?>("Genre");
-
-                    b.Property<int>("NIF");
-
-                    b.Property<int>("PhoneNumber");
-
-                    b.Property<int>("Type_ClientID");
-
-                    b.HasKey("ClientID");
-
-                    b.HasIndex("Type_ClientID");
-
-                    b.ToTable("Client");
+                    b.ToTable("Ans_For_Que");
                 });
 
             modelBuilder.Entity("Trabalho.Models.Difficulty", b =>
@@ -89,8 +40,6 @@ namespace Trabalho.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("DifficultyName");
-
-                    b.Property<string>("Observation");
 
                     b.HasKey("DifficultyID");
 
@@ -147,60 +96,62 @@ namespace Trabalho.Migrations
                     b.ToTable("Question");
                 });
 
-            modelBuilder.Entity("Trabalho.Models.Sur_Que", b =>
-                {
-                    b.Property<int>("Sur_QueID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("QuestionID");
-
-                    b.Property<int>("SurveyID");
-
-                    b.HasKey("Sur_QueID");
-
-                    b.HasIndex("QuestionID");
-
-                    b.HasIndex("SurveyID");
-
-                    b.ToTable("Sur_Que");
-                });
-
             modelBuilder.Entity("Trabalho.Models.Survey", b =>
                 {
                     b.Property<int>("SurveyID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<bool?>("SurveyState");
+                    b.Property<string>("AnswerToTurist");
+
+                    b.Property<DateTime>("DateAnswer");
+
+                    b.Property<int>("DiseasesID");
+
+                    b.Property<int>("QuestionID");
+
+                    b.Property<int>("TuristID");
+
+                    b.Property<int>("Type_AnswerID");
 
                     b.HasKey("SurveyID");
+
+                    b.HasIndex("QuestionID");
+
+                    b.HasIndex("TuristID");
 
                     b.ToTable("Survey");
                 });
 
-            modelBuilder.Entity("Trabalho.Models.Tra_An", b =>
+            modelBuilder.Entity("Trabalho.Models.Tra_Sur", b =>
                 {
-                    b.Property<int>("Tra_AnID")
+                    b.Property<int>("Tra_SurID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("AnswerID");
+                    b.Property<int?>("QuestionID");
 
-                    b.Property<string>("Recomendation");
+                    b.Property<bool?>("Recommended");
+
+                    b.Property<int>("SurveyID");
 
                     b.Property<int>("TrailsID");
 
-                    b.HasKey("Tra_AnID");
+                    b.HasKey("Tra_SurID");
 
-                    b.HasIndex("AnswerID");
+                    b.HasIndex("QuestionID");
+
+                    b.HasIndex("SurveyID");
 
                     b.HasIndex("TrailsID");
 
-                    b.ToTable("Tra_An");
+                    b.ToTable("Tra_Sur");
                 });
 
             modelBuilder.Entity("Trabalho.Models.Trails", b =>
                 {
                     b.Property<int>("TrailsID")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Description");
 
                     b.Property<int>("DifficultyID");
 
@@ -215,44 +166,54 @@ namespace Trabalho.Migrations
                     b.ToTable("Trails");
                 });
 
-            modelBuilder.Entity("Trabalho.Models.Type_Client", b =>
+            modelBuilder.Entity("Trabalho.Models.Turist", b =>
                 {
-                    b.Property<int>("Type_ClientID")
+                    b.Property<int>("TuristID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("TypeClient");
+                    b.Property<DateTime>("Birthday");
 
-                    b.HasKey("Type_ClientID");
+                    b.Property<string>("Email");
 
-                    b.ToTable("Type_Client");
+                    b.Property<int>("EmergencyContact");
+
+                    b.Property<bool?>("Genre");
+
+                    b.Property<int>("NIF");
+
+                    b.Property<int>("Phone");
+
+                    b.Property<string>("TuristName");
+
+                    b.Property<bool?>("TuristState");
+
+                    b.HasKey("TuristID");
+
+                    b.ToTable("Turist");
                 });
 
-            modelBuilder.Entity("Trabalho.Models.Ans_Que", b =>
+            modelBuilder.Entity("Trabalho.Models.Type_Answer", b =>
+                {
+                    b.Property<int>("Type_AnswerID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("PossibleAnswer");
+
+                    b.HasKey("Type_AnswerID");
+
+                    b.ToTable("Type_Answer");
+                });
+
+            modelBuilder.Entity("Trabalho.Models.Ans_For_Que", b =>
                 {
                     b.HasOne("Trabalho.Models.Question", "Question")
-                        .WithMany("Ans_Que")
+                        .WithMany("Ans_For_Que")
                         .HasForeignKey("QuestionID")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
 
-            modelBuilder.Entity("Trabalho.Models.Answer", b =>
-                {
-                    b.HasOne("Trabalho.Models.Client", "Client")
-                        .WithMany("Answer")
-                        .HasForeignKey("ClientID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Trabalho.Models.Survey", "Survey")
-                        .WithMany("Answer")
-                        .HasForeignKey("SurveyID")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Trabalho.Models.Client", b =>
-                {
-                    b.HasOne("Trabalho.Models.Type_Client", "Type_Client")
-                        .WithMany("Client")
-                        .HasForeignKey("Type_ClientID")
+                    b.HasOne("Trabalho.Models.Type_Answer", "Type_Answer")
+                        .WithMany("Ans_For_Que")
+                        .HasForeignKey("Type_AnswerID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -269,28 +230,32 @@ namespace Trabalho.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Trabalho.Models.Sur_Que", b =>
+            modelBuilder.Entity("Trabalho.Models.Survey", b =>
                 {
                     b.HasOne("Trabalho.Models.Question", "Question")
-                        .WithMany("Sur_Que")
+                        .WithMany()
                         .HasForeignKey("QuestionID")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Trabalho.Models.Survey", "Survey")
-                        .WithMany("Sur_Que")
-                        .HasForeignKey("SurveyID")
+                    b.HasOne("Trabalho.Models.Turist", "Turist")
+                        .WithMany("Survey")
+                        .HasForeignKey("TuristID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Trabalho.Models.Tra_An", b =>
+            modelBuilder.Entity("Trabalho.Models.Tra_Sur", b =>
                 {
-                    b.HasOne("Trabalho.Models.Answer", "Answer")
-                        .WithMany("Tra_An")
-                        .HasForeignKey("AnswerID")
+                    b.HasOne("Trabalho.Models.Question")
+                        .WithMany("Tra_Sur")
+                        .HasForeignKey("QuestionID");
+
+                    b.HasOne("Trabalho.Models.Survey", "Survey")
+                        .WithMany()
+                        .HasForeignKey("SurveyID")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Trabalho.Models.Trails", "Trails")
-                        .WithMany("Tra_An")
+                        .WithMany("Tra_Sur")
                         .HasForeignKey("TrailsID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace Trabalho.Models
 {
-    public interface IClientRepository
+    public interface IType_AnswerRepository
     {
 
-        IEnumerable<Client> Client { get; }
+        IEnumerable<Type_Answer> Type_Answer { get; }
     }
 }

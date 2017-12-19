@@ -8,7 +8,8 @@ namespace Trabalho.Models
     public interface ISurveyRepository
     {
 
-        IEnumerable<Survey> Survey { get; }
+
+            IEnumerable<Survey> Survey { get; }
+      
     }
 }
-

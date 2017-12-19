@@ -50,6 +50,8 @@ C:\Users\ASUS\Documents\GitHub\EngSof2-ProgInter\Programação para a internet\T
 C:\Users\ASUS\Documents\GitHub\EngSof2-ProgInter\Programação para a internet\Trabalho\Trabalho\bin\Debug\netcoreapp1.1\Trabalho.pdb
 C:\Users\ASUS\Documents\GitHub\EngSof2-ProgInter\Programação para a internet\Trabalho\Trabalho\obj\Debug\netcoreapp1.1\Trabalho.dll
 C:\Users\ASUS\Documents\GitHub\EngSof2-ProgInter\Programação para a internet\Trabalho\Trabalho\obj\Debug\netcoreapp1.1\Trabalho.pdb
+C:\Users\1011700\Documents\GitHub\EngSof2-ProgInter\Programação para a internet\Trabalho\Trabalho\obj\Debug\netcoreapp1.1\UserSecretsAssemblyInfo.cs
+C:\Users\1011700\Documents\GitHub\EngSof2-ProgInter\Programação para a internet\Trabalho\Trabalho\obj\Debug\netcoreapp1.1\Trabalho.AssemblyInfoInputs.cache
 C:\Users\jelfr\Documents\GitHub\EngSof2-ProgInter\Programação para a internet\Trabalho\Trabalho\bin\Debug\netcoreapp1.1\Trabalho.deps.json
 C:\Users\jelfr\Documents\GitHub\EngSof2-ProgInter\Programação para a internet\Trabalho\Trabalho\bin\Debug\netcoreapp1.1\Trabalho.runtimeconfig.json
 C:\Users\jelfr\Documents\GitHub\EngSof2-ProgInter\Programação para a internet\Trabalho\Trabalho\bin\Debug\netcoreapp1.1\Trabalho.runtimeconfig.dev.json
@@ -62,5 +64,3 @@ C:\Users\jelfr\Documents\GitHub\EngSof2-ProgInter\Programação para a internet\
 C:\Users\jelfr\Documents\GitHub\EngSof2-ProgInter\Programação para a internet\Trabalho\Trabalho\obj\Debug\netcoreapp1.1\Trabalho.AssemblyInfo.cs
 C:\Users\jelfr\Documents\GitHub\EngSof2-ProgInter\Programação para a internet\Trabalho\Trabalho\obj\Debug\netcoreapp1.1\Trabalho.dll
 C:\Users\jelfr\Documents\GitHub\EngSof2-ProgInter\Programação para a internet\Trabalho\Trabalho\obj\Debug\netcoreapp1.1\Trabalho.pdb
-C:\Users\1011700\Documents\GitHub\EngSof2-ProgInter\Programação para a internet\Trabalho\Trabalho\obj\Debug\netcoreapp1.1\UserSecretsAssemblyInfo.cs
-C:\Users\1011700\Documents\GitHub\EngSof2-ProgInter\Programação para a internet\Trabalho\Trabalho\obj\Debug\netcoreapp1.1\Trabalho.AssemblyInfoInputs.cache
