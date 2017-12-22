@@ -1,29 +1,28 @@
-@model Trabalho.Models.Client
+@model Trabalho.Models.Turist
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Create";
 }
 
-<h2>Edit</h2>
+<h2>Create</h2>
 
-<form asp-action="Edit">
+<form asp-action="Create">
     <div class="form-horizontal">
-        <h4>Client</h4>
+        <h4>Turist</h4>
         <hr />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <input type="hidden" asp-for="ClientID" />
         <div class="form-group">
-            <label asp-for="ClientName" class="col-md-2 control-label"></label>
+            <label asp-for="TuristName" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="ClientName" class="form-control" />
-                <span asp-validation-for="ClientName" class="text-danger"></span>
+                <input asp-for="TuristName" class="form-control" />
+                <span asp-validation-for="TuristName" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="PhoneNumber" class="col-md-2 control-label"></label>
+            <label asp-for="Phone" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="PhoneNumber" class="form-control" />
-                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
@@ -55,29 +54,22 @@
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="Emergency_Contact" class="col-md-2 control-label"></label>
+            <label asp-for="EmergencyContact" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="Emergency_Contact" class="form-control" />
-                <span asp-validation-for="Emergency_Contact" class="text-danger"></span>
+                <input asp-for="EmergencyContact" class="form-control" />
+                <span asp-validation-for="EmergencyContact" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="ClientState" class="col-md-2 control-label"></label>
+            <label asp-for="TuristState" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="ClientState" class="form-control" />
-                <span asp-validation-for="ClientState" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="Type_ClientID" class="control-label col-md-2"></label>
-            <div class="col-md-10">
-                <select asp-for="Type_ClientID" class="form-control" asp-items="ViewBag.Type_ClientID"></select>
-                <span asp-validation-for="Type_ClientID" class="text-danger"></span>
+                <input asp-for="TuristState" class="form-control" />
+                <span asp-validation-for="TuristState" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
     </div>

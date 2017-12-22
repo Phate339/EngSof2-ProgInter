@@ -1,4 +1,4 @@
-@model Trabalho.Models.Client
+@model Trabalho.Models.Turist
 
 @{
     ViewData["Title"] = "Details";
@@ -7,20 +7,20 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Client</h4>
+    <h4>Turist</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.ClientName)
+            @Html.DisplayNameFor(model => model.TuristName)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.ClientName)
+            @Html.DisplayFor(model => model.TuristName)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
+            @Html.DisplayNameFor(model => model.Phone)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.PhoneNumber)
+            @Html.DisplayFor(model => model.Phone)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Genre)
@@ -47,26 +47,20 @@
             @Html.DisplayFor(model => model.Email)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Emergency_Contact)
+            @Html.DisplayNameFor(model => model.EmergencyContact)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Emergency_Contact)
+            @Html.DisplayFor(model => model.EmergencyContact)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.ClientState)
+            @Html.DisplayNameFor(model => model.TuristState)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.ClientState)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Type_Client)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Type_Client.Type_ClientID)
+            @Html.DisplayFor(model => model.TuristState)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.ClientID">Edit</a> |
+    <a asp-action="Edit" asp-route-id="@Model.TuristID">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
