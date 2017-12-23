@@ -138,28 +138,25 @@
                             </li>
 
                             <li class="dropdown dropdown-mm">
-                                <a href ="#" class="dropdown-toggle" data-toggle="dropdown">Perguntas<b class="caret"></b></a>
+                                <a href ="#" class="dropdown-toggle" data-toggle="dropdown">Questionários<b class="caret"></b></a>
             
                                 <ul class="dropdown-menu">
-                                    <li class="dropdown-header">Perguntas</li>
-                                    <li><a asp-area="" asp-controller="Turists" asp-action="Index">Criar Pergunta</a></li>
-                                    <li><a asp-area="" asp-controller="Questions" asp-action="Index">As minhas Perguntas</a></li>
-
+                                    <li class="dropdown-header">Questionários</li>
+                                    <li><a asp-area="" asp-controller="Surveys" asp-action="Create">Responder</a></li>
+                                    <li><a asp-area="" asp-controller="Surveys" asp-action="Index">Visualizar</a></li>
                                 </ul>
                             </li>
 
                             <li class="dropdown dropdown-mm">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Questionários<b class="caret"></b></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Perguntas/Respostas<b class="caret"></b></a>
 
                                 <ul class="dropdown-menu">
-                                    <li class="dropdown-header">Surveys</li>
-                                    <li><a asp-area="" asp-controller="Answer" asp-action="Create">Criar Questinário</a></li>
-                                    <li><a asp-area="" asp-controller="Answer" asp-action="Index">Os meus Questionários </a></li>
+                                    <li class="dropdown-header">Perguntas/Respostas</li>
+                                    <li><a asp-area="" asp-controller="Questions" asp-action="Create">Criar </a></li>
+                                    <li><a asp-area="" asp-controller="Questions" asp-action="Index">Visualizar </a></li>
 
                                 </ul>
                             </li>
-
-                   
 
 
                             <li><a asp-area="" asp-controller="Home" asp-action="About">Sobre</a></li>

@@ -13,10 +13,34 @@
     <dl class="dl-horizontal">
         <input type="hidden" asp-for="SurveyID" />
         <dt>
-            @Html.DisplayNameFor(model => model.SurveyState)
+            @Html.DisplayNameFor(model => model.Type_AnswerID)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.SurveyState)
+            @Html.DisplayFor(model => model.Type_AnswerID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DiseasesID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DiseasesID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DateAnswer)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DateAnswer)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Question)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Question.QuestionID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Turist)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Turist.TuristID)
         </dd>
     </dl>
     

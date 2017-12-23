@@ -12,6 +12,9 @@
 <table class="table">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.QuestionID)
+            </th>
                 <th>
                     @Html.DisplayNameFor(model => model.QuestionToClient)
                 </th>
@@ -22,8 +25,14 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
+@foreach (var item in Model)
+{
+    @if (item.QuestionState == true)
+    {
+        <tr class="alert-success">
+            <td>
+                @Html.DisplayFor(modelItem => item.QuestionID)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.QuestionToClient)
             </td>
@@ -36,6 +45,23 @@
                 <a asp-action="Delete" asp-route-id="@item.QuestionID">Delete</a>
             </td>
         </tr>
+    }
+    else
+    {
+        <tr class="alert-danger">
+            <td>
+                @Html.DisplayFor(modelItem => item.QuestionToClient)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuestionState)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.QuestionID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.QuestionID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.QuestionID">Delete</a>
+            </td>
+        </tr>
+    }
 }
     </tbody>
 </table>

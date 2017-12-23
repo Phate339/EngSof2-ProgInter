@@ -93,7 +93,10 @@ namespace Trabalho.Migrations
                     Description = table.Column<string>(nullable: true),
                     DifficultyID = table.Column<int>(nullable: false),
                     Distance = table.Column<int>(nullable: false),
-                    TrailsName = table.Column<string>(nullable: true)
+                    Final_Date = table.Column<DateTime>(nullable: false),
+                    Initial_Date = table.Column<DateTime>(nullable: false),
+                    TrailsName = table.Column<string>(nullable: true),
+                    TrailsState = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -139,7 +142,6 @@ namespace Trabalho.Migrations
                 {
                     SurveyID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    AnswerToTurist = table.Column<string>(nullable: true),
                     DateAnswer = table.Column<DateTime>(nullable: false),
                     DiseasesID = table.Column<int>(nullable: false),
                     QuestionID = table.Column<int>(nullable: false),
@@ -195,7 +197,6 @@ namespace Trabalho.Migrations
                 {
                     Tra_SurID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    QuestionID = table.Column<int>(nullable: true),
                     Recommended = table.Column<bool>(nullable: true),
                     SurveyID = table.Column<int>(nullable: false),
                     TrailsID = table.Column<int>(nullable: false)
@@ -203,12 +204,6 @@ namespace Trabalho.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Tra_Sur", x => x.Tra_SurID);
-                    table.ForeignKey(
-                        name: "FK_Tra_Sur_Question_QuestionID",
-                        column: x => x.QuestionID,
-                        principalTable: "Question",
-                        principalColumn: "QuestionID",
-                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Tra_Sur_Survey_SurveyID",
                         column: x => x.SurveyID,
@@ -252,11 +247,6 @@ namespace Trabalho.Migrations
                 name: "IX_Survey_TuristID",
                 table: "Survey",
                 column: "TuristID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Tra_Sur_QuestionID",
-                table: "Tra_Sur",
-                column: "QuestionID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Tra_Sur_SurveyID",

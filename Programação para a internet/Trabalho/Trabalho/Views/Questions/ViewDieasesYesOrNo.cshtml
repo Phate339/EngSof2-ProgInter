@@ -1,0 +1,17 @@
+@model Trabalho.Models.Question
+
+@{
+    ViewData["Title"] = "ViewDieasesYesOrNo";
+}
+
+<h2>ViewDieasesYesOrNo</h2>
+
+<h2> A pergunta e sobre doencas? </h2>
+
+<div>
+    <a asp-area="" asp-controller="Type_Answer" asp-action="Index">Nao</a>
+</div>
+
+<div>
+    <a asp-area="" asp-controller="Diseases" asp-action="Create">Sim</a>
+</div>

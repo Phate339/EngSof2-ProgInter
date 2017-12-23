@@ -7,5 +7,8 @@ namespace Trabalho.Models.ViewModels
 {
     public class QuestionListViewModel
     {
+        public IEnumerable<Question> Question { get; set; }
+
+        public IEnumerable <Type_Answer> Type_Answer { get; set; }
     }
 }

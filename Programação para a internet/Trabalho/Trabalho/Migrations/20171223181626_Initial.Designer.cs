@@ -8,7 +8,7 @@ using Trabalho.Models;
 namespace Trabalho.Migrations
 {
     [DbContext(typeof(TrabalhoDbContext))]
-    [Migration("20171219003111_Initial")]
+    [Migration("20171223181626_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -102,8 +102,6 @@ namespace Trabalho.Migrations
                     b.Property<int>("SurveyID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("AnswerToTurist");
-
                     b.Property<DateTime>("DateAnswer");
 
                     b.Property<int>("DiseasesID");
@@ -128,8 +126,6 @@ namespace Trabalho.Migrations
                     b.Property<int>("Tra_SurID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("QuestionID");
-
                     b.Property<bool?>("Recommended");
 
                     b.Property<int>("SurveyID");
@@ -137,8 +133,6 @@ namespace Trabalho.Migrations
                     b.Property<int>("TrailsID");
 
                     b.HasKey("Tra_SurID");
-
-                    b.HasIndex("QuestionID");
 
                     b.HasIndex("SurveyID");
 
@@ -158,7 +152,13 @@ namespace Trabalho.Migrations
 
                     b.Property<int>("Distance");
 
+                    b.Property<DateTime>("Final_Date");
+
+                    b.Property<DateTime>("Initial_Date");
+
                     b.Property<string>("TrailsName");
+
+                    b.Property<bool>("TrailsState");
 
                     b.HasKey("TrailsID");
 
@@ -234,7 +234,7 @@ namespace Trabalho.Migrations
             modelBuilder.Entity("Trabalho.Models.Survey", b =>
                 {
                     b.HasOne("Trabalho.Models.Question", "Question")
-                        .WithMany()
+                        .WithMany("Survey")
                         .HasForeignKey("QuestionID")
                         .OnDelete(DeleteBehavior.Cascade);
 
@@ -246,10 +246,6 @@ namespace Trabalho.Migrations
 
             modelBuilder.Entity("Trabalho.Models.Tra_Sur", b =>
                 {
-                    b.HasOne("Trabalho.Models.Question")
-                        .WithMany("Tra_Sur")
-                        .HasForeignKey("QuestionID");
-
                     b.HasOne("Trabalho.Models.Survey", "Survey")
                         .WithMany()
                         .HasForeignKey("SurveyID")

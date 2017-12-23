@@ -12,10 +12,36 @@
         <hr />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
-            <label asp-for="SurveyState" class="col-md-2 control-label"></label>
+            <label asp-for="Type_AnswerID" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="SurveyState" class="form-control" />
-                <span asp-validation-for="SurveyState" class="text-danger"></span>
+                <input asp-for="Type_AnswerID" class="form-control" />
+                <span asp-validation-for="Type_AnswerID" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="DiseasesID" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="DiseasesID" class="form-control" />
+                <span asp-validation-for="DiseasesID" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="DateAnswer" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="DateAnswer" class="form-control" />
+                <span asp-validation-for="DateAnswer" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="TuristID" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="TuristID" class ="form-control" asp-items="ViewBag.TuristID"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="QuestionID" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="QuestionID" class ="form-control" asp-items="ViewBag.QuestionID"></select>
             </div>
         </div>
         <div class="form-group">
@@ -30,6 +56,3 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}

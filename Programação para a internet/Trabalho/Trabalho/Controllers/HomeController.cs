@@ -24,6 +24,8 @@ namespace Trabalho.Controllers
         {
             return View();
         }
+
+
         [HttpGet]
         public IActionResult Surveys()
         {
