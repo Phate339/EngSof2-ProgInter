@@ -1,0 +1,47 @@
+@model Trabalho.Models.Que_Dis
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<form asp-action="Edit">
+    <div class="form-horizontal">
+        <h4>Que_Dis</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="Que_DisID" />
+        <div class="form-group">
+            <label asp-for="YES_NO" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="YES_NO" class="form-control" />
+                <span asp-validation-for="YES_NO" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="QuestionID" class="control-label col-md-2"></label>
+            <div class="col-md-10">
+                <select asp-for="QuestionID" class="form-control" asp-items="ViewBag.QuestionID"></select>
+                <span asp-validation-for="QuestionID" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="DiseasesID" class="control-label col-md-2"></label>
+            <div class="col-md-10">
+                <select asp-for="DiseasesID" class="form-control" asp-items="ViewBag.DiseasesID"></select>
+                <span asp-validation-for="DiseasesID" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

@@ -1,0 +1,47 @@
+@model IEnumerable<Trabalho.Models.Que_Dis>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.YES_NO)
+                </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Diseases)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Question)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.YES_NO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Diseases.DiseasesID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Question.QuestionID)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Que_DisID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Que_DisID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Que_DisID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
