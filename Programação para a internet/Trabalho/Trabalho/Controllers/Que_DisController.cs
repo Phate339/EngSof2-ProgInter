@@ -58,7 +58,7 @@ namespace Trabalho.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Que_DisID,YES_NO,QuestionID,DiseasesID")] Que_Dis que_Dis)
+        public async Task<IActionResult> Create([Bind("Que_DisID,QuestionID,DiseasesID")] Que_Dis que_Dis)
         {
             if (ModelState.IsValid)
             {
@@ -66,8 +66,8 @@ namespace Trabalho.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewData["DiseasesID"] = new SelectList(_context.Diseases, "DiseasesID", "DiseasesID", que_Dis.DiseasesID);
-            ViewData["QuestionID"] = new SelectList(_context.Question, "QuestionID", "QuestionID", que_Dis.QuestionID);
+            ViewData["DiseasesID"] = new SelectList(_context.Diseases, "DiseasesID", "DiseasesName", que_Dis.DiseasesID);
+            ViewData["QuestionID"] = new SelectList(_context.Question, "QuestionID", "QuestionToClient", que_Dis.QuestionID);
             return View(que_Dis);
         }
 
@@ -94,7 +94,7 @@ namespace Trabalho.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Que_DisID,YES_NO,QuestionID,DiseasesID")] Que_Dis que_Dis)
+        public async Task<IActionResult> Edit(int id, [Bind("Que_DisID,QuestionID,DiseasesID")] Que_Dis que_Dis)
         {
             if (id != que_Dis.Que_DisID)
             {

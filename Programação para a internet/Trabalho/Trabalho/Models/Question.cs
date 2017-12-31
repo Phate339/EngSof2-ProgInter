@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,7 +11,8 @@ namespace Trabalho.Models
 
         public int QuestionID { get; set; }
         public string QuestionToClient { get; set; }
-        public Boolean? QuestionState { get; set; }
+        [Required(ErrorMessage = "Please select Yes or No")]
+        public bool QuestionState { get; set; }
 
 
     

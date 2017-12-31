@@ -13,23 +13,18 @@
     <dl class="dl-horizontal">
         <input type="hidden" asp-for="Que_DisID" />
         <dt>
-            @Html.DisplayNameFor(model => model.YES_NO)
+            @Html.DisplayNameFor(model => model.Question)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.YES_NO)
+            @Html.DisplayFor(model => model.Question.QuestionToClient)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Diseases)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Diseases.DiseasesID)
+            @Html.DisplayFor(model => model.Diseases.DiseasesName)
         </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Question)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Question.QuestionID)
-        </dd>
+      
     </dl>
     
     <form asp-action="Delete">

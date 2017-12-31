@@ -1,4 +1,4 @@
-@model IEnumerable<Trabalho.Models.Type_Answer>
+@model QuestionListViewModel
 
 @{
     ViewData["Title"] = "Index";
@@ -13,15 +13,21 @@
 <table class="table">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Question)
+            </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.PossibleAnswer)
+                    @Html.DisplayNameFor(model => model.Type_Answer)
                 </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model.Type_Answer) {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ans_For_Que)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.PossibleAnswer)
             </td>

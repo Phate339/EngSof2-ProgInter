@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Trabalho.Models;
 
+using Trabalho.Models.ViewModels;
+
 namespace Trabalho.Controllers
 {
     public class QuestionsController : Controller
@@ -18,11 +20,33 @@ namespace Trabalho.Controllers
             _context = context;    
         }
 
-        // GET: Questions
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? id, int? Type_AnswerID)
         {
-            return View(await _context.Question.ToListAsync());
+            var viewModel = new QuestionListViewModel();
+            viewModel.Question = await _context.Question
+                  .Include(i => i.Ans_For_Que)
+                  .ThenInclude(i=>i.Type_Answer)
+                  .ToListAsync();
+
+            if (id != null)
+            {
+                ViewData["QuestionID"] = id.Value;
+                Question question = viewModel.Question.Where(
+                    i => i.QuestionID == id.Value).Single();
+                viewModel.Type_Answer = question.Ans_For_Que.Select(s => s.Type_Answer);
+            }
+
+            if (Type_AnswerID != null)
+            {
+                ViewData["Type_AnswerID"] = Type_AnswerID.Value;
+                var selectedType_Answer= viewModel.Type_Answer.Where(x => x.Type_AnswerID == Type_AnswerID).Single(); 
+            }
+
+            return View(viewModel);
         }
+
+
+
 
         // GET: Questions/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -45,6 +69,7 @@ namespace Trabalho.Controllers
         // GET: Questions/Create
         public IActionResult Create()
         {
+            Select_YN_Rebind();
             return View();
         }
 
@@ -61,7 +86,32 @@ namespace Trabalho.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction("ViewDieasesYesOrNo");
             }
+
+
+
+            Select_YN_Rebind();
             return View(question);
+        }
+
+        private void Select_YN_Rebind()
+        {
+            List<SelectListItem> Select_YN = new List<SelectListItem>();
+            Select_YN.Add(new SelectListItem
+            {
+                Text = "Select"
+
+            });
+            Select_YN.Add(new SelectListItem
+            {
+                Text = "No",
+                Value = bool.FalseString
+            });
+            Select_YN.Add(new SelectListItem
+            {
+                Text = "Yes",
+                Value = bool.TrueString
+            });
+            ViewData["Select_YN"] = Select_YN;
         }
 
         // GET: Questions/Edit/5

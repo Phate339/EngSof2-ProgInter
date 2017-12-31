@@ -59,7 +59,7 @@ namespace Trabalho.Controllers
             {
                 _context.Add(diseases);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction("SureView");
             }
             return View(diseases);
         }
@@ -143,6 +143,14 @@ namespace Trabalho.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }
+
+
+       public IActionResult SureView()
+        {
+
+            return View();
+        }
+
 
         private bool DiseasesExists(int id)
         {

@@ -11,21 +11,16 @@
         <h4>Que_Dis</h4>
         <hr />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <!--
         <div class="form-group">
-            <label asp-for="YES_NO" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="YES_NO" class="form-control" />
-                <span asp-validation-for="YES_NO" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="QuestionID" class="col-md-2 control-label"></label>
+            <label asp-for="Question" class="col-md-2 control-label"></label>
             <div class="col-md-10">
                 <select asp-for="QuestionID" class ="form-control" asp-items="ViewBag.QuestionID"></select>
             </div>
         </div>
+        -->
         <div class="form-group">
-            <label asp-for="DiseasesID" class="col-md-2 control-label"></label>
+            <label asp-for="Diseases" class="col-md-2 control-label"></label>
             <div class="col-md-10">
                 <select asp-for="DiseasesID" class ="form-control" asp-items="ViewBag.DiseasesID"></select>
             </div>

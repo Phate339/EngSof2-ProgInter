@@ -71,7 +71,7 @@ namespace Trabalho.Migrations
 
                     b.Property<int>("QuestionID");
 
-                    b.Property<bool?>("YES_NO");
+                   // b.Property<bool?>("YES_NO");
 
                     b.HasKey("Que_DisID");
 

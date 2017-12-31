@@ -2,25 +2,24 @@
 
 @{
     ViewData["Title"] = "Index";
+    string groupName = "";
 }
 
 <h2>Index</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-controller="Diseases" asp-action="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
         <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.YES_NO)
-                </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Diseases)
-            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Question)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Diseases)
+            </th>
+           
             <th></th>
         </tr>
     </thead>
@@ -28,14 +27,19 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.YES_NO)
+                @{if (groupName != item.Question.QuestionToClient)
+                    {
+
+                        @Html.DisplayFor(modelItem => item.Question.QuestionToClient)
+
+                    }
+                    groupName = item.Question.QuestionToClient;
+                }
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Diseases.DiseasesID)
+                @Html.DisplayFor(modelItem => item.Diseases.DiseasesName)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Question.QuestionID)
-            </td>
+          
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Que_DisID">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Que_DisID">Details</a> |

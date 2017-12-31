@@ -2,6 +2,9 @@
 
 @{
     ViewData["Title"] = "Index";
+    string nome = "";
+    string groupName = "";
+
 }
 
 <h2>Index</h2>
@@ -15,27 +18,73 @@
             <th>
                 @Html.DisplayNameFor(model => model.Question)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Type_Answer)
-            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Question.QuestionToClient)
+@foreach (var item in Model)
+{
+    nome = item.Question.QuestionToClient;
+    string selectedRow = "";
+    if (item.Ans_For_QueID == (int?)ViewData["InstructorID"])
+    {
+        selectedRow = "success";
+    }
+        <tr  class="@selectedRow">
+     
+            <td >
+               @{if (groupName != nome)
+                   {
+
+                <input type="button" title="D" value="@nome" onclick="location.href='@Url.Action("Index2", "Ans_For_Que", new { id = item.QuestionID })'" />
+               
+                }
+                groupName = nome;
+                }
+
+              
             </td>
+
             <td>
-                @Html.DisplayFor(modelItem => item.Type_Answer.PossibleAnswer)
-            </td>
-            <td>
+                <a asp-action="Index" asp-route-id="@item.Ans_For_QueID">Select</a> |
                 <a asp-action="Edit" asp-route-id="@item.Ans_For_QueID">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Ans_For_QueID">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Ans_For_QueID">Delete</a>
             </td>
+
         </tr>
+                
+           
 }
+
     </tbody>
 </table>
+
+@if (Model != null)
+{
+    <h3>Courses Taught by Selected Instructor</h3>
+    <table class="table">
+        <tr>
+            <th></th>
+            <th>Number</th>
+            <th>Title</th>
+            <th>Department</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+        
+            <tr>
+               
+                <td>
+                    @item.Question.QuestionToClient
+                </td>
+                <td>
+                    @item.Type_Answer.PossibleAnswer
+                </td>
+              
+            </tr>
+        }
+
+    </table>
+}

@@ -10,7 +10,7 @@ namespace Trabalho.Models
     {
 
         public int Que_DisID { get; set; }
-        public Boolean? YES_NO { get; set; }
+       // public bool YES_NO { get; set; }
 
         public int QuestionID { get; set; }
         [ForeignKey("QuestionID")]
