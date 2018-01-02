@@ -1,4 +1,4 @@
-@model QuestionListViewModel
+@model IEnumerable<Trabalho.Models.Type_Answer>
 
 @{
     ViewData["Title"] = "Index";
@@ -7,38 +7,29 @@
 <h2>Index</h2>
 
 <p>
-    <a asp-action="Create">Adicionar</a>
+    <a asp-action="Create">Create New</a>
 </p>
-
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Question)
-            </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Type_Answer)
+                    @Html.DisplayNameFor(model => model.PossibleAnswer)
                 </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Type_Answer) {
+@foreach (var item in Model) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ans_For_Que)
-            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.PossibleAnswer)
             </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Type_AnswerID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Type_AnswerID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Type_AnswerID">Delete</a>
+            </td>
         </tr>
 }
-
     </tbody>
-
 </table>
-
-
-<p>
-    <a asp-controller="Ans_For_Que" asp-action="Index">Concluir</a>
-</p>

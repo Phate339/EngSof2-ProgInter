@@ -4,29 +4,28 @@
     ViewData["Title"] = "Index";
 
 }
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-<h2>Index</h2>
+<h2>Perguntas</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="ViewDieasesYesOrNo">Criar</a>
 </p>
 <table class="table">
     <thead>
         <tr>
-            <th>Last Name</th>
-            <th>First Name</th>
-            <th>Hire Date</th>
-            <th>Office</th>
-            <th>Courses</th>
+            <th>ID da Pergunta</th>
+            <th>Pergunta</th>
+            <th>Estado da pergunta</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model.Question)
 {
-    @if (item.QuestionState == true)
+    @if (item.QuestionState == false)
     {
-        <tr class="alert-success">
+        <tr class="alert-danger">
             <td>
                 @Html.DisplayFor(modelItem => item.QuestionID)
             </td>
@@ -46,7 +45,7 @@
     }
     else
     {
-        <tr class="alert-danger">
+        <tr class="alert-success">
             <td>
                 @Html.DisplayFor(modelItem => item.QuestionID)
             </td>
@@ -71,31 +70,54 @@
 
 @if (Model.Type_Answer != null)
 {
-    <h3>Courses Taught by Selected Instructor</h3>
+  
+    
+    <h3>Tipo de Respostas da Pergunta Selecionada</h3>
+
+   
     <table class="table">
         <tr>
-            <th></th>
-            <th>Number</th>
-            <th>Title</th>
-            <th>Department</th>
+           
+            <th>Tipo de Resposta</th>
+            
         </tr>
 
 
         @foreach (var item in Model.Type_Answer)
         {
-            string selectedRow = "";
-            if (item.Type_AnswerID == (int?)ViewData["Type_AnswerID"])
-            {
-                selectedRow = "success";
-            }
-            <tr class="@selectedRow">
-                <td>
-                    @Html.ActionLink("Select", "Index", new { courseID = item.Type_AnswerID })
-                </td>
+            <tr >
                 <td>
                     @item.PossibleAnswer
                 </td>
-            
+                <td>
+                    <a asp-controller="Type_Answer" asp-action="Edit" asp-route-id="@item.Type_AnswerID">Edit</a>
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+
+@if (Model.Diseases != null)
+{
+    <h3>Doenças da Pergunta Selecionada</h3>
+    <table class="table">
+        <tr>
+       
+            <th>Doenças</th>
+       
+        </tr>
+
+
+        @foreach (var item in Model.Diseases)
+        {
+         <tr>
+                <td>
+                    @item.DiseasesName
+                </td>
+             <td>
+                 <a asp-controller="Diseases" asp-action="Edit" asp-route-id="@item.DiseasesID">Edit</a> 
+             </td>
             </tr>
         }
 

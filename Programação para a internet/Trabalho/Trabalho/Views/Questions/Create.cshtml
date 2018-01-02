@@ -29,7 +29,35 @@
              
             </div>
         </div>
-      
+
+        <div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        <table>
+            <tr>
+                @{
+                    int cnt = 0;
+                    List<Trabalho.Models.ViewModels.CreateQuestionType_AnswerViewModel> type_answer = ViewBag.Type_Answer;
+
+                    foreach (var course in type_answer)
+                    {
+                        if (cnt++ % 3 == 0)
+                        {
+                            @:</tr><tr>
+                        }
+                        @:<td>
+                            <input type="checkbox"
+                                   name="selectedType_Answer"
+                                   value="@course.Type_AnswerID"
+                                   @(Html.Raw(course.Assigned ? "checked=\"checked\"" : "")) />
+                                   @course.Type_AnswerID @:  @course.PossibleAnswer
+                        @:</td>
+                    }
+                    @:</tr>
+                }
+        </table>
+    </div>
+</div>
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input  type="submit" value="Create" class="btn btn-default" /> 

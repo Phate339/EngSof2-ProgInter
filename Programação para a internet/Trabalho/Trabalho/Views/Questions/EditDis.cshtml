@@ -1,12 +1,12 @@
 @model Trabalho.Models.Question
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "EditDis";
 }
 
-<h2>Edit</h2>
+<h2>EditDis</h2>
 
-<form asp-action="Edit">
+<form asp-action="EditDis">
     <div class="form-horizontal">
         <h4>Question</h4>
         <hr />
@@ -26,37 +26,34 @@
                 <span asp-validation-for="QuestionState" class="text-danger"></span>
             </div>
         </div>
-      
-        <div class="form-group">
-    <div class="col-md-offset-2 col-md-10">
+        <div class="col-md-offset-2 col-md-10">
         <table>
             <tr>
                 @{
                     int cnt = 0;
-                    List<Trabalho.Models.ViewModels.CreateQuestionType_AnswerViewModel> type_answer = ViewBag.Type_Answer;
-                    if (type_answer != null) { 
-                    foreach (var course in type_answer)
-                    {
+                    List<Trabalho.Models.ViewModels.CreateQuestionDiseasesViewModel> diseases = ViewBag.Diseases;
 
-                        if (cnt++ % 5 == 0)
+                    foreach (var course in diseases)
+                    {
+                        if (cnt++ % 3 == 0)
                         {
                             @:</tr><tr>
                         }
                         @:<td>
                             <input type="checkbox"
                                    name="selectedType_Answer"
-                                   value="@course.Type_AnswerID"
+                                   value="@course.DiseasesID"
                                    @(Html.Raw(course.Assigned ? "checked=\"checked\"" : "")) />
-                                   @course.Type_AnswerID @:  @course.PossibleAnswer
+                                   @course.DiseasesID @:  @course.DiseasesName
                         @:</td>
                     }
-                    }
                     @:</tr>
-
                 }
         </table>
     </div>
 </div>
+
+
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
