@@ -59,7 +59,7 @@ namespace Trabalho.Controllers
             {
                 _context.Add(type_Answer);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction("Create", "Questions");
             }
             return View(type_Answer);
         }
