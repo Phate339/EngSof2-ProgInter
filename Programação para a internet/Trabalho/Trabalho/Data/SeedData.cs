@@ -12,7 +12,7 @@ namespace Trabalho.Models
         {
             TrabalhoDbContext context = (TrabalhoDbContext)appServices.GetService(typeof(TrabalhoDbContext));
             
-             if (context.Turist.Any()) return;
+            // if (context.Turist.Any()) return;
             context.Turist.AddRange(
            //new Client { ClientName="Joao",Email="jelfreire@sapo.pt",Emergency_Contact=54343095,NIF=13231223,Genre=true }
 

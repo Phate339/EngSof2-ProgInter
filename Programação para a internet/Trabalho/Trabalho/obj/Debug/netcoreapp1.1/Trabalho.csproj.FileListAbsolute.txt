@@ -64,3 +64,4 @@ C:\Users\jelfr\Documents\GitHub\EngSof2-ProgInter\Programação para a internet\
 C:\Users\jelfr\Documents\GitHub\EngSof2-ProgInter\Programação para a internet\Trabalho\Trabalho\obj\Debug\netcoreapp1.1\Trabalho.AssemblyInfo.cs
 C:\Users\jelfr\Documents\GitHub\EngSof2-ProgInter\Programação para a internet\Trabalho\Trabalho\obj\Debug\netcoreapp1.1\Trabalho.dll
 C:\Users\jelfr\Documents\GitHub\EngSof2-ProgInter\Programação para a internet\Trabalho\Trabalho\obj\Debug\netcoreapp1.1\Trabalho.pdb
+C:\Users\ASUS\Documents\GitHub\EngSof2-ProgInter\Programação para a internet\Trabalho\Trabalho\obj\Debug\netcoreapp1.1\Trabalho.csprojResolveAssemblyReference.cache
