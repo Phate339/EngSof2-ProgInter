@@ -1531,6 +1531,15 @@ a {
 a:hover {
   color: #ff5821;
 }
+#background-fundo {
+    background-color: #ffffff;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding-bottom: 0;
+    border-bottom: 2px solid #000000;
+    
+}
 #background-wrapper {
   background-color: #000000;
   background-position: left top;
@@ -1552,26 +1561,30 @@ a:hover {
   background-image: url(../img/backgrounds/city.png);
 }
 .metro {
-  background-image: url(../img/backgrounds/metro.png);
+    padding-right:50px;
+  background-image: url(../img/backgrounds/fundolayout.png);
+}
+.estrela {
+    background-image: url(../img/backgrounds/fundolayout.png);
 }
 a.btn-hh-trigger {
-  display: block;
-  font-size: 0 !important;
-  line-height: 32px;
-  width: 30px;
-  height: 32px;
-  background: #ff5821;
-  text-align: center;
-  color: #ffffff;
-  padding: 0;
-  margin: 0;
-  text-decoration: none;
-  position: relative;
-  top: -11px;
-  -webkit-border-radius: 0 0 2px 2px;
-  -moz-border-radius: 0 0 2px 2px;
-  border-radius: 0 0 2px 2px;
-  border: none;
+    display: block;
+    font-size: 0 !important;
+    line-height: 32px;
+    width: 30px;
+    height: 32px;
+    background: #ff5821;
+    text-align: center;
+    color: #ffffff;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    position: relative;
+    top: -11px;
+    -webkit-border-radius: 0 0 2px 2px;
+    -moz-border-radius: 0 0 2px 2px;
+    border-radius: 0 0 2px 2px;
+    border: none;
 }
 a.btn-hh-trigger:before,
 a.btn-hh-trigger:after {
