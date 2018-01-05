@@ -1,0 +1,226 @@
+﻿@inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Trabalho</title>
+
+    <environment names="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/style.css" />
+
+        <!-- Facebook Opengraph integration: https://developers.facebook.com/docs/sharing/opengraph -->
+        <meta property="og:title" content="">
+        <meta property="og:image" content="">
+        <meta property="og:url" content="">
+        <meta property="og:site_name" content="">
+        <meta property="og:description" content="">
+
+        <!-- Twitter Cards integration: https://dev.twitter.com/cards/  -->
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="">
+        <meta name="twitter:title" content="">
+        <meta name="twitter:description" content="">
+        <meta name="twitter:image" content="">
+
+        <!-- Fav and touch icons -->
+        <link rel="shortcut icon" href="img/icons/favicon.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/icons/114x114.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/icons/72x72.png">
+        <link rel="apple-touch-icon-precomposed" href="img/icons/default.png">
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900" rel="stylesheet">
+
+        <!-- Bootstrap CSS File -->
+        <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Libraries CSS Files -->
+        <link href="~/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+        <link href="~/lib/owlcarousel/owl.carousel.min.css" rel="stylesheet" />
+        <link href="~/lib/owlcarousel/owl.theme.min.css" rel="stylesheet" />
+        <link href="~/lib/owlcarousel/owl.transitions.min.css" rel="stylesheet" />
+
+        <!--Your custom colour override - predefined colours are: colour-blue.css, colour-green.css, colour-lavander.css, orange is default-->
+        <link href="#" id="colour-scheme" rel="stylesheet">
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/style.css" />
+
+        <!-- Facebook Opengraph integration: https://developers.facebook.com/docs/sharing/opengraph -->
+        <meta property="og:title" content="">
+        <meta property="og:image" content="">
+        <meta property="og:url" content="">
+        <meta property="og:site_name" content="">
+        <meta property="og:description" content="">
+
+        <!-- Twitter Cards integration: https://dev.twitter.com/cards/  -->
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="">
+        <meta name="twitter:title" content="">
+        <meta name="twitter:description" content="">
+        <meta name="twitter:image" content="">
+
+        <!-- Fav and touch icons -->
+        <link rel="shortcut icon" href="img/icons/favicon.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/icons/114x114.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/icons/72x72.png">
+        <link rel="apple-touch-icon-precomposed" href="img/icons/default.png">
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900" rel="stylesheet">
+
+        <!-- Bootstrap CSS File -->
+        <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Libraries CSS Files -->
+        <link href="~/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+        <link href="~/lib/owlcarousel/owl.carousel.min.css" rel="stylesheet" />
+        <link href="~/lib/owlcarousel/owl.theme.min.css" rel="stylesheet" />
+        <link href="~/lib/owlcarousel/owl.transitions.min.css" rel="stylesheet" />
+
+        <!--Your custom colour override - predefined colours are: colour-blue.css, colour-green.css, colour-lavander.css, orange is default-->
+        <link href="#" id="colour-scheme" rel="stylesheet">
+    </environment>
+    @Html.Raw(JavaScriptSnippet.FullScript)
+</head>
+<body>
+    <div id="background-wrapper" class="buildings" data-stellar-background-ratio="0.1" style="background-position: 0% 0%;">
+        <!-- ======== Region: #navigation ======== -->
+        <div id="navigation" class="wrapper">
+            <!--Header & navbar-branding region-->
+            <div class="header">
+                <div class="header-inner container">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <!--navbar-branding/logo - hidden image tag & site name so things like Facebook to pick up, actual logo set via CSS for flexibility -->
+                            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="index" >
+                                <h1 class="hidden">
+                                    <img src="img/logo.png" alt="">
+                                    Logo IPG
+                                </h1>
+                            </a>
+                            <div class="navbar-slogan">
+                                Project E.S.2 e P.I.
+                                <br> de IPG
+                            </div>
+                        </div>
+                        <!--header rightside-->
+                        <div class="col-md-4">
+                            <!--user menu-->
+                            <ul class="list-inline user-menu pull-right">
+                                <li class="hidden-xs"><i class="fa fa-edit text-primary"></i> <a asp-area="" asp-controller="Home" asp-action="register">Registar</a> </li>
+                        
+                                <li class="hidden-xs"><i class="fa fa-sign-in text-primary"></i> <a asp-area="" asp-controller="Home" asp-action="login">Entrar</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="navbar navbar-default">
+                    <!--mobile collapse menu button-->
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                    <!--everything within this div is collapsed on mobile-->
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav" id="main-menu">
+                            <li class="icon-link">
+                                <a  asp-area="" asp-controller="Home" asp-action="index"><i class="fa fa-home"></i></a>
+                            </li>
+                           
+                            <li class="dropdown ">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Trilhos<b class="caret"></b></a>
+                                
+                                <ul class="dropdown-menu">
+                                    <li class="dropdown-header">Trilhos</li>
+                                    
+                                </ul>
+                            </li>
+
+                            <li class="dropdown dropdown-mm">
+                                <a href ="#" class="dropdown-toggle" data-toggle="dropdown">Questionários<b class="caret"></b></a>
+            
+                                <ul class="dropdown-menu">
+                                    <li class="dropdown-header">Questionários</li>
+                                    <li><a asp-area="" asp-controller="Surveys" asp-action="Create">Responder</a></li>
+                                    <li><a asp-area="" asp-controller="Surveys" asp-action="Index">Visualizar</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown dropdown-mm">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Perguntas/Respostas<b class="caret"></b></a>
+
+                                <ul class="dropdown-menu">
+                                    <li class="dropdown-header">Perguntas/Respostas</li>
+                                    <li><a asp-area="" asp-controller="Questions" asp-action="ViewDieasesYesOrNo">Criar </a></li>
+                                    <li><a asp-area="" asp-controller="Questions" asp-action="Index">Visualizar </a></li>
+
+                                </ul>
+                            </li>
+
+
+                            <li><a asp-area="" asp-controller="Home" asp-action="About">Sobre</a></li>
+                        </ul>
+			@await Html.PartialAsync("_LoginPartial")
+                    </div>
+                    <!--/.navbar-collapse -->
+                </div>
+                
+            </div>
+
+        </div>
+        <div class="hero" id="highlighted">
+            <div class="inner">
+               
+            </div>
+        </div>
+    </div>
+    <div id="background-wrapper" class="metro" data-stellar-background-ratio="0.8">
+        <div class="container body-content">
+
+            @RenderBody()
+
+
+            <hr />
+        </div>
+    </div>
+        <footer>
+            <div id="background-wrapper" class="buildings" data-stellar-background-ratio="0.1" style="background-position: 0% 0%;">
+                <p class="text-center"> Copyright &copy; 2017 - Trabalho de Programação para a Internet e Engenharia de Software 2 feito por André Pedro, João Freire, Luis Soares </p>
+                
+</div>
+</footer>
+
+
+
+    
+
+
+    
+    @RenderSection("Scripts", required: false)
+
+
+    
+    <!-- Required JavaScript Libraries -->
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="~/lib/stellar/stellar.min.js"></script>
+    <script src="~/lib/waypoints/waypoints.min.js"></script>
+    <script src="~/lib/counterup/counterup.min.js"></script>
+   
+  
+    <!-- Template Specisifc Custom Javascript File -->
+    <script src="~/js/custom.js"></script>
+
+    <!--Custom scripts demo background & colour switcher - OPTIONAL -->
+    <script src="~/js/color-switcher.js"></script>
+
+    <!--Contactform script -->
+    <script src="~/contactform/contactform.js"></script>
+
+    <script src=""></script>
+
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+@model IEnumerable<Trabalho.Models.Ans_For_Que>
+
+@{
+    ViewData["Title"] = "Index";
+    string nome = "";
+    string groupName = "";
+
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="PageCreate">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Question)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model)
+{
+    nome = item.Question.QuestionToClient;
+    string selectedRow = "";
+    if (item.Ans_For_QueID == (int?)ViewData["InstructorID"])
+    {
+        selectedRow = "success";
+    }
+        <tr  class="@selectedRow">
+     
+            <td >
+               @{if (groupName != nome)
+                   {
+
+                <input type="button" title="D" value="@nome" onclick="location.href='@Url.Action("Index2", "Ans_For_Que", new { id = item.QuestionID })'" />
+               
+                }
+                groupName = nome;
+                }
+
+              
+            </td>
+
+            <td>
+                <a asp-action="Index" asp-route-id="@item.Ans_For_QueID">Select</a> |
+                <a asp-action="Edit" asp-route-id="@item.Ans_For_QueID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Ans_For_QueID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Ans_For_QueID">Delete</a>
+            </td>
+
+        </tr>
+                
+           
+}
+
+    </tbody>
+</table>
+
+

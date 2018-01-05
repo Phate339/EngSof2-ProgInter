@@ -1,0 +1,41 @@
+@model IEnumerable<Trabalho.Models.Type_Answer>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.PossibleAnswer)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PossibleAnswer)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Type_AnswerID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Type_AnswerID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Type_AnswerID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        <button type="button" onclick="location.href='@Url.Action("Index","Questions")'">Voltar</button>
+    </div>
+</div>

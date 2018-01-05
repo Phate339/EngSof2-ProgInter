@@ -1,0 +1,227 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+ <!--Slideshow-->
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <div id="highlighted-slider" class="container">
+        <div id="background-fundo">
+            <div class="item-slider" data-toggle="owlcarousel" data-owlcarousel-settings='{"singleItem":true, "navigation":true, "transitionStyle":"fadeUp"}'>
+                <!--Slideshow content-->
+                <!--Slide 1
+            <div class="owl-wrapper-outer">
+                <div class="owl-wrapper" style="width: 4560px; left: 0px; display: block;">
+                    <div class="owl-item" style="width: 1140px;">-->
+                <div class="item">
+                    <div class="row">
+                        <div class="col-md-6 col-md-push-6 item-caption">
+                            <h2 class="h1 text-weight-light">
+                                Bem vindo à App <span class="text-primary">Trilhos</span>
+                            </h2>
+                            <h4>
+                                Nesta aplicação, você pode consultar vários Trilhos.
+                            </h4>
+                            <p>É perfeito para contratar guias e verificar qual é o melhor </p>
+                            <p>para si</p>
+                            <!--<a href="https://bootstrapmade.com" class="btn btn-more btn-lg i-right">Buy Now <i class="fa fa-plus"></i></a>-->
+                        </div>
+                        <div class="col-md-6 col-md-pull-6 hidden-xs">
+                            <img src="~/images/Slide1.jpg" alt="Slide 1" class="center-block img-responsive">
+                            <img src="~/images/Slide2.jpg" />
+                            <img src="~/images/Slide3.jpg" />
+
+                            <!-- <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+                        <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>-->
+                        </div>
+                    </div>
+                </div>
+
+                <!--
+                    <script>
+                      var slideIndex = 1;
+                      showDivs(slideIndex);
+
+                      function plusDivs(n) {
+                          showDivs(slideIndex += n);
+                      }
+
+                      function showDivs(n) {
+                          var i;
+                          var x = document.getElementsByClassName("myslides");
+                          if (n > x.length) { slideIndex = 1 }
+                          if (n < 1) { slideIndex = x.length }
+                          for (i = 0; i < x.length; i++) {
+                              x[i].style.display = "none";
+                          }
+                          x[slideIndex - 1].style.display = "block";
+                      }
+                    </script>
+                -->
+
+                <div class="item">
+                    <div class="row">
+                        <div class="col-md-6 text-right-md item-caption">
+                            <h2 class="h1 text-weight-light">
+                                <span class="text-primary">Questionários</span>
+                            </h2>
+                            <h4 class="pull-right">
+                                Dá-nos informações sobre sua condição física
+                                para uma avaliação para que possamos ver o Trilho mais recomendado para si.
+                            </h4>
+                            <p class="pull-right">A única coisa que você tem de fazer é responder a um questionário.</p>
+                            <a a asp-area="" asp-controller="Answers" asp-action="Create" class="btn btn-more btn-lg"><i class="fa fa-plus"></i> Responder Questionário</a>
+                        </div>
+                        <div class="col-md-6 hidden-xs">
+                            <img src="~/images/Slide2.jpg" alt="Slide 2" class="center-block img-responsive">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--<div id="background-wrapper" class="city">-->
+        <!--Campos Random-->
+        <div class="showcase block block-border-bottom-grey">
+            <div class="container">
+                <div class="item-carousel" data-toggle="owlcarousel" data-owlcarousel-settings='{"items":4, "pagination":false, "navigation":true, "itemsScaleUp":true}'>
+                    <div class="item">
+                        <a asp-area="" asp-controller="Answers" asp-action="Create" class="overlay-wrapper">
+                            <img src="~/images/newform.png" alt="Create new Survey" class="img-responsive underlay">
+                            <span class="overlay">
+                                <span class="overlay-content"> <span class="h4">Criar novas Perguntas</span> </span>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a asp-area="" asp-controller="Surveys" asp-action="Index" class="overlay-wrapper">
+                            <img src="~/images/checksurvey.png" alt="My surveys" class="img-responsive underlay">
+                            <span class="overlay">
+                                <span class="overlay-content"> <span class="h4">As minhas Perguntas</span> </span>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a asp-area="" asp-controller="Answers" asp-action="Create" class="overlay-wrapper">
+                            <img src="~/images/createanswers.png" alt="Create answer" class="img-responsive underlay">
+                            <span class="overlay">
+                                <span class="overlay-content"> <span class="h4">Novo Questionário</span> </span>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a asp-area="" asp-controller="Answers" asp-action="Index" class="overlay-wrapper">
+                            <img src="~/images/myanswer.png" alt="My answer" class="img-responsive underlay">
+                            <span class="overlay">
+                                <span class="overlay-content"> <span class="h4">Os meus Questionários</span> </span>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href=# class="overlay-wrapper">
+                            <img src="~/images/trails.png" alt="Trails" class="img-responsive underlay">
+                            <span class="overlay">
+                                <span class="overlay-content"> <span class="h4">Trilhos</span> </span>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Os nossos trilhos-->
+        <div class="services block block-bg-gradient block-border-bottom">
+            <div class="container">
+                <h2 class="block-title">
+                    Os nossos Trilhos
+                </h2>
+                <div class="row">
+                    <div class="col-md-4 text-center">
+                        <span class="fa-stack fa-5x">
+                            <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fa fa-group fa-stack-1x fa-inverse"></i>
+                        </span>
+                        <h4 class="text-weight-strong">
+                            Trilho 1
+                        </h4>
+                        <p>Um trilho mais esforçado e que puxa mais pela resistencia de todos os atletas</p>
+                        <p>
+                            <a href="#" class="btn btn-more i-right">Ver +<i class="fa fa-angle-right"></i></a>
+                        </p>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <span class="fa-stack fa-5x">
+                            <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                        </span>
+                        <h4 class="text-weight-strong">
+                            Trilho 2
+                        </h4>
+                        <p>Um trilho mais equilibrado para quem quer um desafio mas nao um desafio tao grande</p>
+                        <p>
+                            <a href="#" class="btn btn-more i-right">Ver + <i class="fa fa-angle-right"></i></a>
+                        </p>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <span class="fa-stack fa-5x">
+                            <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fa fa-cogs fa-stack-1x fa-inverse"></i>
+                        </span>
+                        <h4 class="text-weight-strong">
+                            Trilho 3
+                        </h4>
+                        <p>Um trilho para quem quer apenas apreciar a natureza</p>
+                        <p>
+                            <a href="#" class="btn btn-more i-right">Ver + <i class="fa fa-angle-right"></i></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Os nossos Questionarios-->
+        <div class="block-contained">
+            <h2 class="block-title">
+                Os nossos Questionários
+            </h2>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="panel panel-default panel-pricing text-center">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                Questionario de Condição Fisica
+                            </h4>
+                        </div>
+                        <div class="panel-pricing-price">Venha ver qual o trilho mais recomendado para a sua condição fisica</div>
+                        <div class="panel-body">
+                            <ul class="list-dotted">
+                                <li>A sua idade, altura e peso</li>
+                                <li>Registo Medico</li>
+                                <li>Doenças e Alergias</li>
+                            </ul>
+                            <a href="#" class="btn btn-primary btn-sm">Escolher Questionário</a>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default panel-pricing panel-pricing-highlighted text-center">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                Questionário sobre o trilho
+                            </h4>
+                        </div>
+                        <div class="panel-pricing-price">Venha responder a este questionário sobre a sua opinião do trilho</div>
+                        <div class="panel-body">
+                            <ul class="list-dotted">
+                                <li>Ficou satisfeito</li>
+                                <li>Disponibilizou tudo o que era preciso</li>
+                                <li>Tinha todos os recursos necessarios a mao</li>
+                            </ul>
+                            <a href="#" class="btn btn-primary btn-sm">Escolher Questionário</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
