@@ -20,7 +20,7 @@ namespace Trabalho.Controllers
             _context = context;    
         }
 
-        public async Task<IActionResult> Index(int? id, int? Type_AnswerID, int? DiseasesID)
+        public async Task<IActionResult> Index(int? id, int? Type_AnswerID, int? DiseasesID,string QuestionToClient)
         {
             var viewModel = new QuestionListViewModel();
             viewModel.Question = await _context.Question
@@ -38,6 +38,7 @@ namespace Trabalho.Controllers
            
             }
 
+
             /*
             if (QuestionToClient != null)
             {
@@ -48,8 +49,8 @@ namespace Trabalho.Controllers
                 viewModel.Diseases = question.Que_Dis.Select(s => s.Diseases);
 
             }
-
             */
+          
 
             if (Type_AnswerID != null)
             {
@@ -67,6 +68,8 @@ namespace Trabalho.Controllers
         }
 
 
+
+       
 
 
 
@@ -290,7 +293,7 @@ namespace Trabalho.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int? id, string[] selectedCourses)
+        public async Task<IActionResult> Edit(int? id, string[] selectedType_Answer)
         {
             if (id == null)
             {
@@ -308,7 +311,7 @@ namespace Trabalho.Controllers
                 i => i.QuestionToClient, i => i.QuestionState))
             {
 
-                UpdateQuestionType_Answer(selectedCourses, questionToUpdate);
+                UpdateQuestionType_Answer(selectedType_Answer, questionToUpdate);
                 try
                 {
                     await _context.SaveChangesAsync();
@@ -322,7 +325,7 @@ namespace Trabalho.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            UpdateQuestionType_Answer(selectedCourses, questionToUpdate);
+            UpdateQuestionType_Answer(selectedType_Answer, questionToUpdate);
             PopulateAssignedType_AnswerData(questionToUpdate);
             return View(questionToUpdate);
         }

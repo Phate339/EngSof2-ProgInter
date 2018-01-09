@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Trabalho.Models;
-using Trabalho.Models.ViewModels;
 
 namespace Trabalho.Controllers
 {
@@ -20,47 +19,11 @@ namespace Trabalho.Controllers
         }
 
         // GET: Ans_For_Que
-        public async Task<IActionResult> Index(int? id)
+        public async Task<IActionResult> Index()
         {
-            //var trabalhoDbContext = _context.Ans_For_Que.Include(a => a.Question);
-            //return View(await trabalhoDbContext.ToListAsync());
-
-            var viewModel = await _context.Ans_For_Que
-                   .Include(i => i.Question)
-                   .Include(i => i.Type_Answer)
-                   .ToListAsync();
-
-
-            if (id != null)
-            {
-                ViewData["InstructorID"] = id.Value;
-                Ans_For_Que ans_For_Que = viewModel.Where(
-                    i => i.Ans_For_QueID == id.Value).Single();
-
-            }
-
-            return View(viewModel);
-
+            var trabalhoDbContext = _context.Ans_For_Que.Include(a => a.Question).Include(a => a.Type_Answer);
+            return View(await trabalhoDbContext.ToListAsync());
         }
-
-        public async Task<IActionResult> Index2()
-        {
-
-
-           var viewModel = await _context.Ans_For_Que
-                  .Include(i => i.Question)
-                  .Include(i => i.Type_Answer)
-                    .ThenInclude(i => i.PossibleAnswer)
-                  .ToListAsync();
-
-
-          
-            return View(viewModel);
-
-        }
-
-   
-
 
         // GET: Ans_For_Que/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -74,7 +37,6 @@ namespace Trabalho.Controllers
                 .Include(a => a.Question)
                 .Include(a => a.Type_Answer)
                 .SingleOrDefaultAsync(m => m.Ans_For_QueID == id);
-
             if (ans_For_Que == null)
             {
                 return NotFound();
@@ -83,31 +45,6 @@ namespace Trabalho.Controllers
             return View(ans_For_Que);
         }
 
-        // GET: Ans_For_Que/Create
-        public IActionResult PageCreate()
-        {
-            int max = _context.Question.Max(p => p.QuestionID);
-            return View(max);
-        }
-        /*
-        // POST: Ans_For_Que/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> PageCreate([Bind("Ans_For_QueID,Type_AnswerID,QuestionID")] Ans_For_Que ans_For_Que)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(ans_For_Que);
-                await _context.SaveChangesAsync();
-                return RedirectToAction("Index");
-            }
-            ViewData["QuestionID"] = new SelectList(_context.Question, "QuestionID", "QuestionID", ans_For_Que.QuestionID);
-            ViewData["Type_AnswerID"] = new SelectList(_context.Type_Answer, "Type_AnswerID", "Type_AnswerID", ans_For_Que.Type_AnswerID);
-            return View(ans_For_Que);
-        }
-        */
         // GET: Ans_For_Que/Create
         public IActionResult Create()
         {
@@ -147,9 +84,8 @@ namespace Trabalho.Controllers
             {
                 return NotFound();
             }
-
-              ViewData["QuestionID"] = new SelectList(_context.Question, "QuestionID", "QuestionToClient", ans_For_Que.QuestionID);
-               ViewData["Type_AnswerID"] = new SelectList(_context.Type_Answer, "Type_AnswerID", "PossibleAnswer", ans_For_Que.Type_AnswerID);
+            ViewData["QuestionID"] = new SelectList(_context.Question, "QuestionID", "QuestionID", ans_For_Que.QuestionID);
+            ViewData["Type_AnswerID"] = new SelectList(_context.Type_Answer, "Type_AnswerID", "Type_AnswerID", ans_For_Que.Type_AnswerID);
             return View(ans_For_Que);
         }
 
@@ -220,9 +156,6 @@ namespace Trabalho.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }
-
-
-       
 
         private bool Ans_For_QueExists(int id)
         {

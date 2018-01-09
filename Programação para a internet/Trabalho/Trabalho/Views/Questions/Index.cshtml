@@ -12,6 +12,7 @@
     <a asp-controller="Type_Answer" asp-action="Index">Lista de Respostas Possiveis</a> ||
     <a asp-controller="Diseases" asp-action="Index">Lista de Doenças</a>
 </p>
+
 <table class="table">
     <thead>
         <tr>
@@ -53,7 +54,6 @@
                         {
                             <a asp-action="Edit" asp-route-id="@item.QuestionID">Edit |</a>
                         }
-                        <a asp-action="Details" asp-route-id="@item.QuestionID">Details  |</a>
                         <a asp-action="Delete" asp-route-id="@item.QuestionID">Delete</a>
                     </td>
                 </tr>
@@ -71,7 +71,8 @@
                         @Html.DisplayFor(modelItem => item.QuestionState)
                     </td>
                     <td>
-                        <a asp-action="Index" asp-route-id="@item.QuestionID">Select |</a>
+                    
+                            <a asp-action="Index" asp-route-id="@item.QuestionID">Select |</a>
                         @if (item.QuestionID == 4)
                         {
                             <a asp-action="EditDis" asp-route-id="@item.QuestionID">Edit |</a>
@@ -79,9 +80,10 @@
                         }
                         else
                         {
+                            
                             <a asp-action="Edit" asp-route-id="@item.QuestionID">Edit |</a>
                         }
-                        <a asp-action="Details" asp-route-id="@item.QuestionID">Details  |</a>
+                
                         <a asp-action="Delete" asp-route-id="@item.QuestionID">Delete</a>
                     </td>
                 </tr>
@@ -91,9 +93,9 @@
 </table>
 
 
-@if (Model.Type_Answer != null)
-{
-
+@if (@ViewBag.QuestionID != 4) {
+    @if (Model.Type_Answer != null)
+    {
 
     <h3>Tipos de Resposta da Pergunta @ViewBag.QuestionID</h3>
 
@@ -119,12 +121,14 @@
         }
 
     </table>
+    }
 }
+else { 
 
-@if (Model.Diseases != null)
-{
-    <h3>Doenças da Pergunta @ViewBag.QuestionID</h3>
-    <table class="table">
+         @if (Model.Diseases != null)
+         {
+             <h3>Doenças da Pergunta @ViewBag.QuestionID</h3>
+              <table class="table">
         <tr>
 
             <th>Doenças</th>
@@ -143,6 +147,7 @@
                 </td>
             </tr>
         }
-
+        
     </table>
-}
+             }
+         }
