@@ -49,16 +49,13 @@ namespace Trabalho
 
             services.AddMvc();
 
-            services.AddTransient<IQuestionRepository, EFQuestionRepository>();
-            services.AddTransient<IDiseasesRepository, EFDiseasesRepository>();
-            services.AddTransient<IQue_DisRepository, EFQues_DisRepository>();
-            services.AddTransient<ISurveyRepository, EFSurveyRepository>();
+            services.AddTransient<IQuestionsRepository, EFQuestionsRepository>();
             services.AddTransient<IDifficultyRepository, EFDifficultyRepository>();
             services.AddTransient<ITrailsRepository, EFTrailsRepository>();
             services.AddTransient<ITuristRepository, EFTuristRepository>();
-            services.AddTransient<IType_AnswerRepository, EFType_AnswerRepository>();
-            services.AddTransient<IAns_For_QueRepository, EFAns_For_QueRepository>();
-            services.AddTransient<ITra_SurRepository, EFTra_SurRepository>();
+            services.AddTransient<ITypeAnswerRepository, EFTypeAnswerRepository>();
+            services.AddTransient<ITuristAnswerRepository, EFTuristAnswerRepository>();
+            services.AddTransient<IParametersRepository, EFParametersRepository>();
 
             services.AddDbContext<TrabalhoDbContext>(
                 options => options.UseSqlServer(

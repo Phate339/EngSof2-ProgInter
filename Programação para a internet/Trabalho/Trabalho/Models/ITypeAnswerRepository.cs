@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Trabalho.Models.ViewModels
+namespace Trabalho.Models
 {
-    public class Ty_DiViewModel
+    public interface ITypeAnswerRepository
     {
-      IEnumerable<Questions> Questions { get; }
         IEnumerable<TypeAnswer> TypeAnswer { get; }
-
     }
 }

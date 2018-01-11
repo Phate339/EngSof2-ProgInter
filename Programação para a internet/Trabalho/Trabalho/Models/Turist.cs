@@ -18,7 +18,7 @@ namespace Trabalho.Models
         public Boolean? TuristState { get; set; }
 
 
-        public List<Survey> Survey { get; set; }
+        public List<TuristAnswer> TuristAnswer { get; set; }
 
 
     }

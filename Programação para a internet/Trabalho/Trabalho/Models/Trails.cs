@@ -13,17 +13,15 @@ namespace Trabalho.Models
         public string Description { get; set; }
         public int Distance { get; set; }
         public Boolean TrailsState { get; set; }
-        public DateTime Initial_Date { get; set; }
-        public DateTime Final_Date { get; set; }    
+        public DateTime TrailsStateDate { get; set; }
+        public DateTime InitialDate { get; set; }
+        public DateTime FinalDate { get; set; }    
 
 
 
         public int DifficultyID { get; set; }
         [ForeignKey("DifficultyID")]
         public Difficulty Difficulty { get; set; }
-
-
-        public List<Tra_Sur> Tra_Sur { get; set; }
 
 
     }
