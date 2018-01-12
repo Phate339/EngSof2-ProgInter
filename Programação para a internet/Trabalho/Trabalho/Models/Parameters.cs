@@ -14,9 +14,7 @@ namespace Trabalho.Models
         [ForeignKey("DifficultyID")]
         public Difficulty Difficulty { get; set; }
 
-        public int AnswerID { get; set; }
-        [ForeignKey("AnswerID")]
-        public Answer Answer { get; set; }
+        public List<Answer> Answer { get; set; }
 
     }
 }

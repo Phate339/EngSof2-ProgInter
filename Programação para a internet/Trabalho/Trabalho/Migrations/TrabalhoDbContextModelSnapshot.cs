@@ -21,11 +21,15 @@ namespace Trabalho.Migrations
                     b.Property<int>("AnswerID")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int>("DifficultyID");
+
                     b.Property<string>("PossibleAnswer");
 
                     b.Property<int>("QuestionsID");
 
                     b.HasKey("AnswerID");
+
+                    b.HasIndex("DifficultyID");
 
                     b.HasIndex("QuestionsID");
 
@@ -42,24 +46,6 @@ namespace Trabalho.Migrations
                     b.HasKey("DifficultyID");
 
                     b.ToTable("Difficulty");
-                });
-
-            modelBuilder.Entity("Trabalho.Models.Parameters", b =>
-                {
-                    b.Property<int>("ParametersID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("AnswerID");
-
-                    b.Property<int>("DifficultyID");
-
-                    b.HasKey("ParametersID");
-
-                    b.HasIndex("AnswerID");
-
-                    b.HasIndex("DifficultyID");
-
-                    b.ToTable("Parameters");
                 });
 
             modelBuilder.Entity("Trabalho.Models.Questions", b =>
@@ -154,22 +140,14 @@ namespace Trabalho.Migrations
 
             modelBuilder.Entity("Trabalho.Models.Answer", b =>
                 {
+                    b.HasOne("Trabalho.Models.Difficulty", "Difficulty")
+                        .WithMany("Answer")
+                        .HasForeignKey("DifficultyID")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("Trabalho.Models.Questions", "Questions")
                         .WithMany("Answer")
                         .HasForeignKey("QuestionsID")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Trabalho.Models.Parameters", b =>
-                {
-                    b.HasOne("Trabalho.Models.Answer", "Answer")
-                        .WithMany("Parameters")
-                        .HasForeignKey("AnswerID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Trabalho.Models.Difficulty", "Difficulty")
-                        .WithMany("Parameters")
-                        .HasForeignKey("DifficultyID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

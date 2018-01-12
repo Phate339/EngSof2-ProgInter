@@ -53,10 +53,7 @@ namespace Trabalho.Models
             context.SaveChanges();
 
 
-            if (!context.Parameters.Any())
-            {
-                EnsureParametersPopulated(context);
-            }
+           
 
             context.SaveChanges();
 
@@ -141,21 +138,21 @@ namespace Trabalho.Models
         {
             dbContext.Answer.AddRange(
 
-                new Answer { PossibleAnswer = "150 - 169", QuestionsID = 1 },
-                new Answer { PossibleAnswer = "170 - 179", QuestionsID = 1 },
-                new Answer { PossibleAnswer = ">180", QuestionsID = 1 },
+                new Answer { PossibleAnswer = "150 - 169", QuestionsID = 1 , DifficultyID =1 },
+                new Answer { PossibleAnswer = "170 - 179", QuestionsID = 1, DifficultyID = 2 },
+                new Answer { PossibleAnswer = ">180", QuestionsID = 1, DifficultyID = 3 },
 
-                new Answer { PossibleAnswer = "7 - 17", QuestionsID = 2 },
-                new Answer { PossibleAnswer = "18 - 54", QuestionsID = 2 },
-                new Answer { PossibleAnswer = ">55", QuestionsID = 2 },
+                new Answer { PossibleAnswer = "7 - 17", QuestionsID = 2  , DifficultyID = 1 },
+                new Answer { PossibleAnswer = "18 - 54", QuestionsID = 2, DifficultyID = 2 },
+                new Answer { PossibleAnswer = ">55", QuestionsID = 2, DifficultyID = 3 },
 
-                new Answer { PossibleAnswer = "50 - 79", QuestionsID = 3 },
-                new Answer { PossibleAnswer = "80 - 99", QuestionsID = 3 },
-                new Answer { PossibleAnswer = ">100", QuestionsID = 3 },
+                new Answer { PossibleAnswer = "50 - 79", QuestionsID = 3 , DifficultyID = 1 },
+                new Answer { PossibleAnswer = "80 - 99", QuestionsID = 3, DifficultyID = 2 },
+                new Answer { PossibleAnswer = ">100", QuestionsID = 3, DifficultyID = 3},
 
-                new Answer { PossibleAnswer = "Não", QuestionsID = 4 },
-                new Answer { PossibleAnswer = "Problemas Cardiológicos", QuestionsID = 4 },
-                new Answer { PossibleAnswer = "Osteoporose", QuestionsID = 4 }
+                new Answer { PossibleAnswer = "Não", QuestionsID = 4 , DifficultyID = 1 },
+                new Answer { PossibleAnswer = "Problemas Cardiológicos", QuestionsID = 4, DifficultyID = 2},
+                new Answer { PossibleAnswer = "Osteoporose", QuestionsID = 4, DifficultyID = 3}
             );
 
         }
@@ -202,65 +199,7 @@ namespace Trabalho.Models
 
         }
 
-        private static void EnsureParametersPopulated(TrabalhoDbContext dbContext)
-        {
-            dbContext.Parameters.AddRange(
-             new Parameters{DifficultyID = 1,
-               AnswerID = 1},
-
-             new Parameters{ 
-               DifficultyID = 2,
-               AnswerID = 2},
-
-               new Parameters{ 
-               DifficultyID = 3,
-               AnswerID = 3},
-
-
-
-               new Parameters{ 
-               DifficultyID = 1,
-               AnswerID = 4},
-
-               new Parameters{ 
-               DifficultyID = 2,
-               AnswerID = 5},
-
-               new Parameters{ 
-               DifficultyID = 3,
-               AnswerID = 6},
-
-
-
-               new Parameters{ 
-               DifficultyID = 1,
-               AnswerID = 7},
-
-               new Parameters{ 
-               DifficultyID = 2,
-               AnswerID = 8},
-
-               new Parameters{ 
-               DifficultyID = 3,
-               AnswerID = 9},
-
-
-
-               new Parameters{ 
-               DifficultyID = 1,
-               AnswerID = 10},
-
-               new Parameters{ 
-               DifficultyID = 2,
-               AnswerID = 11},
-
-               new Parameters{ 
-               DifficultyID = 3,
-               AnswerID = 12}
-
-            );
-
-        }
+       
 
         private static void EnsureTuristAnswerPopulated(TrabalhoDbContext dbContext)
         {

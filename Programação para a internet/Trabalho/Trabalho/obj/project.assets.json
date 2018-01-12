@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "targets": {
     ".NETCoreApp,Version=v1.1": {
       "Libuv/1.9.1": {
@@ -10951,26 +10951,38 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ASUS\\.nuget\\packages\\": {}
+    "C:\\Users\\jelfr\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ASUS\\Documents\\GitHub\\EngSof2-ProgInter\\Programação para a internet\\Trabalho\\Trabalho\\Trabalho.csproj",
+      "projectUniqueName": "C:\\Users\\jelfr\\Documents\\GitHub\\EngSof2-ProgInter\\Programação para a internet\\Trabalho\\Trabalho\\Trabalho.csproj",
       "projectName": "Trabalho",
-      "projectPath": "C:\\Users\\ASUS\\Documents\\GitHub\\EngSof2-ProgInter\\Programação para a internet\\Trabalho\\Trabalho\\Trabalho.csproj",
-      "outputPath": "C:\\Users\\ASUS\\Documents\\GitHub\\EngSof2-ProgInter\\Programação para a internet\\Trabalho\\Trabalho\\obj\\",
+      "projectPath": "C:\\Users\\jelfr\\Documents\\GitHub\\EngSof2-ProgInter\\Programação para a internet\\Trabalho\\Trabalho\\Trabalho.csproj",
+      "packagesPath": "C:\\Users\\jelfr\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\jelfr\\Documents\\GitHub\\EngSof2-ProgInter\\Programação para a internet\\Trabalho\\Trabalho\\obj\\",
       "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\jelfr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
       "originalTargetFrameworks": [
         "netcoreapp1.1"
       ],
-      "files": {
-        "lib/netcoreapp1.1/Trabalho.dll": "C:\\Users\\ASUS\\Documents\\GitHub\\EngSof2-ProgInter\\Programação para a internet\\Trabalho\\Trabalho\\bin\\placeholder\\netcoreapp1.1\\Trabalho.dll"
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {},
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp1.1": {
           "projectReferences": {}
         }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
       }
     },
     "frameworks": {
@@ -10978,7 +10990,8 @@
         "dependencies": {
           "Microsoft.NETCore.App": {
             "target": "Package",
-            "version": "1.1.2"
+            "version": "1.1.2",
+            "autoReferenced": true
           },
           "Microsoft.ApplicationInsights.AspNetCore": {
             "target": "Package",

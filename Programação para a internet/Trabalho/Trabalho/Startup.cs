@@ -55,7 +55,7 @@ namespace Trabalho
             services.AddTransient<ITuristRepository, EFTuristRepository>();
             services.AddTransient<IAnswerRepository, EFAnswerRepository>();
             services.AddTransient<ITuristAnswerRepository, EFTuristAnswerRepository>();
-            services.AddTransient<IParametersRepository, EFParametersRepository>();
+    
 
             services.AddDbContext<TrabalhoDbContext>(
                 options => options.UseSqlServer(

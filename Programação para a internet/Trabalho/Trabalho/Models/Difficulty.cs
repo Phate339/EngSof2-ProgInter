@@ -12,6 +12,6 @@ namespace Trabalho.Models
         public string DifficultyName { get; set; }
 
         public List<Trails> Trails { get; set; }
-        public List<Parameters> Parameters { get; set; }
+        public List<Answer> Answer { get; set; }
     }
 }
