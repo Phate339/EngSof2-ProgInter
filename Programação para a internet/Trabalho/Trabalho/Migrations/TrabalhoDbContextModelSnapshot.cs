@@ -16,6 +16,22 @@ namespace Trabalho.Migrations
                 .HasAnnotation("ProductVersion", "1.1.5")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("Trabalho.Models.Answer", b =>
+                {
+                    b.Property<int>("AnswerID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("PossibleAnswer");
+
+                    b.Property<int>("QuestionsID");
+
+                    b.HasKey("AnswerID");
+
+                    b.HasIndex("QuestionsID");
+
+                    b.ToTable("Answer");
+                });
+
             modelBuilder.Entity("Trabalho.Models.Difficulty", b =>
                 {
                     b.Property<int>("DifficultyID")
@@ -33,17 +49,15 @@ namespace Trabalho.Migrations
                     b.Property<int>("ParametersID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("AllowedAnswer");
+                    b.Property<int>("AnswerID");
 
                     b.Property<int>("DifficultyID");
 
-                    b.Property<int>("QuestionsID");
-
                     b.HasKey("ParametersID");
 
-                    b.HasIndex("DifficultyID");
+                    b.HasIndex("AnswerID");
 
-                    b.HasIndex("QuestionsID");
+                    b.HasIndex("DifficultyID");
 
                     b.ToTable("Parameters");
                 });
@@ -123,49 +137,39 @@ namespace Trabalho.Migrations
 
                     b.Property<DateTime>("AnswerDate");
 
-                    b.Property<int>("QuestionsID");
+                    b.Property<int>("AnswerID");
 
                     b.Property<int>("SurveyNumber");
-
-                    b.Property<int>("TuristAnswerName");
 
                     b.Property<int>("TuristID");
 
                     b.HasKey("TuristAnswerID");
 
-                    b.HasIndex("QuestionsID");
+                    b.HasIndex("AnswerID");
 
                     b.HasIndex("TuristID");
 
                     b.ToTable("TuristAnswer");
                 });
 
-            modelBuilder.Entity("Trabalho.Models.TypeAnswer", b =>
+            modelBuilder.Entity("Trabalho.Models.Answer", b =>
                 {
-                    b.Property<int>("TypeAnswerID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("PossibleAnswer");
-
-                    b.Property<int>("QuestionsID");
-
-                    b.HasKey("TypeAnswerID");
-
-                    b.HasIndex("QuestionsID");
-
-                    b.ToTable("TypeAnswer");
+                    b.HasOne("Trabalho.Models.Questions", "Questions")
+                        .WithMany("Answer")
+                        .HasForeignKey("QuestionsID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Trabalho.Models.Parameters", b =>
                 {
+                    b.HasOne("Trabalho.Models.Answer", "Answer")
+                        .WithMany("Parameters")
+                        .HasForeignKey("AnswerID")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("Trabalho.Models.Difficulty", "Difficulty")
                         .WithMany("Parameters")
                         .HasForeignKey("DifficultyID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Trabalho.Models.Questions", "Questions")
-                        .WithMany("Parameters")
-                        .HasForeignKey("QuestionsID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -179,22 +183,14 @@ namespace Trabalho.Migrations
 
             modelBuilder.Entity("Trabalho.Models.TuristAnswer", b =>
                 {
-                    b.HasOne("Trabalho.Models.Questions", "Questions")
+                    b.HasOne("Trabalho.Models.Answer", "Answer")
                         .WithMany("TuristAnswer")
-                        .HasForeignKey("QuestionsID")
+                        .HasForeignKey("AnswerID")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Trabalho.Models.Turist", "Turist")
                         .WithMany("TuristAnswer")
                         .HasForeignKey("TuristID")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Trabalho.Models.TypeAnswer", b =>
-                {
-                    b.HasOne("Trabalho.Models.Questions", "Questions")
-                        .WithMany("TypeAnswer")
-                        .HasForeignKey("QuestionsID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
         }

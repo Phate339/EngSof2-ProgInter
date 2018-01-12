@@ -19,13 +19,6 @@
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="TuristAnswerName" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="TuristAnswerName" class="form-control" />
-                <span asp-validation-for="TuristAnswerName" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
             <label asp-for="AnswerDate" class="col-md-2 control-label"></label>
             <div class="col-md-10">
                 <input asp-for="AnswerDate" class="form-control" />
@@ -33,15 +26,15 @@
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="QuestionsID" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <select asp-for="QuestionsID" class ="form-control" asp-items="ViewBag.QuestionsID"></select>
-            </div>
-        </div>
-        <div class="form-group">
             <label asp-for="TuristID" class="col-md-2 control-label"></label>
             <div class="col-md-10">
                 <select asp-for="TuristID" class ="form-control" asp-items="ViewBag.TuristID"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="AnswerID" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="AnswerID" class ="form-control" asp-items="ViewBag.AnswerID"></select>
             </div>
         </div>
         <div class="form-group">

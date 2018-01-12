@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Trabalho.Models;
-using Trabalho.Models.ViewModels;
 
 namespace Trabalho.Controllers
 {
@@ -20,26 +19,10 @@ namespace Trabalho.Controllers
         }
 
         // GET: Parameters
-        public async Task<IActionResult> Index(int? id)
+        public async Task<IActionResult> Index()
         {
-            var viewModel = new ParametersViewModel();
-            viewModel.Parameters = await _context.Parameters
-                .Include(d => d.Difficulty)
-                .Include(q => q.Questions).ThenInclude(t=>t.TypeAnswer)
-                .ToListAsync();
-            
-
-            if (id != null)
-            {
-                ViewData["ParametersID"] = id.Value;
-                Parameters parameters = viewModel.Parameters.Where(
-                    i => i.ParametersID == id.Value).Single();
-                
-
-            }
-
-            var trabalhoDbContext = _context.Parameters.Include(p => p.Difficulty).Include(p => p.Questions).ThenInclude(p =>p.TypeAnswer);
-            return View(viewModel);
+            var trabalhoDbContext = _context.Parameters.Include(p => p.Answer).Include(p => p.Difficulty);
+            return View(await trabalhoDbContext.ToListAsync());
         }
 
         // GET: Parameters/Details/5
@@ -51,8 +34,8 @@ namespace Trabalho.Controllers
             }
 
             var parameters = await _context.Parameters
+                .Include(p => p.Answer)
                 .Include(p => p.Difficulty)
-                .Include(p => p.Questions)
                 .SingleOrDefaultAsync(m => m.ParametersID == id);
             if (parameters == null)
             {
@@ -65,8 +48,8 @@ namespace Trabalho.Controllers
         // GET: Parameters/Create
         public IActionResult Create()
         {
+            ViewData["AnswerID"] = new SelectList(_context.Answer, "AnswerID", "AnswerID");
             ViewData["DifficultyID"] = new SelectList(_context.Difficulty, "DifficultyID", "DifficultyID");
-            ViewData["QuestionsID"] = new SelectList(_context.Questions, "QuestionsID", "QuestionsID");
             return View();
         }
 
@@ -75,7 +58,7 @@ namespace Trabalho.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ParametersID,AllowedAnswer,QuestionsID,DifficultyID")] Parameters parameters)
+        public async Task<IActionResult> Create([Bind("ParametersID,DifficultyID,AnswerID")] Parameters parameters)
         {
             if (ModelState.IsValid)
             {
@@ -83,8 +66,8 @@ namespace Trabalho.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
+            ViewData["AnswerID"] = new SelectList(_context.Answer, "AnswerID", "AnswerID", parameters.AnswerID);
             ViewData["DifficultyID"] = new SelectList(_context.Difficulty, "DifficultyID", "DifficultyID", parameters.DifficultyID);
-            ViewData["QuestionsID"] = new SelectList(_context.Questions, "QuestionsID", "QuestionsID", parameters.QuestionsID);
             return View(parameters);
         }
 
@@ -101,8 +84,8 @@ namespace Trabalho.Controllers
             {
                 return NotFound();
             }
+            ViewData["AnswerID"] = new SelectList(_context.Answer, "AnswerID", "AnswerID", parameters.AnswerID);
             ViewData["DifficultyID"] = new SelectList(_context.Difficulty, "DifficultyID", "DifficultyID", parameters.DifficultyID);
-            ViewData["QuestionsID"] = new SelectList(_context.Questions, "QuestionsID", "QuestionsID", parameters.QuestionsID);
             return View(parameters);
         }
 
@@ -111,7 +94,7 @@ namespace Trabalho.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ParametersID,AllowedAnswer,QuestionsID,DifficultyID")] Parameters parameters)
+        public async Task<IActionResult> Edit(int id, [Bind("ParametersID,DifficultyID,AnswerID")] Parameters parameters)
         {
             if (id != parameters.ParametersID)
             {
@@ -138,8 +121,8 @@ namespace Trabalho.Controllers
                 }
                 return RedirectToAction("Index");
             }
+            ViewData["AnswerID"] = new SelectList(_context.Answer, "AnswerID", "AnswerID", parameters.AnswerID);
             ViewData["DifficultyID"] = new SelectList(_context.Difficulty, "DifficultyID", "DifficultyID", parameters.DifficultyID);
-            ViewData["QuestionsID"] = new SelectList(_context.Questions, "QuestionsID", "QuestionsID", parameters.QuestionsID);
             return View(parameters);
         }
 
@@ -152,8 +135,8 @@ namespace Trabalho.Controllers
             }
 
             var parameters = await _context.Parameters
+                .Include(p => p.Answer)
                 .Include(p => p.Difficulty)
-                .Include(p => p.Questions)
                 .SingleOrDefaultAsync(m => m.ParametersID == id);
             if (parameters == null)
             {

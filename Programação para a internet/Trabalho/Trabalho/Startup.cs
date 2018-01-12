@@ -53,7 +53,7 @@ namespace Trabalho
             services.AddTransient<IDifficultyRepository, EFDifficultyRepository>();
             services.AddTransient<ITrailsRepository, EFTrailsRepository>();
             services.AddTransient<ITuristRepository, EFTuristRepository>();
-            services.AddTransient<ITypeAnswerRepository, EFTypeAnswerRepository>();
+            services.AddTransient<IAnswerRepository, EFAnswerRepository>();
             services.AddTransient<ITuristAnswerRepository, EFTuristAnswerRepository>();
             services.AddTransient<IParametersRepository, EFParametersRepository>();
 

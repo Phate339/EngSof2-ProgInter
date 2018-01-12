@@ -1,5 +1,4 @@
-<!--model IEnumerable<Trabalho.Models.TuristAnswer>-->
-@model QuestionListViewModel
+@model IEnumerable<Trabalho.Models.TuristAnswer>
 
 @{
     ViewData["Title"] = "Index";
@@ -14,37 +13,41 @@
     <thead>
         <tr>
                 <th>
-                    Pergunta
+                    @Html.DisplayNameFor(model => model.SurveyNumber)
                 </th>
                 <th>
-                    Resposta 1
-                </th>
-                <th>
-                    Resposta2
+                    @Html.DisplayNameFor(model => model.AnswerDate)
                 </th>
             <th>
-                Resposta 3
+                @Html.DisplayNameFor(model => model.Answer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Turist)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Questions)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.QuestionsToClient)
-                </td>
-            </tr>
-            <tr></tr>
-        }
-
-        @foreach (var item2 in Model.TypeAnswer)
-        {
-        <td>
-            @Html.DisplayFor(modelItem => item2.PossibleAnswer)
-        </td>
-
-        }
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SurveyNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnswerDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Answer.AnswerID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Turist.TuristID)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.TuristAnswerID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.TuristAnswerID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.TuristAnswerID">Delete</a>
+            </td>
+        </tr>
+}
     </tbody>
 </table>

@@ -15,7 +15,7 @@ namespace Trabalho.Models
         public DbSet<Difficulty> Difficulty { get; set; }
         public DbSet<Trails> Trails { get; set; }
         public DbSet<Turist> Turist { get; set; }
-         public DbSet<TypeAnswer> TypeAnswer { get; set; }
+         public DbSet<Answer> Answer { get; set; }
         public DbSet<Parameters> Parameters { get; set; }
 
 

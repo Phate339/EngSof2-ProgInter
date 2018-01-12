@@ -37,9 +37,9 @@ namespace Trabalho.Models
             context.SaveChanges();
 
 
-            if (!context.TypeAnswer.Any())
+            if (!context.Answer.Any())
             {
-                EnsureTypeAnswerPopulated(context);
+                EnsureAnswerPopulated(context);
             }
 
             context.SaveChanges();
@@ -137,25 +137,25 @@ namespace Trabalho.Models
 
         }
 
-        private static void EnsureTypeAnswerPopulated(TrabalhoDbContext dbContext)
+        private static void EnsureAnswerPopulated(TrabalhoDbContext dbContext)
         {
-            dbContext.TypeAnswer.AddRange(
+            dbContext.Answer.AddRange(
 
-                new TypeAnswer { PossibleAnswer = "150 - 169", QuestionsID = 1 },
-                new TypeAnswer { PossibleAnswer = "170 - 179", QuestionsID = 1 },
-                new TypeAnswer { PossibleAnswer = ">180", QuestionsID = 1 },
+                new Answer { PossibleAnswer = "150 - 169", QuestionsID = 1 },
+                new Answer { PossibleAnswer = "170 - 179", QuestionsID = 1 },
+                new Answer { PossibleAnswer = ">180", QuestionsID = 1 },
 
-                new TypeAnswer { PossibleAnswer = "7 - 17", QuestionsID = 2 },
-                new TypeAnswer { PossibleAnswer = "18 - 54", QuestionsID = 2 },
-                new TypeAnswer { PossibleAnswer = ">55", QuestionsID = 2 },
+                new Answer { PossibleAnswer = "7 - 17", QuestionsID = 2 },
+                new Answer { PossibleAnswer = "18 - 54", QuestionsID = 2 },
+                new Answer { PossibleAnswer = ">55", QuestionsID = 2 },
 
-                new TypeAnswer { PossibleAnswer = "50 - 79", QuestionsID = 3 },
-                new TypeAnswer { PossibleAnswer = "80 - 99", QuestionsID = 3 },
-                new TypeAnswer { PossibleAnswer = ">100", QuestionsID = 3 },
+                new Answer { PossibleAnswer = "50 - 79", QuestionsID = 3 },
+                new Answer { PossibleAnswer = "80 - 99", QuestionsID = 3 },
+                new Answer { PossibleAnswer = ">100", QuestionsID = 3 },
 
-                new TypeAnswer { PossibleAnswer = "Não", QuestionsID = 4 },
-                new TypeAnswer { PossibleAnswer = "Problemas Cardiológicos", QuestionsID = 4 },
-                new TypeAnswer { PossibleAnswer = "Osteoporose", QuestionsID = 4 }
+                new Answer { PossibleAnswer = "Não", QuestionsID = 4 },
+                new Answer { PossibleAnswer = "Problemas Cardiológicos", QuestionsID = 4 },
+                new Answer { PossibleAnswer = "Osteoporose", QuestionsID = 4 }
             );
 
         }
@@ -205,59 +205,58 @@ namespace Trabalho.Models
         private static void EnsureParametersPopulated(TrabalhoDbContext dbContext)
         {
             dbContext.Parameters.AddRange(
-             new Parameters{ QuestionsID = 1,
-               DifficultyID = 1,
-               AllowedAnswer = 1},
+             new Parameters{DifficultyID = 1,
+               AnswerID = 1},
 
-             new Parameters{ QuestionsID = 1,
+             new Parameters{ 
                DifficultyID = 2,
-               AllowedAnswer = 2},
+               AnswerID = 2},
 
-               new Parameters{ QuestionsID = 1,
+               new Parameters{ 
                DifficultyID = 3,
-               AllowedAnswer = 3},
+               AnswerID = 3},
 
 
 
-               new Parameters{ QuestionsID = 2,
+               new Parameters{ 
                DifficultyID = 1,
-               AllowedAnswer = 4},
+               AnswerID = 4},
 
-               new Parameters{ QuestionsID = 2,
+               new Parameters{ 
                DifficultyID = 2,
-               AllowedAnswer = 5},
+               AnswerID = 5},
 
-               new Parameters{ QuestionsID = 2,
+               new Parameters{ 
                DifficultyID = 3,
-               AllowedAnswer = 6},
+               AnswerID = 6},
 
 
 
-               new Parameters{ QuestionsID = 3,
+               new Parameters{ 
                DifficultyID = 1,
-               AllowedAnswer = 7},
+               AnswerID = 7},
 
-               new Parameters{ QuestionsID = 3,
+               new Parameters{ 
                DifficultyID = 2,
-               AllowedAnswer = 8},
+               AnswerID = 8},
 
-               new Parameters{ QuestionsID = 3,
+               new Parameters{ 
                DifficultyID = 3,
-               AllowedAnswer = 9},
+               AnswerID = 9},
 
 
 
-               new Parameters{ QuestionsID = 4,
+               new Parameters{ 
                DifficultyID = 1,
-               AllowedAnswer = 10},
+               AnswerID = 10},
 
-               new Parameters{ QuestionsID = 4,
+               new Parameters{ 
                DifficultyID = 2,
-               AllowedAnswer = 11},
+               AnswerID = 11},
 
-               new Parameters{ QuestionsID = 4,
+               new Parameters{ 
                DifficultyID = 3,
-               AllowedAnswer = 12}
+               AnswerID = 12}
 
             );
 
@@ -270,9 +269,9 @@ namespace Trabalho.Models
                   new TuristAnswer
                   {
                       TuristID = 1,
-                      QuestionsID = 1,
+                      
                       SurveyNumber = 1,
-                      TuristAnswerName = 2,
+                      AnswerID = 2,
                       AnswerDate = DateTime.Parse("15-03-2013")
                   },
 
@@ -280,9 +279,8 @@ namespace Trabalho.Models
           new TuristAnswer
           {
               TuristID = 1,
-              QuestionsID = 2,
               SurveyNumber = 1,
-              TuristAnswerName = 5,
+              AnswerID = 5,
               AnswerDate = DateTime.Parse("15-03-2013")
           },
 
@@ -290,9 +288,8 @@ namespace Trabalho.Models
           new TuristAnswer
           {
               TuristID = 1,
-              QuestionsID = 3,
               SurveyNumber = 1,
-              TuristAnswerName = 7,
+              AnswerID = 7,
               AnswerDate = DateTime.Parse("15-03-2013")
           },
 
@@ -300,9 +297,8 @@ namespace Trabalho.Models
           new TuristAnswer
           {
               TuristID = 1,
-              QuestionsID = 4,
               SurveyNumber = 1,
-              TuristAnswerName = 10,
+              AnswerID = 10,
               AnswerDate = DateTime.Parse("15-03-2013")
           }
 

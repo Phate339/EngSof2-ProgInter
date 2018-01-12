@@ -14,9 +14,8 @@ namespace Trabalho.Models
         [Required(ErrorMessage = "Please select Yes or No")]
         public bool QuestionsState { get; set; }
 
-        public List<TypeAnswer> TypeAnswer { get; set; }
-        public List<Parameters> Parameters { get; set; }
-        public List<TuristAnswer> TuristAnswer { get; set; }
+        public List<Answer> Answer { get; set; }
+      
 
        
     }

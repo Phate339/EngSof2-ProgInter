@@ -8,7 +8,7 @@ namespace Trabalho.Models.ViewModels
     public class Ty_DiViewModel
     {
       IEnumerable<Questions> Questions { get; }
-        IEnumerable<TypeAnswer> TypeAnswer { get; }
+        IEnumerable<Answer> Answer { get; }
 
     }
 }

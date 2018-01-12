@@ -10,15 +10,13 @@ namespace Trabalho.Models
     {
         public int ParametersID { get; set; }
 
-        public int AllowedAnswer { get; set; }
-
-        public int QuestionsID { get; set; }
-        [ForeignKey("QuestionsID")]
-        public Questions Questions { get; set; }
-
         public int DifficultyID { get; set; }
         [ForeignKey("DifficultyID")]
         public Difficulty Difficulty { get; set; }
+
+        public int AnswerID { get; set; }
+        [ForeignKey("AnswerID")]
+        public Answer Answer { get; set; }
 
     }
 }

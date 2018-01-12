@@ -1,5 +1,4 @@
-<!--model IEnumerable<Trabalho.Models.Parameters>-->
-@model ParametersViewModel
+@model IEnumerable<Trabalho.Models.Parameters>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,29 +12,23 @@
 <table class="table">
     <thead>
         <tr>
-                <th>
-                    Resposta Permitida
-                </th>
             <th>
-                Nivel de Dificuldade
+                @Html.DisplayNameFor(model => model.Answer)
             </th>
             <th>
-               Pergunta
+                @Html.DisplayNameFor(model => model.Difficulty)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Parameters) {
+@foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.AllowedAnswer)
+                @Html.DisplayFor(modelItem => item.Answer.AnswerID)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Difficulty.DifficultyName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Questions.QuestionsToClient)
+                @Html.DisplayFor(modelItem => item.Difficulty.DifficultyID)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ParametersID">Edit</a> |

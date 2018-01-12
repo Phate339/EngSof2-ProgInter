@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Trabalho.Models;
-using Trabalho.Models.ViewModels;
 
 namespace Trabalho.Controllers
 {
@@ -22,12 +21,8 @@ namespace Trabalho.Controllers
         // GET: TuristAnswers
         public async Task<IActionResult> Index()
         {
-            // var trabalhoDbContext = _context.TuristAnswer.Include(t => t.Questions).Include(t => t.Turist);
-            var viewModel = new QuestionListViewModel();
-            viewModel.Questions = await _context.Questions
-                .Include(t => t.TypeAnswer)
-                .ToListAsync();
-            return View(viewModel);
+            var trabalhoDbContext = _context.TuristAnswer.Include(t => t.Answer).Include(t => t.Turist);
+            return View(await trabalhoDbContext.ToListAsync());
         }
 
         // GET: TuristAnswers/Details/5
@@ -39,7 +34,7 @@ namespace Trabalho.Controllers
             }
 
             var turistAnswer = await _context.TuristAnswer
-                .Include(t => t.Questions)
+                .Include(t => t.Answer)
                 .Include(t => t.Turist)
                 .SingleOrDefaultAsync(m => m.TuristAnswerID == id);
             if (turistAnswer == null)
@@ -53,7 +48,7 @@ namespace Trabalho.Controllers
         // GET: TuristAnswers/Create
         public IActionResult Create()
         {
-            ViewData["QuestionsID"] = new SelectList(_context.Questions, "QuestionsID", "QuestionsID");
+            ViewData["AnswerID"] = new SelectList(_context.Answer, "AnswerID", "AnswerID");
             ViewData["TuristID"] = new SelectList(_context.Turist, "TuristID", "TuristID");
             return View();
         }
@@ -63,7 +58,7 @@ namespace Trabalho.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("TuristAnswerID,SurveyNumber,TuristAnswerName,AnswerDate,QuestionsID,TuristID")] TuristAnswer turistAnswer)
+        public async Task<IActionResult> Create([Bind("TuristAnswerID,SurveyNumber,AnswerDate,TuristID,AnswerID")] TuristAnswer turistAnswer)
         {
             if (ModelState.IsValid)
             {
@@ -71,7 +66,7 @@ namespace Trabalho.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewData["QuestionsID"] = new SelectList(_context.Questions, "QuestionsID", "QuestionsID", turistAnswer.QuestionsID);
+            ViewData["AnswerID"] = new SelectList(_context.Answer, "AnswerID", "AnswerID", turistAnswer.AnswerID);
             ViewData["TuristID"] = new SelectList(_context.Turist, "TuristID", "TuristID", turistAnswer.TuristID);
             return View(turistAnswer);
         }
@@ -89,7 +84,7 @@ namespace Trabalho.Controllers
             {
                 return NotFound();
             }
-            ViewData["QuestionsID"] = new SelectList(_context.Questions, "QuestionsID", "QuestionsID", turistAnswer.QuestionsID);
+            ViewData["AnswerID"] = new SelectList(_context.Answer, "AnswerID", "AnswerID", turistAnswer.AnswerID);
             ViewData["TuristID"] = new SelectList(_context.Turist, "TuristID", "TuristID", turistAnswer.TuristID);
             return View(turistAnswer);
         }
@@ -99,7 +94,7 @@ namespace Trabalho.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("TuristAnswerID,SurveyNumber,TuristAnswerName,AnswerDate,QuestionsID,TuristID")] TuristAnswer turistAnswer)
+        public async Task<IActionResult> Edit(int id, [Bind("TuristAnswerID,SurveyNumber,AnswerDate,TuristID,AnswerID")] TuristAnswer turistAnswer)
         {
             if (id != turistAnswer.TuristAnswerID)
             {
@@ -126,7 +121,7 @@ namespace Trabalho.Controllers
                 }
                 return RedirectToAction("Index");
             }
-            ViewData["QuestionsID"] = new SelectList(_context.Questions, "QuestionsID", "QuestionsID", turistAnswer.QuestionsID);
+            ViewData["AnswerID"] = new SelectList(_context.Answer, "AnswerID", "AnswerID", turistAnswer.AnswerID);
             ViewData["TuristID"] = new SelectList(_context.Turist, "TuristID", "TuristID", turistAnswer.TuristID);
             return View(turistAnswer);
         }
@@ -140,7 +135,7 @@ namespace Trabalho.Controllers
             }
 
             var turistAnswer = await _context.TuristAnswer
-                .Include(t => t.Questions)
+                .Include(t => t.Answer)
                 .Include(t => t.Turist)
                 .SingleOrDefaultAsync(m => m.TuristAnswerID == id);
             if (turistAnswer == null)

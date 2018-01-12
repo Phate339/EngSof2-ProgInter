@@ -11,7 +11,7 @@ namespace Trabalho.Models.ViewModels
 
         public IEnumerable<Difficulty> Difficulty { get; set; }
 
-        public IEnumerable<TypeAnswer> TypeAnswer { get; set; }
+        public IEnumerable<Answer> Answer { get; set; }
 
         public IEnumerable<Parameters> Parameters { get; set; }
 

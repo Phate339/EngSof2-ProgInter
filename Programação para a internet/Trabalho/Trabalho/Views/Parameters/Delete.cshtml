@@ -13,22 +13,16 @@
     <dl class="dl-horizontal">
         <input type="hidden" asp-for="ParametersID" />
         <dt>
-            @Html.DisplayNameFor(model => model.AllowedAnswer)
+            @Html.DisplayNameFor(model => model.Answer)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.AllowedAnswer)
+            @Html.DisplayFor(model => model.Answer.AnswerID)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Difficulty)
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Difficulty.DifficultyID)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Questions)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Questions.QuestionsID)
         </dd>
     </dl>
     
