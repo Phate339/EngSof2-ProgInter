@@ -17,6 +17,5 @@ namespace Trabalho.Models
         public Questions Questions { get; set; }
 
 
-
     }
 }

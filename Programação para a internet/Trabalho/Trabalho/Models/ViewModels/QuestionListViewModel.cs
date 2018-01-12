@@ -11,6 +11,7 @@ namespace Trabalho.Models.ViewModels
         public IEnumerable<TypeAnswer> TypeAnswer { get; set; }
         public int QuestionSelected { get; set; }
 
+
        public string QuestionsName { get; set; }
     }
 }
