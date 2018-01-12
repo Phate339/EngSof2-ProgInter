@@ -20,6 +20,8 @@ namespace Trabalho.Controllers
        
         public async Task<IActionResult> Index()
             {
+                var question = _context.Questions.Include(t => t.TypeAnswer).AsNoTracking(); 
+
                 var typeAnswer = _context.TypeAnswer.Include(t => t.Questions).AsNoTracking();
 
                 return View(await typeAnswer.ToListAsync());

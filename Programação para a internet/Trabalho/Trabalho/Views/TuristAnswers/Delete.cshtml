@@ -1,0 +1,53 @@
+@model Trabalho.Models.TuristAnswer
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>TuristAnswer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <input type="hidden" asp-for="TuristAnswerID" />
+        <dt>
+            @Html.DisplayNameFor(model => model.SurveyNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SurveyNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TuristAnswerName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TuristAnswerName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AnswerDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AnswerDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Questions)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Questions.QuestionsID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Turist)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Turist.TuristID)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </form>
+</div>

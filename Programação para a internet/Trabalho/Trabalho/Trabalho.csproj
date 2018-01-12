@@ -8,6 +8,10 @@
   <PropertyGroup>
     <UserSecretsId>aspnet-Trabalho-a8dc7270-db4d-42da-b127-db1f6985f6e3</UserSecretsId>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\TuristAnswerController.cs" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.2" />
@@ -61,7 +65,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\TuristAnswer\" />
     <Folder Include="Views\Shared\" />
     <Folder Include="wwwroot\css\" />
     <Folder Include="wwwroot\images\" />
