@@ -1,0 +1,55 @@
+@model IEnumerable<Trabalho.Models.Questions>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@foreach (var item in Model)
+{
+    
+<div class="col-md-3">
+    <div class="panel panel-default panel-pricing text-center">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                Respostas da Pergunta @Html.DisplayFor(modelItem => item.QuestionsID)
+
+            </h4>
+
+        </div>
+        <div class="panel-pricing-price">
+           
+
+                @Html.DisplayFor(modelItem => item.QuestionsToClient)
+
+
+                <div class="panel-body">
+                    <ul class="list-dotted">
+                        @foreach (var item2 in item.Answer)
+                        {
+                            <li style="font-size:11px">
+
+                                @Html.DisplayFor(modelItem => item2.PossibleAnswer)
+                            </li>
+                        }
+
+                    </ul>
+                    <a asp-action="Create" class="btn btn-sm">Create New </a>
+                    <a asp-action="Edit" asp-route-id="@item.QuestionsID" class="btn btn-sm">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.QuestionsID" class="btn btn-sm">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.QuestionsID" class="btn btn-sm">Delete</a>
+                </div>
+            
+        </div>
+
+        </div>
+    </div>
+}
+
+   
+
+
+
+
+
+
+

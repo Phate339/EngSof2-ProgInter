@@ -10,8 +10,8 @@ namespace Trabalho.Models.ViewModels
        public IEnumerable<Questions> Questions { get; set; }
         public IEnumerable<Answer> Answer { get; set; }
         public int QuestionSelected { get; set; }
+        public int AnswerSelected { get; set; }
 
-
-       public string QuestionsName { get; set; }
+        public string QuestionsName { get; set; }
     }
 }

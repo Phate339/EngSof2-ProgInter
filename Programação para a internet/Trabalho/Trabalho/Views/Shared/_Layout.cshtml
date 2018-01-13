@@ -152,8 +152,8 @@
 
                                 <ul class="dropdown-menu">
                                     <li class="dropdown-header">Perguntas/Respostas</li>
-                                    <li><a asp-area="" asp-controller="TypeAnswers" asp-action="Create">Criar </a></li>
-                                    <li><a asp-area="" asp-controller="TypeAnswers" asp-action="Index">Visualizar </a></li>
+                                    <li><a asp-area="" asp-controller="Questions" asp-action="Create">Criar </a></li>
+                                    <li><a asp-area="" asp-controller="Questions" asp-action="Index">Visualizar </a></li>
 
                                 </ul>
                             </li>
@@ -165,7 +165,7 @@
                     </div>
                     <!--/.navbar-collapse -->
                 </div>
-                
+                @RenderBody()
             </div>
 
         </div>
@@ -175,21 +175,13 @@
             </div>
         </div>
     </div>
-    <div id="background-wrapper" class="metro" data-stellar-background-ratio="0.8">
-        <div class="container body-content">
-
-            @RenderBody()
-
-
-            <hr />
-        </div>
-    </div>
+   
         <footer>
             <div id="background-wrapper" class="buildings" data-stellar-background-ratio="0.1" style="background-position: 0% 0%;">
                 <p class="text-center"> Copyright &copy; 2017 - Trabalho de Programação para a Internet e Engenharia de Software 2 feito por André Pedro, João Freire, Luis Soares </p>
                 
-</div>
-</footer>
+            </div>
+        </footer>
 
 
 

@@ -22,7 +22,7 @@ namespace Trabalho.Models
         public Difficulty Difficulty { get; set; }
 
 
-        public List<TuristAnswer> TuristAnswer { get; set; }
+        public ICollection<TuristAnswer> TuristAnswer { get; set; }
 
 
 
