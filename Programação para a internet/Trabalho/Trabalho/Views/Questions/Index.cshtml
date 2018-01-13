@@ -4,52 +4,162 @@
     ViewData["Title"] = "Index";
 }
 
+<div>
+    <a asp-action="Create" class="btn btn-more large">
+    Criar Pergunta
+    <i class="fa fa-plus"></i>
+    </a>
+</div>
+<hr />
 @foreach (var item in Model)
 {
-    
-<div class="col-md-3">
-    <div class="panel panel-default panel-pricing text-center">
-        <div class="panel-heading">
-            <h4 class="panel-title">
-                Respostas da Pergunta @Html.DisplayFor(modelItem => item.QuestionsID)
+    @if (item.QuestionsState == false) { 
+<div style="opacity:0.4;">
+    <p>
+       
 
-            </h4>
+            <div class="col-md-3">
+                <div class="panel panel-default panel-pricing text-center">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            Respostas da Pergunta @Html.DisplayFor(modelItem => item.QuestionsID)
 
-        </div>
-        <div class="panel-pricing-price">
-           
+                        </h4>
 
-                @Html.DisplayFor(modelItem => item.QuestionsToClient)
+                    </div>
+                    <div class="panel-pricing-price">
 
 
-                <div class="panel-body">
-                    <ul class="list-dotted">
-                        @foreach (var item2 in item.Answer)
-                        {
-                            <li style="font-size:11px">
+                        @Html.DisplayFor(modelItem => item.QuestionsToClient)
 
-                                @Html.DisplayFor(modelItem => item2.PossibleAnswer)
-                            </li>
-                        }
 
-                    </ul>
-                    <a asp-action="Create" class="btn btn-sm">Create New </a>
-                    <a asp-action="Edit" asp-route-id="@item.QuestionsID" class="btn btn-sm">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.QuestionsID" class="btn btn-sm">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.QuestionsID" class="btn btn-sm">Delete</a>
+                        <div class="panel-body">
+                            <ul class="list-dotted">
+                                @foreach (var item2 in item.Answer)
+                                {
+                                    <li style="font-size:11px">
+
+                                        @Html.DisplayFor(modelItem => item2.PossibleAnswer) (@Html.DisplayFor(modelItem => item2.Difficulty.DifficultyName))
+                                    </li>
+                                }
+                               
+
+                            </ul>
+
+                            <div class="pull-right">
+                                <a asp-controller="Answers" asp-action="Create" class="btn btn-more">
+                                    Adicionar Resposta
+                                    <i class="fa fa-plus"></i>
+                                </a>
+
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+
+                            <h5>
+                                Estado da Pergunta
+                                @Html.DisplayFor(modelItem => item.QuestionsState)
+                            </h5>
+                            <a asp-action="Edit" asp-route-id="@item.QuestionsID" class="btn btn-more">
+                                Editar
+                                <i class="glyphicon glyphicon-edit">
+
+                                </i>
+                            </a>
+                            <a asp-action="Delete" asp-route-id="@item.QuestionsID" class="btn btn-more">
+                                Eliminar
+                                <i class="fa fa-arrows-alt">
+
+
+                                </i>
+                            </a>
+
+
+                        </div>
+                    </div>
+
                 </div>
-            
-        </div>
+            </div>
+        
+
+    </p>
+
+</div>
+    }
+    else
+    {
+        <div>
+            <p>
+
+
+                <div class="col-md-3">
+                    <div class="panel panel-default panel-pricing text-center">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                Respostas da Pergunta @Html.DisplayFor(modelItem => item.QuestionsID)
+
+                            </h4>
+
+                        </div>
+                        <div class="panel-pricing-price">
+
+
+                            @Html.DisplayFor(modelItem => item.QuestionsToClient)
+
+
+                            <div class="panel-body">
+
+                                <ul class="list-dotted">
+                                    @foreach (var item2 in item.Answer)
+                                    {
+                                        <li style="font-size:11px">
+
+                                            @Html.DisplayFor(modelItem => item2.PossibleAnswer) (@Html.DisplayFor(modelItem => item2.Difficulty.DifficultyName))
+                                        </li>
+                                    }
+
+                                </ul>
+                                <div class="pull-right">
+                                    <a asp-controller="Answers" asp-action="Create" class="btn btn-more">
+                                        Adicionar Resposta
+                                        <i class="fa fa-plus"></i>
+                                    </a>
+
+                                </div>
+                            </div>
+                            <div class="panel-footer">
+
+                                    <h5>
+                                        Estado da Pergunta
+                                        @Html.DisplayFor(modelItem => item.QuestionsState)
+                                    </h5>
+                                    <a asp-action="Edit" asp-route-id="@item.QuestionsID" class="btn btn-more">
+                                        Editar
+                                        <i class="glyphicon glyphicon-edit">
+                                        </i>
+                                    </a>
+                                    <a asp-action="Delete" asp-route-id="@item.QuestionsID" class="btn btn-more">
+                                        Eliminar
+                                        <i class="fa fa-arrows-alt">
+                                        </i>
+                                    </a>
+                             
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </p>
 
         </div>
-    </div>
+
+
+
+    }
 }
-
-   
-
-
-
-
 
 
 

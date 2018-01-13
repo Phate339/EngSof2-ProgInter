@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Trabalho.Models;
 
+
 namespace Trabalho.Controllers
 {
     public class QuestionsController : Controller
@@ -21,8 +22,9 @@ namespace Trabalho.Controllers
         // GET: Questions
         public async Task<IActionResult> Index()
         {
+          
 
-            return View(await _context.Questions.Include(a=>a.Answer).ToListAsync());
+            return View(await _context.Questions.Include(a=>a.Answer).ThenInclude(d=>d.Difficulty).ToListAsync());
         }
 
         // GET: Questions/Details/5
