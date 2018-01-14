@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Trabalho.Models;
 using Trabalho.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Trabalho.Controllers
 {
@@ -19,6 +20,7 @@ namespace Trabalho.Controllers
             _context = context;    
         }
 
+        [Authorize]
         // GET: Questions
         public async Task<IActionResult> Index()
         {

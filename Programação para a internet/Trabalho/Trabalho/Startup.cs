@@ -44,7 +44,7 @@ namespace Trabalho
                 options.UseSqlServer(Configuration.GetConnectionString("ConnectionStringTrabalhoUsers")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<TrabalhoDbContext>()
+                .AddEntityFrameworkStores<TrabalhoUsersDbContext>()
                 .AddDefaultTokenProviders();
 
             services.AddMvc();

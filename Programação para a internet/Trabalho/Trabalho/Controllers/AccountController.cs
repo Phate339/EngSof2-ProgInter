@@ -12,6 +12,8 @@ using Microsoft.Extensions.Options;
 using Trabalho.Models;
 using Trabalho.Models.AccountViewModels;
 using Trabalho.Services;
+using Trabalho.Data;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Trabalho.Controllers
 {
@@ -27,6 +29,7 @@ namespace Trabalho.Controllers
 
         public AccountController(
             UserManager<ApplicationUser> userManager,
+            RoleManager<IdentityRole> roleManager,
             SignInManager<ApplicationUser> signInManager,
             IOptions<IdentityCookieOptions> identityCookieOptions,
             IEmailSender emailSender,
@@ -39,6 +42,9 @@ namespace Trabalho.Controllers
             _emailSender = emailSender;
             _smsSender = smsSender;
             _logger = loggerFactory.CreateLogger<AccountController>();
+
+            UsersSeedData.EnsurePopulatedAsync(userManager, roleManager).Wait();
+
         }
 
         //
