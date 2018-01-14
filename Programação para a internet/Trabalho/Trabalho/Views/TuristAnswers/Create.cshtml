@@ -1,51 +1,124 @@
-@model Trabalho.Models.TuristAnswer
+<!--@model PaginatedList<Trabalho.Models.TuristAnswer>
+    <!--model Trabalho.Models.TuristAnswer-->
 
 @{
     ViewData["Title"] = "Create";
 }
 
-<h2>Create</h2>
+<h2>Questionario</h2>
 
 <form asp-action="Create">
     <div class="form-horizontal">
-        <h4>TuristAnswer</h4>
+        <h4>Responda ao seguinte questionario com os seus dados de maneira a ser indicado o trilho mais recomendado</h4>
         <hr />
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <div class="form-group">
-            <label asp-for="SurveyNumber" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="SurveyNumber" class="form-control" />
-                <span asp-validation-for="SurveyNumber" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="AnswerDate" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="AnswerDate" class="form-control" />
-                <span asp-validation-for="AnswerDate" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="TuristID" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <select asp-for="TuristID" class ="form-control" asp-items="ViewBag.TuristID"></select>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="AnswerID" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <select asp-for="AnswerID" class ="form-control" asp-items="ViewBag.AnswerID"></select>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
     </div>
-</form>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Pergunta
+                </th>
+                <th>
+                    Resposta 1
+                </th>
+                <th>
+                    Resposta 2
+                </th>
+                <th>
+                    Resposta 3
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Answer.Questions.QuestionsToClient)
+                    </td>
+                </tr>
+
+            <td></td>
+
+            @foreach (var item2 in item.Answer.Questions.Answer)
+            {
+
+                <td>
+                    
+                    <input type="radio" name="AnswerID" id="@item2.AnswerID" value ="@item2.AnswerID" />
+                    <label for="@item2.AnswerID">
+                        @item2.PossibleAnswer
+                    </label>
+                    
+                    <!-- <input type="radio" name="AnswerID" /> Html.DisplayFor(modelItem => item2.PossibleAnswer)-->
+                </td>
+            }
+                <!-- <div class="form-group">
+                    <label asp-for="AnswerID" class="col-md-2 control-label"></label>
+                    <div class="col-md-10">
+                        <select asp-for="AnswerID" class ="form-control" asp-items="ViewBag.AnswerID"></select>
+                    </div>
+                </div>-->
+
+            }
+            </tbody>
+        </table>
+
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+
+    <a asp-action="Create"
+       asp-route-page="@(Model.PageIndex + 1)"
+       class="btn btn-default @nextDisabled">
+        Next
+    </a>
+
+    <input type="submit" value="Create" class="btn btn-default" />
+
+
+
+
+            <!--<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="SurveyNumber" class="col-md-2 control-label"></label>
+                    <div class="col-md-10">
+                        <input asp-for="SurveyNumber" class="form-control" />
+                        <span asp-validation-for="SurveyNumber" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AnswerDate" class="col-md-2 control-label"></label>
+                    <div class="col-md-10">
+                        <input asp-for="AnswerDate" class="form-control" />
+                        <span asp-validation-for="AnswerDate" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TuristID" class="col-md-2 control-label"></label>
+                    <div class="col-md-10">
+                        <select asp-for="TuristID" class ="form-control" asp-items="ViewBag.TuristID"></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AnswerID" class="col-md-2 control-label"></label>
+                    <div class="col-md-10">
+                        <select asp-for="AnswerID" class ="form-control" asp-items="ViewBag.AnswerID"></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>-->
+        </form>
+
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
 
