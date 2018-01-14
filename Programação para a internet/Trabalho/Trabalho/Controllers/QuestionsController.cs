@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Trabalho.Models;
-
+using Trabalho.Models.ViewModels;
 
 namespace Trabalho.Controllers
 {
@@ -48,6 +48,8 @@ namespace Trabalho.Controllers
         // GET: Questions/Create
         public IActionResult Create()
         {
+
+            Select_YN_Rebind();
             return View();
         }
 
@@ -64,8 +66,31 @@ namespace Trabalho.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
+            Select_YN_Rebind();
             return View(questions);
         }
+
+        private void Select_YN_Rebind()
+        {
+            List<SelectListItem> Select_YN = new List<SelectListItem>();
+            Select_YN.Add(new SelectListItem
+            {
+                Text = "Selecione"
+
+            });
+            Select_YN.Add(new SelectListItem
+            {
+                Text = "Desativar",
+                Value = bool.FalseString
+            });
+            Select_YN.Add(new SelectListItem
+            {
+                Text = "Ativar",
+                Value = bool.TrueString
+            });
+            ViewData["Select_YN"] = Select_YN;
+        }
+
 
         // GET: Questions/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -75,12 +100,30 @@ namespace Trabalho.Controllers
                 return NotFound();
             }
 
-            var questions = await _context.Questions.SingleOrDefaultAsync(m => m.QuestionsID == id);
+            var questions = await _context.Questions.Include(a=>a.Answer).SingleOrDefaultAsync(m => m.QuestionsID == id);
             if (questions == null)
             {
                 return NotFound();
             }
+            PopulateAssignedAnswerData(questions);
             return View(questions);
+        }
+
+        private void PopulateAssignedAnswerData(Questions questions)
+        {
+            var allAnswer = _context.Answer;
+            var QuestionAnswer = new HashSet<int>(questions.Answer.Select(c => c.AnswerID));
+            var viewModel = new List<CreateQuestionType_AnswerViewModel>();
+            foreach (var answer in allAnswer)
+            {
+                viewModel.Add(new CreateQuestionType_AnswerViewModel
+                {
+                    AnswerID = answer.AnswerID,
+                    PossibleAnswer = answer.PossibleAnswer,
+                    Assigned = QuestionAnswer.Contains(answer.AnswerID)
+                });
+            }
+            ViewData["Answer"] = viewModel;
         }
 
         // POST: Questions/Edit/5
