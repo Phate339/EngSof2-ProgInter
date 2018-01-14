@@ -1,0 +1,18 @@
+Relatório final, com entrega a 16/01/2018, deve incluir: 
+Conclusão, Anexos /
+
+Atividades e tempos gastos, em horas, por elemento de grupo (tabela ou gráfico) * 
+
+Descrição de todos os Casos de Uso, dentro da fronteira, com o template (Nome do caso de uso, descrição, pré condição, caminho principal, caminhos alternativos, pós condições, suplementos ou adornos); Incluir um novo campo Tamanho (NOVO). 
+¿	O campo Tamanho indica uma estimativa do tempo de desenvolvimento do caso de uso baseado na quantidade de trabalho, na complexidade do trabalho e nos riscos e incertezas inerentes ao desenvolvimento desse caso de uso. 
+/
+
+Semântica completa das 3 Classes mais importantes (Indicar os diagramas de sequência em que a classe participa; descrição dos atributos*; algoritmos das operações*) /
+Diagrama de Atividades (um ou dois) /
+1 Diagrama de Pacotes (de classes ou de casos de uso) /
+Protótipos da aplicação /
+
+/-Nao feito
+
+*-Incompleto
+
