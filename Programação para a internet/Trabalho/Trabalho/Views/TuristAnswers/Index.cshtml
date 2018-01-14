@@ -35,13 +35,12 @@
             @Html.DisplayFor(modelItem => item.Answer.Questions.QuestionsToClient)
         </td>
     </tr>
-    <td></td>
            @foreach (var item2 in item.Answer.Questions.Answer)
            {
-               
+               <td></td>
             <td>
 
-               <input type="radio" name="TouristAnswer" /> @Html.DisplayFor(modelItem => item2.PossibleAnswer)
+                @Html.DisplayFor(modelItem => item2.PossibleAnswer)
             </td>
            }
 
@@ -60,23 +59,11 @@
             class="btn btn-default @prevDisabled">
             Previous
 </a>
-
 <a asp-action="Index"
-   
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
    asp-route-page="@(Model.PageIndex + 1)"
-  
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
    class="btn btn-default @nextDisabled">
     Next
 </a>
 
-
-
-<input type="submit" value="Create" class="btn btn-default @nextDisabled" 
-
-       
-       asp-action="Index"
-   
-   asp-route-page="@(Model.PageIndex + 1)" />
- 
-<!--asp-route-sortOrder="ViewData["CurrentSort"]"
-     asp-route-currentFilter="ViewData["CurrentFilter"]"-->

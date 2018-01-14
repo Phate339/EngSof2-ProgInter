@@ -13,17 +13,14 @@ namespace Trabalho.Controllers
     {
         private readonly TrabalhoDbContext _context;
 
-        private bool confirma;
-
         public TuristAnswersController(TrabalhoDbContext context)
         {
             _context = context;    
         }
-        
 
         // GET: TuristAnswers
         public async Task<IActionResult> Index(string sortOrder, string currentFilter, string searchString, int? page)
-        {/*
+        {
             ViewData["CurrentSort"] = sortOrder;
 
            if(searchString != null)
@@ -39,8 +36,7 @@ namespace Trabalho.Controllers
                             select z;
 
             int pageSize = 1;
-            return View(await PaginatedList<TuristAnswer>.CreateAsync(listofdata.AsNoTracking(), page ?? 1,pageSize));*/
-            return View();
+            return View(await PaginatedList<TuristAnswer>.CreateAsync(listofdata.AsNoTracking(), page ?? 1,pageSize));
         }
 
         // GET: TuristAnswers/Details/5
@@ -64,35 +60,11 @@ namespace Trabalho.Controllers
         }
 
         // GET: TuristAnswers/Create
-        public async Task<IActionResult> Create(string sortOrder, string currentFilter, string searchString, int? page)
+        public IActionResult Create()
         {
-
-            /*
             ViewData["AnswerID"] = new SelectList(_context.Answer, "AnswerID", "AnswerID");
             ViewData["TuristID"] = new SelectList(_context.Turist, "TuristID", "TuristID");
-
-            return View();*/
-            
-
-        ViewData["CurrentSort"] = sortOrder;
-
-           if(searchString != null)
-            {
-                page = 1;
-            }
-
-           
-            else
-            {
-                searchString = currentFilter;
-            }
-
-            var listofdata =from z in _context.TuristAnswer.Include(t => t.Answer).ThenInclude(q => q.Questions).ThenInclude(a => a.Answer).ThenInclude(d=>d.Difficulty)
-             select z;
-            var trabalhoDbContext = _context.TuristAnswer.Include(t => t.Answer).ThenInclude(q => q.Questions).ThenInclude(a => a.Answer).ThenInclude(d => d.Difficulty);
-
-            int pageSize = 5;
-            return View(await PaginatedList<TuristAnswer>.CreateAsync(listofdata.AsNoTracking(), page ?? 1,pageSize)/*await trabalhoDbContext.ToListAsync()*/);
+            return View();
         }
 
         // POST: TuristAnswers/Create
@@ -102,20 +74,14 @@ namespace Trabalho.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("TuristAnswerID,SurveyNumber,AnswerDate,TuristID,AnswerID")] TuristAnswer turistAnswer)
         {
-            
-            turistAnswer.SurveyNumber = 1;
-            turistAnswer.AnswerDate = System.DateTime.Today;
-            turistAnswer.TuristID = 3;
             if (ModelState.IsValid)
             {
                 _context.Add(turistAnswer);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Create");
-                
-
+                return RedirectToAction("Index");
             }
-           /* ViewData["AnswerID"] = new SelectList(_context.Answer, "AnswerID", "AnswerID", turistAnswer.AnswerID);
-            ViewData["TuristID"] = new SelectList(_context.Turist, "TuristID", "TuristID", turistAnswer.TuristID);*/
+            ViewData["AnswerID"] = new SelectList(_context.Answer, "AnswerID", "AnswerID", turistAnswer.AnswerID);
+            ViewData["TuristID"] = new SelectList(_context.Turist, "TuristID", "TuristID", turistAnswer.TuristID);
             return View(turistAnswer);
         }
 
@@ -209,8 +175,5 @@ namespace Trabalho.Controllers
         {
             return _context.TuristAnswer.Any(e => e.TuristAnswerID == id);
         }
-
-        
-        
     }
 }
