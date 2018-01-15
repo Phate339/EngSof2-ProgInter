@@ -27,6 +27,8 @@ namespace Trabalho.Controllers
         private readonly ILogger _logger;
         private readonly string _externalCookieScheme;
 
+        private readonly TrabalhoDbContext _context;
+
         public AccountController(
             UserManager<ApplicationUser> userManager,
             RoleManager<IdentityRole> roleManager,
@@ -34,7 +36,8 @@ namespace Trabalho.Controllers
             IOptions<IdentityCookieOptions> identityCookieOptions,
             IEmailSender emailSender,
             ISmsSender smsSender,
-            ILoggerFactory loggerFactory)
+            ILoggerFactory loggerFactory,
+            TrabalhoDbContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -42,6 +45,7 @@ namespace Trabalho.Controllers
             _emailSender = emailSender;
             _smsSender = smsSender;
             _logger = loggerFactory.CreateLogger<AccountController>();
+            _context = context;
 
             UsersSeedData.EnsurePopulatedAsync(userManager, roleManager).Wait();
 
@@ -113,15 +117,36 @@ namespace Trabalho.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
+        public async Task<IActionResult> Register([Bind("TuristID,TuristName,Phone,Genre,Birthday,NIF,Email,EmergencyContact,TuristState")] Turist turist, RegisterViewModel model, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                turist = new Turist
+                {
+                    Email = model.Email,
+                    TuristName = model.TuristName,
+                    Phone = model.Phone,
+                    NIF = model.NIF,
+                    Genre = model.Genre,
+                    Birthday=model.Birthday,
+                    EmergencyContact = model.EmergencyContact
+                };
+
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+
+
+
+                    await _userManager.AddToRoleAsync(user, "Turist"); //Priviégios do Turista
+                            
+
+                    _context.Add(turist);
+                    await _context.SaveChangesAsync();
+
+
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=532713
                     // Send an email with this link
                     //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -130,6 +155,8 @@ namespace Trabalho.Controllers
                     //    $"Please confirm your account by clicking this link: <a href='{callbackUrl}'>link</a>");
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     _logger.LogInformation(3, "User created a new account with password.");
+
+
                     return RedirectToLocal(returnUrl);
                 }
                 AddErrors(result);
@@ -139,6 +166,7 @@ namespace Trabalho.Controllers
             return View(model);
         }
 
+       
         //
         // POST: /Account/Logout
         [HttpPost]

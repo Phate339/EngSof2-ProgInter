@@ -8,9 +8,10 @@ using Trabalho.Models;
 namespace Trabalho.Migrations
 {
     [DbContext(typeof(TrabalhoDbContext))]
-    partial class TrabalhoDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180115183225_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.5")
