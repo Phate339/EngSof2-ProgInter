@@ -118,6 +118,7 @@ namespace Trabalho.Migrations
                     AnswerDate = table.Column<DateTime>(nullable: false),
                     AnswerID = table.Column<int>(nullable: false),
                     SurveyNumber = table.Column<int>(nullable: false),
+                    TuristAnswerState = table.Column<bool>(nullable: false),
                     TuristID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>

@@ -208,10 +208,11 @@ namespace Trabalho.Models
                   new TuristAnswer
                   {
                       TuristID = 1,
-                      
+
                       SurveyNumber = 1,
                       AnswerID = 2,
-                      AnswerDate = DateTime.Parse("15-03-2013")
+                      AnswerDate = DateTime.Parse("15-03-2013"),
+                      TuristAnswerState = true
                   },
 
 
@@ -220,7 +221,8 @@ namespace Trabalho.Models
               TuristID = 1,
               SurveyNumber = 1,
               AnswerID = 5,
-              AnswerDate = DateTime.Parse("15-03-2013")
+              AnswerDate = DateTime.Parse("15-03-2013"),
+               TuristAnswerState = true
           },
 
 
@@ -229,7 +231,8 @@ namespace Trabalho.Models
               TuristID = 1,
               SurveyNumber = 1,
               AnswerID = 7,
-              AnswerDate = DateTime.Parse("15-03-2013")
+              AnswerDate = DateTime.Parse("15-03-2013"),
+               TuristAnswerState = false
           },
 
 
@@ -238,7 +241,8 @@ namespace Trabalho.Models
               TuristID = 1,
               SurveyNumber = 1,
               AnswerID = 10,
-              AnswerDate = DateTime.Parse("15-03-2013")
+              AnswerDate = DateTime.Parse("15-03-2013"),
+               TuristAnswerState = true
           }
 
             );

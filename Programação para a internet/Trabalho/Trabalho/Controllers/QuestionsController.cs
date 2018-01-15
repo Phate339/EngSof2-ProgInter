@@ -20,7 +20,7 @@ namespace Trabalho.Controllers
             _context = context;    
         }
 
-        [Authorize]
+    
         // GET: Questions
         public async Task<IActionResult> Index()
         {
@@ -47,11 +47,17 @@ namespace Trabalho.Controllers
             return View(questions);
         }
 
+
+
         // GET: Questions/Create
         public IActionResult Create()
         {
 
             Select_YN_Rebind();
+            var questions = new Questions();
+            questions.Answer = new List<Answer>();
+            PopulateAssignedDifficultyData(questions);
+
             return View();
         }
 
@@ -60,8 +66,21 @@ namespace Trabalho.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("QuestionsID,QuestionsToClient,QuestionsState")] Questions questions)
+        public async Task<IActionResult> Create([Bind("QuestionsID,QuestionsToClient,QuestionsState")] Questions questions, string[] selectedDifficulty)
         {
+
+
+            if (selectedDifficulty != null)
+            {
+                questions.Answer = new List<Answer>();
+                foreach (var difficulty in selectedDifficulty)
+                {
+                    var difficultyToAdd = new Answer { QuestionsID = questions.QuestionsID, DifficultyID = int.Parse(difficulty) };
+                    questions.Answer.Add(difficultyToAdd);
+                }
+            }
+
+
             if (ModelState.IsValid)
             {
                 _context.Add(questions);
@@ -69,6 +88,7 @@ namespace Trabalho.Controllers
                 return RedirectToAction("Index");
             }
             Select_YN_Rebind();
+            PopulateAssignedDifficultyData(questions);
             return View(questions);
         }
 
@@ -102,65 +122,104 @@ namespace Trabalho.Controllers
                 return NotFound();
             }
 
-            var questions = await _context.Questions.Include(a=>a.Answer).SingleOrDefaultAsync(m => m.QuestionsID == id);
+            var questions = await _context.Questions.Include(a=>a.Answer).ThenInclude(d=>d.Difficulty).SingleOrDefaultAsync(m => m.QuestionsID == id);
             if (questions == null)
             {
                 return NotFound();
             }
-            PopulateAssignedAnswerData(questions);
+            PopulateAssignedDifficultyData(questions);
             return View(questions);
         }
 
-        private void PopulateAssignedAnswerData(Questions questions)
+        private void PopulateAssignedDifficultyData(Questions questions)
         {
-            var allAnswer = _context.Answer;
-            var QuestionAnswer = new HashSet<int>(questions.Answer.Select(c => c.AnswerID));
-            var viewModel = new List<CreateQuestionType_AnswerViewModel>();
-            foreach (var answer in allAnswer)
+            var allDifficulty = _context.Difficulty;
+            var QuestionDifficulty = new HashSet<int>(questions.Answer.Select(c => c.DifficultyID));
+            var viewModel = new List<DifficultyViewModel>();
+            foreach (var difficulty in allDifficulty)
             {
-                viewModel.Add(new CreateQuestionType_AnswerViewModel
+                viewModel.Add(new DifficultyViewModel
                 {
-                    AnswerID = answer.AnswerID,
-                    PossibleAnswer = answer.PossibleAnswer,
-                    Assigned = QuestionAnswer.Contains(answer.AnswerID)
+                    DifficultyID = difficulty.DifficultyID,
+                    DifficultyName = difficulty.DifficultyName,
+                    Assigned = QuestionDifficulty.Contains(difficulty.DifficultyID)
                 });
             }
-            ViewData["Answer"] = viewModel;
+            ViewData["Difficulty"] = viewModel;
         }
-
         // POST: Questions/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("QuestionsID,QuestionsToClient,QuestionsState")] Questions questions)
+        public async Task<IActionResult> Edit(int? id, string[] selectedDifficulty)
         {
-            if (id != questions.QuestionsID)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            var questionsToUpdate = await _context.Questions
+                .Include(i => i.Answer)
+                    .ThenInclude(i => i.Difficulty)
+                .SingleOrDefaultAsync(m => m.QuestionsID == id);
+
+            if (await TryUpdateModelAsync<Questions>(
+                questionsToUpdate,
+                "",
+                i => i.QuestionsToClient, i => i.QuestionsState))
             {
+
+                UpdateQuestionType_Answer(selectedDifficulty, questionsToUpdate);
                 try
                 {
-                    _context.Update(questions);
                     await _context.SaveChangesAsync();
                 }
-                catch (DbUpdateConcurrencyException)
+                catch (DbUpdateException /* ex */)
                 {
-                    if (!QuestionsExists(questions.QuestionsID))
+                    //Log the error (uncomment ex variable name and write a log.)
+                    ModelState.AddModelError("", "Unable to save changes. " +
+                        "Try again, and if the problem persists, " +
+                        "see your system administrator.");
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            UpdateQuestionType_Answer(selectedDifficulty, questionsToUpdate);
+            PopulateAssignedDifficultyData(questionsToUpdate);
+            return View(questionsToUpdate);
+        }
+
+
+        private void UpdateQuestionType_Answer(string[] selectedDifficulty, Questions questionsToUpdate)
+        {
+            if (selectedDifficulty == null)
+            {
+                questionsToUpdate.Answer = new List<Answer>();
+                return;
+            }
+
+            var selectedDifficultyHS = new HashSet<string>(selectedDifficulty);
+            var questionsDifficulty = new HashSet<int>
+                (questionsToUpdate.Answer.Select(c => c.Difficulty.DifficultyID));
+            foreach (var difficulty in _context.Difficulty)
+            {
+                if (selectedDifficultyHS.Contains(difficulty.DifficultyID.ToString()))
+                {
+                    if (!questionsDifficulty.Contains(difficulty.DifficultyID))
                     {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
+                        questionsToUpdate.Answer.Add(new Answer { QuestionsID = questionsToUpdate.QuestionsID, DifficultyID = difficulty.DifficultyID });
                     }
                 }
-                return RedirectToAction("Index");
+                else
+                {
+
+                    if (questionsDifficulty.Contains(difficulty.DifficultyID))
+                    {
+                        Answer difficultyToRemove = questionsToUpdate.Answer.SingleOrDefault(i => i.DifficultyID == difficulty.DifficultyID);
+                        _context.Remove(difficultyToRemove);
+                    }
+                }
             }
-            return View(questions);
         }
 
         // GET: Questions/Delete/5

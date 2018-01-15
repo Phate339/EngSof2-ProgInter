@@ -127,6 +127,8 @@ namespace Trabalho.Migrations
 
                     b.Property<int>("SurveyNumber");
 
+                    b.Property<bool>("TuristAnswerState");
+
                     b.Property<int>("TuristID");
 
                     b.HasKey("TuristAnswerID");

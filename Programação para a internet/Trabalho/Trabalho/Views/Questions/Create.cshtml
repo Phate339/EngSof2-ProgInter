@@ -24,6 +24,35 @@
                 @Html.DropDownListFor(model => model.QuestionsState, (IEnumerable<SelectListItem>)ViewData["Select_YN"])
             </div>
         </div>
+         <div class="col-md-offset-2 col-md-10">
+        <table>
+            <tr>
+                @{
+                    int cnt = 0;
+                    List<Trabalho.Models.ViewModels.DifficultyViewModel> difficulty = ViewBag.Difficulty;
+
+                    foreach (var difficulties in difficulty)
+                    {
+                        if (cnt++ % 3 == 0)
+                        {
+                            @:</tr><tr>
+                        }
+                        @:<td>
+                            <input type="checkbox"
+                                   name="selectedDifficulty"
+                                   value="@difficulties.DifficultyID"
+                                   @(Html.Raw(difficulties.Assigned ? "checked=\"checked\"" : "")) />
+                                   @difficulties.DifficultyID @:  @difficulties.DifficultyName
+                        @:</td>
+                    }
+                    
+
+                    @:</tr>
+                }
+        </table>
+    </div>
+
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />
