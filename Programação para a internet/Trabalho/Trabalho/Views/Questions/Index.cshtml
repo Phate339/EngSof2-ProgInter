@@ -47,7 +47,7 @@
                             </ul>
 
                             <div class="pull-right">
-                                <a asp-controller="Answers" asp-action="Create" class="btn btn-more">
+                                <a asp-controller="Answers" asp-action="Create"  asp-route-id="@item.QuestionsID" class="btn btn-more">
                                     Adicionar Resposta
                                     <i class="fa fa-plus"></i>
                                 </a>
@@ -120,7 +120,7 @@
 
                                 </ul>
                                 <div class="pull-right">
-                                    <a asp-controller="Answers" asp-action="Create" class="btn btn-more">
+                                    <a asp-controller="Answers" asp-action="Create" asp-route-id="@item.QuestionsID"  class="btn btn-more">
                                         Adicionar Resposta
                                         <i class="fa fa-plus"></i>
                                     </a>

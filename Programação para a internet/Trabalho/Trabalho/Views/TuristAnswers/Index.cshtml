@@ -1,4 +1,4 @@
-@model IEnumerable<Trabalho.Models.TuristAnswer>
+@model PaginatedList<Trabalho.Models.TuristAnswer>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,47 +13,57 @@
     <thead>
         <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.SurveyNumber)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.AnswerDate)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.TuristAnswerState)
+                   Pergunta
                 </th>
             <th>
-                @Html.DisplayNameFor(model => model.Answer)
+                Resposta 1
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Turist)
+                Resposta 2
+            </th>
+            <th>
+                Resposta 3
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Answer.Questions.QuestionsToClient)
+        </td>
+    </tr>
+           @foreach (var item2 in item.Answer.Questions.Answer)
+           {
+               <td></td>
             <td>
-                @Html.DisplayFor(modelItem => item.SurveyNumber)
+
+                @Html.DisplayFor(modelItem => item2.PossibleAnswer)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AnswerDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TuristAnswerState)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Answer.AnswerID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Turist.TuristID)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.TuristAnswerID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.TuristAnswerID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.TuristAnswerID">Delete</a>
-            </td>
-        </tr>
+           }
+
 }
     </tbody>
 </table>
+
+@{ 
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+<a asp-action ="Index"
+            asp-route-sortOrder ="@ViewData["CurrentSort"]"
+            asp-route-page="@(Model.PageIndex - 1)"
+            asp-route-currentFilter="@ViewData["CurrentFilter"]"
+            class="btn btn-default @prevDisabled">
+            Previous
+</a>
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-page="@(Model.PageIndex + 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>
+

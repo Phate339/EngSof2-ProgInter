@@ -48,11 +48,21 @@ namespace Trabalho.Controllers
 
 
         // GET: Answers/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create(int? id)
         {
-            ViewData["DifficultyID"] = new SelectList(_context.Difficulty, "DifficultyID", "DifficultyID");
-            ViewData["QuestionsID"] = new SelectList(_context.Questions, "QuestionsID", "QuestionsID");
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var question = await _context.Answer.Include(q=>q.Questions).SingleOrDefaultAsync(q=>q.QuestionsID ==id );
+            if (question == null)
+            {
+                return NotFound();
+            }
+
+
+            return View(question);
         }
 
         // POST: Answers/Create
