@@ -1,0 +1,6 @@
+dotnet restore
+dotnet build
+
+dotnet ef migrations add Initial --context TrabalhoDbContext
+
+dotnet ef database update --context TrabalhoDbContext

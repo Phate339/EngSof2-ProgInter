@@ -3,10 +3,6 @@ Conclusão, Anexos /
 
 Atividades e tempos gastos, em horas, por elemento de grupo (tabela ou gráfico) * 
 
-Descrição de todos os Casos de Uso, dentro da fronteira, com o template (Nome do caso de uso, descrição, pré condição, caminho principal, caminhos alternativos, pós condições, suplementos ou adornos); Incluir um novo campo Tamanho (NOVO). 
-
-/
-
 Semântica completa das 3 Classes mais importantes (Indicar os diagramas de sequência em que a classe participa; descrição dos atributos*; algoritmos das operações*) /
 
 Protótipos da aplicação /

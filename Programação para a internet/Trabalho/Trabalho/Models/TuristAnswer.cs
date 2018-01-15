@@ -13,8 +13,8 @@ namespace Trabalho.Models
         public int TuristAnswerID { get; set; }
         public int SurveyNumber { get; set; }
         public DateTime AnswerDate { get; set; }
+        public Boolean TuristAnswerState { get; set; }
 
-       
 
         public int TuristID { get; set; }
         [ForeignKey("TuristID")]
