@@ -1,0 +1,40 @@
+@model Trabalho.Models.Questions
+
+@{
+    ViewData["Title"] = "CreateAnswer";
+}
+
+<h2>CreateAnswer</h2>
+
+<form asp-action="CreateAnswer">
+    <div class="form-horizontal">
+        <h4>Answer</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="QuestionsID" />
+        <div class="form-group">
+            <label asp-for="QuestionsToClient" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="QuestionsToClient" class="form-control" />
+                <span asp-validation-for="QuestionsToClient" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Answer" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Answer" class="form-control" />
+                <span asp-validation-for="Answer" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

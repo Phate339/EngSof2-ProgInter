@@ -45,6 +45,8 @@ namespace Trabalho.Controllers
             return View(answer);
         }
 
+
+
         // GET: Answers/Create
         public IActionResult Create()
         {
