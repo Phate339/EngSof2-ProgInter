@@ -8,7 +8,7 @@ using Trabalho.Models;
 namespace Trabalho.Migrations
 {
     [DbContext(typeof(TrabalhoDbContext))]
-    [Migration("20180115005627_Initial")]
+    [Migration("20180115160508_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
