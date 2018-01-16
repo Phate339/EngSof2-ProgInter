@@ -5,18 +5,39 @@
 }
 
 <h2>Lista de Respostas e de Dificuldades associadas aos Inqueritos</h2>
+<hr />
+
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Procurar Resposta: <input type="text" name="SearchString" value="@ViewData["currentFilter"]" />
+            <input type="submit" value="Search" class="btn btn-more" /> |
+            <div>
+                <a asp-action="Index" class="btn btn-more">
+                    <i class="fa fa-hand-o-down">
+                    </i>Lista inteira de Respostas
+                </a>
+
+            </div>
+        </p>
+    </div>
+</form>
+<hr />
 
 <table class="table">
     <thead>
         <tr>
             <th>
-                <h6>Pergunta</h6>
+                Pergunta
             </th>
                 <th>
                     <h6>Resposta</h6>
                 </th>
             <th>
-                <h6>Dificuldade</h6>
+                    Resposta
+             </th>
+            <th>
+                Dificuldade
             </th>
          
             <th></th>

@@ -131,7 +131,8 @@ namespace Trabalho.Controllers
                     NIF = model.NIF,
                     Genre = model.Genre,
                     Birthday=model.Birthday,
-                    EmergencyContact = model.EmergencyContact
+                    EmergencyContact = model.EmergencyContact,
+                    TuristState = true
                 };
 
                 var result = await _userManager.CreateAsync(user, model.Password);
