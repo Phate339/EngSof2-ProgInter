@@ -23,6 +23,12 @@
             @Html.DisplayFor(model => model.AnswerDate)
         </dd>
         <dt>
+            @Html.DisplayNameFor(model => model.TuristAnswerState)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TuristAnswerState)
+        </dd>
+        <dt>
             @Html.DisplayNameFor(model => model.Answer)
         </dt>
         <dd>
@@ -32,7 +38,7 @@
             @Html.DisplayNameFor(model => model.Turist)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Turist.TuristID)
+            @Html.DisplayFor(model => model.Turist.Email)
         </dd>
     </dl>
 </div>

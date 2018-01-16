@@ -27,6 +27,14 @@
             </div>
         </div>
         <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <div class="checkbox">
+                    <input asp-for="TuristAnswerState" />
+                    <label asp-for="TuristAnswerState"></label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
             <label asp-for="TuristID" class="control-label col-md-2"></label>
             <div class="col-md-10">
                 <select asp-for="TuristID" class="form-control" asp-items="ViewBag.TuristID"></select>

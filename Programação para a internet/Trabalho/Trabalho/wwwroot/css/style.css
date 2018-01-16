@@ -1541,12 +1541,12 @@ a:hover {
     
 }
 #background-wrapper {
-  background-color: #000000;
-  background-position: left top;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  padding-bottom: 0;
-  border-bottom: 2px solid #000000;
+    background-color: #000000;
+    background-position: left top;
+    background-repeat: no-repeat;
+    padding-bottom: 0;
+    border-bottom: 2px solid #000000;
+    background-attachment: fixed;
 }
 .benches {
   background-image: url(../img/backgrounds/benches.png);
@@ -2422,3 +2422,23 @@ ul.nav-tabs.nav-tabs-right > li:last-child {
   background-position: right center no-repeat;
   background-attachment: fixed;
 }
+#fillbackground {
+    height: 100%;
+    width: 100%;
+    /* Set the height to match that of the viewport. */
+    height: 800px;
+    /* Set the width to match that of the viewport. */
+    width: 600px;
+    /* Remove any browser-default margins. */
+    margin: 0;
+}
+/*.overlay {
+    height: 100%;
+    width: 100%;
+    /* Set the height to match that of the viewport. */
+   /* height: 100vh;*/
+    /* Set the width to match that of the viewport. */
+    /*width: 100vw;*/
+    /* Remove any browser-default margins. */
+   /* margin: 0;*/
+/*}*/
