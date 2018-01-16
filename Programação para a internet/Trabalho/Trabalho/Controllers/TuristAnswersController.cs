@@ -21,7 +21,8 @@ namespace Trabalho.Controllers
         // GET: TuristAnswers
         public async Task<IActionResult> Index()
         {
-            var trabalhoDbContext = _context.TuristAnswer.Include(t => t.Answer).Include(t => t.Turist);
+            
+            var trabalhoDbContext = _context.TuristAnswer.Include(t => t.Answer).Where(r=>r.AnswerID==r.Answer.AnswerID).Include(t => t.Turist);
             return View(await trabalhoDbContext.ToListAsync());
         }
 
@@ -97,10 +98,7 @@ namespace Trabalho.Controllers
             var lista = from z in _context.Questions.Include(a => a.Answer) select z;
 
             int pageSize = 1;
-            turistAnswer.SurveyNumber = 1;
-            turistAnswer.AnswerDate = System.DateTime.Today;
-            turistAnswer.TuristID = 1;
-            turistAnswer.TuristAnswerState = true;
+          
 
             if (ModelState.IsValid && ModelState.Count > 0)
             {
@@ -110,7 +108,7 @@ namespace Trabalho.Controllers
 
                     turistAnswer.SurveyNumber = 1;
                     turistAnswer.AnswerDate = System.DateTime.Today;
-                    turistAnswer.TuristID = 1;
+                    turistAnswer.TuristID = 2;
                     turistAnswer.TuristAnswerState = true;
                     _context.Add(turistAnswer);
                     await _context.SaveChangesAsync();
