@@ -6,132 +6,138 @@
     ViewData["Title"] = "Create";
 }
 
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <h2>Questionario</h2>
 
-<form asp-action="Create">
-    <div class="form-horizontal">
-        <h4>Responda ao seguinte questionario para saber que trilho lhe sera mais recomendado</h4>
-        <hr />
+    <div id="highlighted-slider" class="container">
+        <form asp-action="Create">
+            <div class="form-horizontal">
+                <h4>Responda ao seguinte questionario para saber que trilho lhe sera mais recomendado</h4>
+                <hr />
 
-        <table class="table">
+                <table class="table">
 
-            <thead>
-                @foreach (var item in Model)
+                    <thead>
+                        @foreach (var item in Model)
+                    {
+                            @if (item.QuestionsState == true)
+                        {
+
+                                <tr>
+                                    <th>
+                                        Pergunta
+                                    </th>
+                                    <th>
+                                        Resposta 1
+                                    </th>
+                                    <th>
+                                        Resposta 2
+                                    </th>
+                                    <th>
+                                        Resposta 3
+                                    </th>
+                                    <th></th>
+                                </tr>
+                        }
+                        else
+                        {
+                            <th>Pergunta Desativada</th>
+                        }
+                    }
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Where(q => q.QuestionsState == true))
+                        {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.QuestionsToClient)
+                                    </td>
+                                </tr>
+                            <td></td>
+                            @foreach (var item2 in item.Answer)
                 {
-                    @if (item.QuestionsState == true)
-                    {
 
-                        <tr>
-                            <th>
-                                Pergunta
-                            </th>
-                            <th>
-                                Resposta 1
-                            </th>
-                            <th>
-                                Resposta 2
-                            </th>
-                            <th>
-                                Resposta 3
-                            </th>
-                            <th></th>
-                        </tr>
-                    }
-                    else
-                    {
-                    <th>Pergunta Desativada</th>
-                    }
+                                <td>
+                                    <input type="radio" name="AnswerID" value=@item2.AnswerID />
+                                    <label>
+                                        @Html.DisplayFor(modelItem => item2.PossibleAnswer)
+                                    </label>
+
+                                </td>
+                        }
+
+                        }
+                            </tbody>
+                        </table>
+                </div>
+                </form>
+
+
+                @{
+                    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+                    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
                 }
-                </thead>
-                <tbody>
-                    @foreach (var item in Model.Where(q => q.QuestionsState == true))
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.QuestionsToClient)
-                            </td>
-                        </tr>
-                    <td></td>
-                    @foreach (var item2 in item.Answer)
+
+                <!--<a asp-action="Create"
+                   asp-route-page="(Model.PageIndex + 1)"
+                   class="btn btn-default nextDisabled">
+                    Next
+                </a>-->
+
+                @if (nextDisabled != "")
+            {
+
+                    <input type="submit" value="Concluir" class="btn btn-default" asp-action="Index" />
+                }
+                else
                 {
+                    <input type="submit" value="Seguinte" class="btn btn-default @nextDisabled" asp-route-page="@(Model.PageIndex + 1)" />
 
-                        <td>
-                            <input type="radio" name="AnswerID" value=@item2.AnswerID />
-                            <label>
-                                @Html.DisplayFor(modelItem => item2.PossibleAnswer)
-                            </label>
-
-                        </td>
-                    }
-
-                    }
-                    </tbody>
-                </table>
-        </form>
+                }
 
 
-        @{
-            var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
-            var nextDisabled = !Model.HasNextPage ? "disabled" : "";
-        }
-
-        <!--<a asp-action="Create"
-           asp-route-page="(Model.PageIndex + 1)"
-           class="btn btn-default nextDisabled">
-            Next
-        </a>-->
-
-        @if (nextDisabled != "")
-        {
-
-            <input type="submit" value="Concluir" class="btn btn-default" asp-action="Index" />
-        }
-        else
-        {
-            <input type="submit" value="Seguinte" class="btn btn-default @nextDisabled" asp-route-page="@(Model.PageIndex + 1)" />
-
-        }
-
-
-        <!--asp-route-sortOrder="ViewData["CurrentSort"]"
-        asp-route-currentFilter="ViewData["CurrentFilter"]"-->
-        <!--
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
-                    <label asp-for="SurveyNumber" class="col-md-2 control-label"></label>
-                    <div class="col-md-10">
-                        <input asp-for="SurveyNumber" class="form-control" />
-                        <span asp-validation-for="SurveyNumber" class="text-danger"></span>
+                <!--asp-route-sortOrder="ViewData["CurrentSort"]"
+                asp-route-currentFilter="ViewData["CurrentFilter"]"-->
+                <!--
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="SurveyNumber" class="col-md-2 control-label"></label>
+                            <div class="col-md-10">
+                                <input asp-for="SurveyNumber" class="form-control" />
+                                <span asp-validation-for="SurveyNumber" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="AnswerDate" class="col-md-2 control-label"></label>
+                            <div class="col-md-10">
+                                <input asp-for="AnswerDate" class="form-control" />
+                                <span asp-validation-for="AnswerDate" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="TuristID" class="col-md-2 control-label"></label>
+                            <div class="col-md-10">
+                                <select asp-for="TuristID" class ="form-control" asp-items="ViewBag.TuristID"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="AnswerID" class="col-md-2 control-label"></label>
+                            <div class="col-md-10">
+                                <select asp-for="AnswerID" class ="form-control" asp-items="ViewBag.AnswerID"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Create" class="btn btn-default" />
+                            </div>
+                        </div>
                     </div>
+                </form>
+
+                <div>
+                    <a asp-action="Index">Back to List</a>
                 </div>
-                <div class="form-group">
-                    <label asp-for="AnswerDate" class="col-md-2 control-label"></label>
-                    <div class="col-md-10">
-                        <input asp-for="AnswerDate" class="form-control" />
-                        <span asp-validation-for="AnswerDate" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label asp-for="TuristID" class="col-md-2 control-label"></label>
-                    <div class="col-md-10">
-                        <select asp-for="TuristID" class ="form-control" asp-items="ViewBag.TuristID"></select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label asp-for="AnswerID" class="col-md-2 control-label"></label>
-                    <div class="col-md-10">
-                        <select asp-for="AnswerID" class ="form-control" asp-items="ViewBag.AnswerID"></select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Create" class="btn btn-default" />
-                    </div>
-                </div>
+                            -->
             </div>
-        </form>
-
-        <div>
-            <a asp-action="Index">Back to List</a>
-        </div>
-                    -->
+<div id="fillbackground">
+</div>
