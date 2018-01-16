@@ -4,29 +4,18 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<h2>As suas respostas</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
 <table class="table">
     <thead>
         <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.SurveyNumber)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.AnswerDate)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.TuristAnswerState)
+                   Pergunta
                 </th>
             <th>
-                @Html.DisplayNameFor(model => model.Answer)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Turist)
-            </th>
+                Resposta selecionada
+            </th>               
             <th></th>
         </tr>
     </thead>
