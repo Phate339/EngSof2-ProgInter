@@ -55,7 +55,7 @@ namespace Trabalho.Controllers
                 return NotFound();
             }
 
-            var question = await _context.Answer.Include(q=>q.Questions).SingleOrDefaultAsync(q=>q.QuestionsID ==id );
+            var question = await _context.Answer.Include(q=>q.Questions).SingleOrDefaultAsync(q=>q.AnswerID ==id );
             if (question == null)
             {
                 return NotFound();

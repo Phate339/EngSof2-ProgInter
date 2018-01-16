@@ -4,25 +4,17 @@
     ViewData["Title"] = "Delete";
 }
 
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
+<h2>Eliminar Inquerito</h2>
+<h3>Tem a certeza que pretende eliminar este inquerito?</h3>
+<hr />
 <div>
-    <h4>Questions</h4>
-    <hr />
+    <input type="hidden" asp-for="QuestionsID" />
     <dl class="dl-horizontal">
-        <input type="hidden" asp-for="QuestionsID" />
         <dt>
-            @Html.DisplayNameFor(model => model.QuestionsToClient)
+            <h5>Pergunta</h5>
         </dt>
         <dd>
             @Html.DisplayFor(model => model.QuestionsToClient)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.QuestionsState)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.QuestionsState)
         </dd>
     </dl>
     

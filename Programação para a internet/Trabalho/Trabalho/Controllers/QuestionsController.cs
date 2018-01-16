@@ -54,10 +54,11 @@ namespace Trabalho.Controllers
         {
 
             Select_YN_Rebind();
+            /*
             var questions = new Questions();
             questions.Answer = new List<Answer>();
             PopulateAssignedDifficultyData(questions);
-
+            */
             return View();
         }
 
@@ -88,7 +89,9 @@ namespace Trabalho.Controllers
                 return RedirectToAction("Index");
             }
             Select_YN_Rebind();
+            /*
             PopulateAssignedDifficultyData(questions);
+            */
             return View(questions);
         }
 
@@ -129,10 +132,13 @@ namespace Trabalho.Controllers
             {
                 return NotFound();
             }
+            /*
             PopulateAssignedDifficultyData(questions);
+            */
             return View(questions);
         }
 
+        /*
         private void PopulateAssignedDifficultyData(Questions questions)
         {
             var allDifficulty = _context.Difficulty;
@@ -149,46 +155,41 @@ namespace Trabalho.Controllers
             }
             ViewData["Difficulty"] = viewModel;
         }
+        */
+
         // POST: Questions/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int? id, string[] selectedDifficulty)
+        public async Task<IActionResult> Edit(int id, [Bind("QuestionsID,QuestionsToClient,QuestionsState")] Questions questions)
         {
-            if (id == null)
+            if (id != questions.QuestionsID)
             {
                 return NotFound();
             }
 
-            var questionsToUpdate = await _context.Questions
-                .Include(i => i.Answer)
-                    .ThenInclude(i => i.Difficulty)
-                .SingleOrDefaultAsync(m => m.QuestionsID == id);
-
-            if (await TryUpdateModelAsync<Questions>(
-                questionsToUpdate,
-                "",
-                i => i.QuestionsToClient, i => i.QuestionsState))
+            if (ModelState.IsValid)
             {
-
-                UpdateQuestionType_Answer(selectedDifficulty, questionsToUpdate);
                 try
                 {
+                    _context.Update(questions);
                     await _context.SaveChangesAsync();
                 }
-                catch (DbUpdateException /* ex */)
+                catch (DbUpdateConcurrencyException)
                 {
-                    //Log the error (uncomment ex variable name and write a log.)
-                    ModelState.AddModelError("", "Unable to save changes. " +
-                        "Try again, and if the problem persists, " +
-                        "see your system administrator.");
+                    if (!QuestionsExists(questions.QuestionsID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index");
             }
-            UpdateQuestionType_Answer(selectedDifficulty, questionsToUpdate);
-            PopulateAssignedDifficultyData(questionsToUpdate);
-            return View(questionsToUpdate);
+            return View(questions);
         }
 
 

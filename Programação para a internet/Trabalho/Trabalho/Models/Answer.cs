@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,6 +11,8 @@ namespace Trabalho.Models
     {
 
         public int AnswerID { get; set; }
+        [Required(ErrorMessage = "Por favor indroduza uma resposta!")]
+        [RegularExpression(@"([A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ\s]+)", ErrorMessage = "Resposta Inválida")]
         public string PossibleAnswer { get; set; }
 
 

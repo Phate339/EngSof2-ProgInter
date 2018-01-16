@@ -10,8 +10,10 @@ namespace Trabalho.Models
     {
 
         public int QuestionsID { get; set; }
+        [Required(ErrorMessage = "Por favor indroduza uma pergunta!")]
         public string QuestionsToClient { get; set; }
-        [Required(ErrorMessage = "Please select Yes or No")]
+
+        [Required(ErrorMessage = "Ative ou Desative a pergunta!")]
         public bool QuestionsState { get; set; }
 
         public List<Answer> Answer { get; set; }
