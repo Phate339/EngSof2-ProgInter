@@ -10959,11 +10959,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\jelfr\\Desktop\\Backup\\TrabalhoComLoginsEPaginasAtualizadas\\Trabalho\\Trabalho\\Trabalho.csproj",
+      "projectUniqueName": "C:\\Users\\jelfr\\Documents\\GitHub\\EngSof2-ProgInter\\Programação para a internet\\Trabalho\\Trabalho\\Trabalho.csproj",
       "projectName": "Trabalho",
-      "projectPath": "C:\\Users\\jelfr\\Desktop\\Backup\\TrabalhoComLoginsEPaginasAtualizadas\\Trabalho\\Trabalho\\Trabalho.csproj",
+      "projectPath": "C:\\Users\\jelfr\\Documents\\GitHub\\EngSof2-ProgInter\\Programação para a internet\\Trabalho\\Trabalho\\Trabalho.csproj",
       "packagesPath": "C:\\Users\\jelfr\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jelfr\\Desktop\\Backup\\TrabalhoComLoginsEPaginasAtualizadas\\Trabalho\\Trabalho\\obj\\",
+      "outputPath": "C:\\Users\\jelfr\\Documents\\GitHub\\EngSof2-ProgInter\\Programação para a internet\\Trabalho\\Trabalho\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\jelfr\\AppData\\Roaming\\NuGet\\NuGet.Config",

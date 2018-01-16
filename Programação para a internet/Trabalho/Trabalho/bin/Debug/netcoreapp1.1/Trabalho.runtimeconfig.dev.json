@@ -1,8 +1,7 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "C:\\Users\\jelfr\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\jelfr\\.nuget\\packages"
+      "C:\\Users\\ASUS\\.nuget\\packages"
     ]
   }
 }
