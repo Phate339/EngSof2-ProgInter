@@ -21,12 +21,11 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.SurveyNumber)
+                @Html.DisplayFor(modelItem => item.Answer.Questions.QuestionsToClient)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.AnswerDate)
+                @Html.DisplayFor(modelItem => item.Answer.PossibleAnswer)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TuristAnswerState)
@@ -42,7 +41,7 @@
                 <a asp-action="Details" asp-route-id="@item.TuristAnswerID">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.TuristAnswerID">Delete</a>
             </td>
-        </tr>
+        
 }
     </tbody>
 </table>
