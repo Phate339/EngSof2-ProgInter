@@ -7,21 +7,20 @@
 <h2>Eliminar Inquerito</h2>
 <h3>Tem a certeza que pretende eliminar este inquerito?</h3>
 <hr />
-<div>
+<div >
     <input type="hidden" asp-for="QuestionsID" />
-    <dl class="dl-horizontal">
-        <dt>
-            <h5>Pergunta</h5>
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.QuestionsToClient)
-        </dd>
-    </dl>
-    
     <form asp-action="Delete">
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            <a asp-action="Index">Back to List</a>
+            <input type="submit" value="Eliminar" class="btn btn-more" /> 
+      
+            <a asp-action="Index"class="btn btn-more" >
+            <i class="fa fa-arrow-left">
+</i>Voltar
+            
+            </a>
+          
         </div>
     </form>
 </div>
+<div id="fillbackground">
+    </div>

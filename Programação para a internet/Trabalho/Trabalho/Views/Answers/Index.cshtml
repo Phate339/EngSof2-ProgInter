@@ -4,23 +4,21 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<h2>Lista de Respostas e de Dificuldades associadas aos Inqueritos</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
+            <th>
+                <h6>Pergunta</h6>
+            </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.PossibleAnswer)
+                    <h6>Resposta</h6>
                 </th>
             <th>
-                @Html.DisplayNameFor(model => model.Difficulty)
+                <h6>Dificuldade</h6>
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Questions)
-            </th>
+         
             <th></th>
         </tr>
     </thead>
@@ -28,20 +26,38 @@
 @foreach (var item in Model) {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.Questions.QuestionsToClient)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.PossibleAnswer)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Difficulty.DifficultyID)
+                @Html.DisplayFor(modelItem => item.Difficulty.DifficultyName)
             </td>
+          
             <td>
-                @Html.DisplayFor(modelItem => item.Questions.QuestionsID)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.AnswerID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.AnswerID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.AnswerID">Delete</a>
+                <!--
+                <a asp-action="Edit" asp-route-id="@item.AnswerID" class="btn btn-more">  Editar
+<i class="glyphicon glyphicon-edit">
+
+</i></a> |
+                    -->
+                <a asp-action="Delete" asp-route-id="@item.AnswerID"class="btn btn-more">     Eliminar
+<i class="fa fa-arrows-alt">
+
+
+</i></a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+
+<a asp-controller="Questions" asp-action="Index" class="btn btn-more">
+    <i class="fa fa-arrow-left">
+    </i>Voltar para a Pagina Principal dos Inqueritos
+
+</a>
+
+<div id="fillbackground">
+</div>
