@@ -97,17 +97,20 @@ namespace Trabalho.Migrations
 
                     b.Property<DateTime>("Birthday");
 
-                    b.Property<string>("Email");
+                    b.Property<string>("Email")
+                        .IsRequired();
 
                     b.Property<int>("EmergencyContact");
 
-                    b.Property<bool?>("Genre");
+                    b.Property<string>("Genre")
+                        .IsRequired();
 
                     b.Property<int>("NIF");
 
                     b.Property<int>("Phone");
 
-                    b.Property<string>("TuristName");
+                    b.Property<string>("TuristName")
+                        .IsRequired();
 
                     b.Property<bool?>("TuristState");
 

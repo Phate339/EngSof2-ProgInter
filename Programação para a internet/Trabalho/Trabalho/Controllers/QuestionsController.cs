@@ -102,13 +102,15 @@ namespace Trabalho.Controllers
             });
             Select_YN.Add(new SelectListItem
             {
-                Text = "Desativar",
-                Value = bool.FalseString
+
+                Text = "Ativar",
+                Value = bool.TrueString
+          
             });
             Select_YN.Add(new SelectListItem
             {
-                Text = "Ativar",
-                Value = bool.TrueString
+                Text = "Desativar",
+                Value = bool.FalseString
             });
             ViewData["Select_YN"] = Select_YN;
         }

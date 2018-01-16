@@ -75,7 +75,7 @@ namespace Trabalho.Models
                     {
                         TuristName = " João",
                         Phone = 963123456,
-                        Genre = true,
+                        Genre = "Masculino",
                         Birthday = DateTime.Parse("01-09-1996"),
                         NIF = 313212454,
                         Email = "joao@gmail.com",
@@ -87,7 +87,7 @@ namespace Trabalho.Models
                    {
                        TuristName = "Luis",
                        Phone = 963124356,
-                       Genre = true,
+                       Genre = "Masculino",
                        Birthday = DateTime.Parse("01-09-1991"),
                        NIF = 313212431,
                        Email = "luis@gmail.com",
@@ -99,7 +99,7 @@ namespace Trabalho.Models
                      {
                          TuristName = "André",
                          Phone = 963112156,
-                         Genre = true,
+                         Genre = "Masculino",
                          Birthday = DateTime.Parse("01-09-1995"),
                          NIF = 313666431,
                          Email = "andre@gmail.com",

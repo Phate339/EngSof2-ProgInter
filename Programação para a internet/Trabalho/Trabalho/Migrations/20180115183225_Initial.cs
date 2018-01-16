@@ -43,12 +43,12 @@ namespace Trabalho.Migrations
                     TuristID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Birthday = table.Column<DateTime>(nullable: false),
-                    Email = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: false),
                     EmergencyContact = table.Column<int>(nullable: false),
-                    Genre = table.Column<bool>(nullable: true),
+                    Genre = table.Column<string>(nullable: false),
                     NIF = table.Column<int>(nullable: false),
                     Phone = table.Column<int>(nullable: false),
-                    TuristName = table.Column<string>(nullable: true),
+                    TuristName = table.Column<string>(nullable: false),
                     TuristState = table.Column<bool>(nullable: true)
                 },
                 constraints: table =>
