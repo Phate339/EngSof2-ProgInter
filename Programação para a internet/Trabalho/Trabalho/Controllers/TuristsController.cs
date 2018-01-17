@@ -19,9 +19,19 @@ namespace Trabalho.Controllers
         }
 
         // GET: Turists
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-            return View(await _context.Turist.ToListAsync());
+
+            ViewData["CurrentFilter"] = searchString;
+            var turist = from s in _context.Turist
+                          select s;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                turist = turist.Where(s => s.TuristName.Contains(searchString) || s.Email.Contains(searchString));
+            }
+
+            return View(await turist.AsNoTracking().ToListAsync());
         }
 
         // GET: Turists/Details/5
