@@ -68,6 +68,17 @@
     </div>
     <hr />
     <div class="form-group">
+        <label asp-for="TypeTurist" class="col-md-2 control-label">Tipo de Utilizador</label>
+        <div class="col-md-10">
+            <select asp-for="TypeTurist" class="form-control" name="TypeTurist">
+                <option value="Admin">Admin</option>
+                <option value="Professor">Professor</option>
+                <option value="Turista">Turista</option>
+            </select>
+        </div>
+    </div>
+    <hr />
+    <div class="form-group">
         <label asp-for="Password" class="col-md-2 control-label"></label>
         <div class="col-md-10">
             <input asp-for="Password" class="form-control" />

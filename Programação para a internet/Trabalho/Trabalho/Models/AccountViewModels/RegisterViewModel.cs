@@ -15,7 +15,7 @@ namespace Trabalho.Models.AccountViewModels
 
         [RegularExpression(@"(2\d{8})|(9[1236]\d{7})", ErrorMessage = "Contacto Inválido")]
         [Required(ErrorMessage = "Por favor indroduza o contacto")]
-        public int Phone { get; set; }
+        public string Phone { get; set; }
 
         [Required(ErrorMessage = "Tem de seleccionar o genero")]
         public string Genre { get; set; }
@@ -35,7 +35,7 @@ namespace Trabalho.Models.AccountViewModels
 
         [RegularExpression(@"(2\d{8})|(9[1236]\d{7})", ErrorMessage = "Contacto Inválido")]
         [Required(ErrorMessage = "Por favor indroduza o contacto de emergencia")]
-        public int EmergencyContact { get; set; }
+        public string EmergencyContact { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
@@ -48,6 +48,8 @@ namespace Trabalho.Models.AccountViewModels
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
+        public string TypeTurist { get; set; }
         public Boolean? TuristState { get; set; }
+
     }
 }

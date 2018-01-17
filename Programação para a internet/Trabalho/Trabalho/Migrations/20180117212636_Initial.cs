@@ -29,7 +29,7 @@ namespace Trabalho.Migrations
                     QuestionsID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     QuestionsState = table.Column<bool>(nullable: false),
-                    QuestionsToClient = table.Column<string>(nullable: true)
+                    QuestionsToClient = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -44,12 +44,13 @@ namespace Trabalho.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Birthday = table.Column<DateTime>(nullable: false),
                     Email = table.Column<string>(nullable: false),
-                    EmergencyContact = table.Column<int>(nullable: false),
+                    EmergencyContact = table.Column<string>(nullable: false),
                     Genre = table.Column<string>(nullable: false),
                     NIF = table.Column<int>(nullable: false),
-                    Phone = table.Column<int>(nullable: false),
+                    Phone = table.Column<string>(nullable: false),
                     TuristName = table.Column<string>(nullable: false),
-                    TuristState = table.Column<bool>(nullable: true)
+                    TuristState = table.Column<bool>(nullable: true),
+                    TypeTurist = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -89,7 +90,7 @@ namespace Trabalho.Migrations
                     AnswerID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     DifficultyID = table.Column<int>(nullable: false),
-                    PossibleAnswer = table.Column<string>(nullable: true),
+                    PossibleAnswer = table.Column<string>(nullable: false),
                     QuestionsID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>

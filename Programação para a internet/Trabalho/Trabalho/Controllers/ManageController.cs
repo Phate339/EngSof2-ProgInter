@@ -10,6 +10,7 @@ using Microsoft.Extensions.Options;
 using Trabalho.Models;
 using Trabalho.Models.ManageViewModels;
 using Trabalho.Services;
+using Microsoft.EntityFrameworkCore;
 
 namespace Trabalho.Controllers
 {
@@ -29,7 +30,8 @@ namespace Trabalho.Controllers
           IOptions<IdentityCookieOptions> identityCookieOptions,
           IEmailSender emailSender,
           ISmsSender smsSender,
-          ILoggerFactory loggerFactory)
+          ILoggerFactory loggerFactory,
+             TrabalhoDbContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -42,7 +44,6 @@ namespace Trabalho.Controllers
         //
         // GET: /Manage/Index
 
-        public string StatusMessage { get; set; }
 
         [HttpGet]
         public async Task<IActionResult> Index()
@@ -56,13 +57,18 @@ namespace Trabalho.Controllers
             var model = new IndexViewModel
             {
                 
+                TuristName = user.UserName,
                 Email = user.Email,
-  
-                StatusMessage = StatusMessage
+                Phone = user.PhoneNumber,
+                EmergencyContact = user.PhoneNumber
+                
+           
             };
 
             return View(model);
         }
+
+   
 
         //
         // POST: /Manage/RemoveLogin
@@ -335,7 +341,7 @@ namespace Trabalho.Controllers
             }
             return RedirectToAction(nameof(ManageLogins), new { Message = message });
         }
-
+       
         #region Helpers
 
         private void AddErrors(IdentityResult result)

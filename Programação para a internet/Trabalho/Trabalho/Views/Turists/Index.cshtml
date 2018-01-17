@@ -11,7 +11,7 @@
     <div class="form-actions no-color">
         <p>
             Procurar por Nome ou Email: <input type="text" name="SearchString" value="@ViewData["currentFilter"]" />
-            <input type="submit" value="Procurar" class="btn btn-more" /> 
+            <input type="submit" value="Procurar" class="btn btn-more" />
             <div>
                 <a asp-action="Index" class="btn btn-more">
                     <i class="fa fa-hand-o-down">
@@ -26,129 +26,122 @@
 <table class="table">
     <thead>
         <tr>
-                <th>
-                   Nome
-                </th>
-                <th>
-                    Telemovel
-                </th>
-                <th>
-                    Genero
-                </th>
-                <th>
-                   Data de Nascimento
-                </th>
-                <th>
-                  NIF
-                </th>
-                <th>
-                   Email
-                </th>
-                <th>
-                    Contacto de Emergencia
-                </th>
-                <th>
-                    Estado do Utilizador
-                </th>
+            <th>
+                Nome
+            </th>
+            <th>
+                Telemovel
+            </th>
+            <th>
+                Genero
+            </th>
+            <th>
+                Data de Nascimento
+            </th>
+            <th>
+                NIF
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Contacto de Emergencia
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model)
-{
-    @if (item.TuristState == true)
-    {
-        <tr class="alert alert-success">
-            <td>
-                @Html.DisplayFor(modelItem => item.TuristName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Phone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Genre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Birthday)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NIF)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EmergencyContact)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TuristState)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.TuristID" class="btn btn-more">
-                    Editar
-                    <i class="glyphicon glyphicon-edit">
-                    </i>
-                </a>
-                <a asp-action="Delete" asp-route-id="@item.TuristID" class="btn btn-more">
-                    Eliminar
-                    <i class="fa fa-arrows-alt">
-                    </i>
-                </a>
+        @foreach (var item in Model)
+        {
+            @if (item.TuristState == true)
+            {
+                <tr class="alert alert-success">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TuristName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Phone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Genre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Birthday)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NIF)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmergencyContact)
+                    </td>
+            
+          
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.TuristID" class="btn btn-more">
+                            Editar
+                            <i class="glyphicon glyphicon-edit">
+                            </i>
+                        </a>
+                        <a asp-action="Delete" asp-route-id="@item.TuristID" class="btn btn-more">
+                            Eliminar
+                            <i class="fa fa-arrows-alt">
+                            </i>
+                        </a>
 
 
-            </td>
-        </tr>
-    }
-    else
-    {
-        <tr class="alert alert-danger">
-            <td>
-                @Html.DisplayFor(modelItem => item.TuristName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Phone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Genre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Birthday)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NIF)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EmergencyContact)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TuristState)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.TuristID" class="btn btn-more">
-                    Editar
-                    <i class="glyphicon glyphicon-edit">
+                    </td>
+                </tr>
+            }
+            else
+            {
+                <tr class="alert alert-danger">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TuristName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Phone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Genre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Birthday)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NIF)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmergencyContact)
+                    </td>
+           
+             
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.TuristID" class="btn btn-more">
+                            Editar
+                            <i class="glyphicon glyphicon-edit">
 
-                    </i>
-                </a>
-                <a asp-action="Delete" asp-route-id="@item.TuristID" class="btn btn-more">
-                    Eliminar
-                    <i class="fa fa-arrows-alt">
-
-
-                    </i>
-                </a>
+                            </i>
+                        </a>
+                        <a asp-action="Delete" asp-route-id="@item.TuristID" class="btn btn-more">
+                            Eliminar
+                            <i class="fa fa-arrows-alt">
 
 
-            </td>
-        </tr>
-    }
-}
+                            </i>
+                        </a>
+
+
+                    </td>
+                </tr>
+            }
+        }
     </tbody>
 </table>
 <div id="fillbackground">
 </div>
-
-

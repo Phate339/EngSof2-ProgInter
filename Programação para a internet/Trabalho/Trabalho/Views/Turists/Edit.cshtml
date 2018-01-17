@@ -10,7 +10,7 @@
 <form asp-action="Edit" class="alert alert-info">
     <div class="form-horizontal">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <input type="hidden" asp-for="TuristID" />
+        <input type="hidden" asp-for="TuristID" />
         <div class="form-group">
             <label asp-for="TuristName" class="col-md-2 control-label">Nome</label>
             <div class="col-md-10">
@@ -68,16 +68,6 @@
                 <span asp-validation-for="EmergencyContact" class="text-danger"></span>
             </div>
         </div>
-        <hr />
-        <div class="form-group">
-            <label asp-for="TuristState" class="col-md-2 control-label">Estado de Utilizador</label>
-            <div class="col-md-10">
-                <select asp-for="TuristState" class="form-control" name="TuristState">
-                    <option value="True">True</option>
-                    <option value="False">False</option>
-                </select>
-            </div>
-        </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Guardar" class="btn btn-more" />
@@ -95,3 +85,4 @@
 </div>
 <div id="fillbackground">
 </div>
+
