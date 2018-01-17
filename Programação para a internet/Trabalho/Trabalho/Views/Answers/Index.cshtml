@@ -1,0 +1,76 @@
+@model IEnumerable<Trabalho.Models.Answer>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Lista de Respostas e de Dificuldades associadas aos Inqueritos</h2>
+<hr />
+
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Procurar Resposta: <input type="text" name="SearchString" value="@ViewData["currentFilter"]" />
+            <input type="submit" value="Search" class="btn btn-more" /> |
+            <div>
+                <a asp-action="Index" class="btn btn-more">
+                    <i class="fa fa-hand-o-down">
+                    </i>Lista inteira de Respostas
+                </a>
+
+            </div>
+        </p>
+    </div>
+</form>
+<hr />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Pergunta
+            </th>
+            <th>
+                    Resposta
+             </th>
+            <th>
+                Dificuldade
+            </th>
+         
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Questions.QuestionsToClient)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PossibleAnswer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Difficulty.DifficultyName)
+            </td>
+          
+            <td>
+
+                <a asp-action="Delete" asp-route-id="@item.AnswerID"class="btn btn-more">     Eliminar
+<i class="fa fa-arrows-alt">
+
+
+</i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<a asp-controller="Questions" asp-action="Index" class="btn btn-more">
+    <i class="fa fa-arrow-left">
+    </i>Voltar para a Pagina Principal dos Inqueritos
+
+</a>
+
+<div id="fillbackground">
+</div>

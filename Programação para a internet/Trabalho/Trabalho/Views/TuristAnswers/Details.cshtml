@@ -1,0 +1,48 @@
+@model Trabalho.Models.TuristAnswer
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TuristAnswer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SurveyNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SurveyNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AnswerDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AnswerDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TuristAnswerState)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TuristAnswerState)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Answer)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Answer.AnswerID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Turist)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Turist.Email)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.TuristAnswerID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

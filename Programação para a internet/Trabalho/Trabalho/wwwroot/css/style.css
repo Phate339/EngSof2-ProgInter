@@ -1561,11 +1561,11 @@ a:hover {
   background-image: url(../img/backgrounds/city.png);
 }
 .metro {
-    padding-right: 50px;
-    background-image: url(../img/backgrounds/fundolayout.jpg);
+    padding-right:50px;
+  background-image: url(../img/backgrounds/fundolayout.jpg);
 }
 .estrela {
-    background-image: url(../img/backgrounds/fundofinal.png);
+    background-image: url(../img/backgrounds/fundolayout.jpg);
 }
 a.btn-hh-trigger {
     display: block;

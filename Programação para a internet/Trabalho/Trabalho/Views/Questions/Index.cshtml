@@ -6,9 +6,14 @@
 
 <div>
     <a asp-action="Create" class="btn btn-more large">
-    Criar Pergunta
+    Criar Inquerito
     <i class="fa fa-plus"></i>
     </a>
+        <a asp-controller="Answers" asp-action="Create" class="btn btn-more large">
+            Adicionar Resposta
+            <i class="fa fa-plus"></i>
+        </a>
+ 
 </div>
 <hr />
 @foreach (var item in Model)
@@ -45,10 +50,9 @@
                                
 
                             </ul>
-
                             <div class="pull-right">
-                                <a asp-controller="Answers" asp-action="Create"  asp-route-id="@item.QuestionsID" class="btn btn-more">
-                                    Adicionar Resposta
+                                <a asp-controller="Answers" asp-action="Index" class="btn btn-more">
+                                    Remover Resposta
                                     <i class="fa fa-plus"></i>
                                 </a>
 
@@ -120,8 +124,8 @@
 
                                 </ul>
                                 <div class="pull-right">
-                                    <a asp-controller="Answers" asp-action="Create" asp-route-id="@item.QuestionsID"  class="btn btn-more">
-                                        Adicionar Resposta
+                                    <a asp-controller="Answers" asp-action="Index" class="btn btn-more">
+                                        Remover Resposta
                                         <i class="fa fa-plus"></i>
                                     </a>
 

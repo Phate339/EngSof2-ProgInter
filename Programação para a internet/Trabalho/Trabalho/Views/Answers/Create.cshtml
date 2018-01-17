@@ -1,0 +1,50 @@
+@model Trabalho.Models.Answer
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Criar Resposta</h2>
+<p>
+    <a asp-controller="Answers" asp-action="Index" class="btn btn-more">Lista de Respostas Possiveis</a> 
+</p>
+<hr />
+<form asp-action="Create">
+    <div class="form-horizontal">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="PossibleAnswer" class="col-md-2 control-label">Resposta</label>
+            <div class="col-md-10">
+                <input asp-for="PossibleAnswer" class="form-control" />
+                <span asp-validation-for="PossibleAnswer" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="QuestionsID" class="col-md-2 control-label">Pergunta</label>
+            <div class="col-md-10">
+                <select asp-for="QuestionsID" class="form-control" asp-items="ViewBag.QuestionsID"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="DifficultyID" class="col-md-2 control-label">Dificuldade</label>
+            <div class="col-md-10">
+                <select asp-for="DifficultyID" class="form-control" asp-items="ViewBag.DifficultyID"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Criar" class="btn btn-more" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-controller="Questions" asp-action="Index" class="btn btn-more">
+        <i class="fa fa-arrow-left">
+        </i>Voltar
+    </a>
+
+</div>
+<div id="fillbackground">
+</div>

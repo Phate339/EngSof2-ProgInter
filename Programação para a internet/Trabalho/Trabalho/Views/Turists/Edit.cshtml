@@ -1,0 +1,97 @@
+@model Trabalho.Models.Turist
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Editar Utilizador</h2>
+<hr />
+
+<form asp-action="Edit" class="alert alert-info">
+    <div class="form-horizontal">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="TuristID" />
+        <div class="form-group">
+            <label asp-for="TuristName" class="col-md-2 control-label">Nome</label>
+            <div class="col-md-10">
+                <input asp-for="TuristName" class="form-control" />
+                <span asp-validation-for="TuristName" class="text-danger"></span>
+            </div>
+        </div>
+        <hr />
+        <div class="form-group">
+            <label asp-for="Phone" class="col-md-2 control-label">Telemovel</label>
+            <div class="col-md-10">
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+        </div>
+        <hr />
+        <div class="form-group">
+            <label asp-for="Genre" class="col-md-2 control-label">Genero</label>
+            <div class="col-md-10">
+                <select asp-for="Genre" class="form-control" name="Genre">
+                    <option value="Masculino">Masculino</option>
+                    <option value="Feminino">Feminino</option>
+                </select>
+            </div>
+        </div>
+        <hr />
+        <div class="form-group">
+            <label asp-for="Birthday" class="col-md-2 control-label">Data de Nascimento</label>
+            <div class="col-md-10">
+                <input asp-for="Birthday" class="form-control" />
+                <span asp-validation-for="Birthday" class="text-danger"></span>
+            </div>
+        </div>
+        <hr />
+        <div class="form-group">
+            <label asp-for="NIF" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="NIF" class="form-control" />
+                <span asp-validation-for="NIF" class="text-danger"></span>
+            </div>
+        </div>
+        <hr />
+        <div class="form-group">
+            <label asp-for="Email" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+        </div>
+        <hr />
+        <div class="form-group">
+            <label asp-for="EmergencyContact" class="col-md-2 control-label">Contacto De Emergencia</label>
+            <div class="col-md-10">
+                <input asp-for="EmergencyContact" class="form-control" />
+                <span asp-validation-for="EmergencyContact" class="text-danger"></span>
+            </div>
+        </div>
+        <hr />
+        <div class="form-group">
+            <label asp-for="TuristState" class="col-md-2 control-label">Estado de Utilizador</label>
+            <div class="col-md-10">
+                <select asp-for="TuristState" class="form-control" name="TuristState">
+                    <option value="True">True</option>
+                    <option value="False">False</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Guardar" class="btn btn-more" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index" class="btn btn-more">
+        <i class="fa fa-arrow-left">
+        </i>Voltar para a lista de Utilizadores
+    </a>
+
+</div>
+<div id="fillbackground">
+</div>

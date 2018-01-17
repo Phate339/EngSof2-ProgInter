@@ -79,7 +79,7 @@ namespace Trabalho.Controllers
                 var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation(1, "User logged in.");
+                    _logger.LogInformation(1, "Login com sucesso!");
                     return RedirectToLocal(returnUrl);
                 }
                 if (result.RequiresTwoFactor)
@@ -93,7 +93,7 @@ namespace Trabalho.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    ModelState.AddModelError(string.Empty, "Login Invalido!");
                     return View(model);
                 }
             }
@@ -131,7 +131,8 @@ namespace Trabalho.Controllers
                     NIF = model.NIF,
                     Genre = model.Genre,
                     Birthday=model.Birthday,
-                    EmergencyContact = model.EmergencyContact
+                    EmergencyContact = model.EmergencyContact,
+                    TuristState = true
                 };
 
                 var result = await _userManager.CreateAsync(user, model.Password);

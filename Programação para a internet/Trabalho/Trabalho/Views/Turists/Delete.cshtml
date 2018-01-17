@@ -1,0 +1,26 @@
+@model Trabalho.Models.Turist
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Eliminar Utilizador</h2>
+<h3>Tem a certeza que pretende eliminar este utilizador?</h3>
+<hr />
+<div>
+    <input type="hidden" asp-for="TuristID" />
+    <form asp-action="Delete">
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-more" />
+
+            <a asp-action="Index" class="btn btn-more">
+                <i class="fa fa-arrow-left">
+                </i>Voltar
+
+            </a>
+
+        </div>
+    </form>
+</div>
+<div id="fillbackground">
+</div>
