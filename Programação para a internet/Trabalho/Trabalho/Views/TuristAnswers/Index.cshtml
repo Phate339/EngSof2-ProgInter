@@ -42,11 +42,58 @@
         </tbody>
     </table>
 
+@{
+    int dificuldade1 = 0;
+    int dificuldade2 = 0;
+    int dificuldade3 = 0;
+
+    foreach (var item in Model)
+    {
+        if (item.Answer.DifficultyID == 1)
+        {
+            dificuldade1++;
+
+        }
+        else if (item.Answer.DifficultyID == 2)
+        {
+            dificuldade2++;
+
+        }
+        else
+        {
+            dificuldade3++;
+
+        }
+
+    }
+}
 <form asp-action="DeleteConfirmed">
     <button type="submit" name="id" value="2" class="btn btn-default" asp-action="Delete">Cancelar</button>
   </form>
-<form asp-action="Edit">
-    <input type="submit" name="Mostrar trilho" value="Mostrar trilho" class="btn btn-default" />
+
+@if ((dificuldade1 > dificuldade2) && (dificuldade1 > dificuldade3))
+{
+    <form asp-action="ShowTrails">
+        <button type="submit" name="dificuldade" value="1" class="btn btn-default" asp-action="ShowTrails">Mostrar trilho mais adequado com as suas respostas</button>
+        
     </form>
+
+}
+else if ((dificuldade2 > dificuldade1) && (dificuldade2 > dificuldade3))
+{
+    <form asp-action="ShowTrails">
+        <button type="submit" name="dificuldade" value="2" class="btn btn-default" asp-action="ShowTrails">Mostrar trilho mais adequado com as suas respostas</button>
+        
+    </form>
+
+}
+else if ((dificuldade3 > dificuldade1) && (dificuldade3 > dificuldade2))
+{
+    <form asp-action="ShowTrails">
+        <button type="submit" name="dificuldade" value="3" class="btn btn-default" asp-action="ShowTrails">Mostrar trilho mais adequado com as suas respostas</button>
+        
+    </form>
+
+}
     <div id="fillbackground">
     </div>

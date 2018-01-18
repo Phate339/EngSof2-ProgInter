@@ -29,7 +29,7 @@ namespace Trabalho.Controllers
         // GET: TuristAnswers/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
+            /*if (id == null)
             {
                 return NotFound();
             }
@@ -41,37 +41,55 @@ namespace Trabalho.Controllers
             if (turistAnswer == null)
             {
                 return NotFound();
-            }
-
-            return View(turistAnswer);
+            }*/
+            var trabalhoDbContext = _context.TuristAnswer.Where(t => t.TuristID == 2).Include(t => t.Answer).ThenInclude(y => y.Questions);
+            return View(await trabalhoDbContext.ToListAsync());
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ShowTrails(int dificuldade)
+        {
+            var trabalhoDbContext = _context.Trails.Where(d=>d.DifficultyID==dificuldade);
+
+            return View(await trabalhoDbContext.ToListAsync());
+        }
         // GET: TuristAnswers/Create
         public async Task<IActionResult> Create(string sortOrder, string currentFilter, string searchString, int? page)
         {
             /* ViewData["AnswerID"] = new SelectList(_context.Answer, "AnswerID", "AnswerID");
               ViewData["TuristID"] = new SelectList(_context.Turist, "TuristID", "TuristID");
               return View();*/
-            ViewData["CurrentSort"] = sortOrder;
 
-            if (searchString != null)
+            var confirma = _context.TuristAnswer.Where(t=>t.TuristID==2);
+            if (confirma.Count() == 0)
             {
-                page = 1;
+                ViewData["CurrentSort"] = sortOrder;
+
+                if (searchString != null)
+                {
+                    page = 1;
+                }
+                else
+                {
+                    searchString = currentFilter;
+                }
+
+                // var listofdata = from z in _context.TuristAnswer.Where(q => q.Answer.Questions.QuestionsState == true).Include(t => t.Answer).ThenInclude(q => q.Questions).ThenInclude(a => a.Answer).ThenInclude(d => d.Difficulty)
+                //      select z;
+
+                var lista = from z in _context.Questions.Where(q => q.QuestionsState == true).Include(a => a.Answer) select z;
+
+
+                int pageSize = 1;
+
+                return View(await PaginatedList<Questions>.CreateAsync(lista.AsNoTracking(), page ?? 1, pageSize));
             }
             else
             {
-                searchString = currentFilter;
+
+                return RedirectToAction("Details");
             }
-
-            // var listofdata = from z in _context.TuristAnswer.Where(q => q.Answer.Questions.QuestionsState == true).Include(t => t.Answer).ThenInclude(q => q.Questions).ThenInclude(a => a.Answer).ThenInclude(d => d.Difficulty)
-            //      select z;
-
-            var lista = from z in _context.Questions.Where(q => q.QuestionsState == true).Include(a => a.Answer) select z;
-
-
-            int pageSize = 1;
-
-            return View(await PaginatedList<Questions>.CreateAsync(lista.AsNoTracking(), page ?? 1, pageSize)); 
         }
 
         // POST: TuristAnswers/Create
@@ -121,7 +139,7 @@ namespace Trabalho.Controllers
             }
             if (concluir)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Details");
             }
             else
             {
@@ -221,7 +239,8 @@ namespace Trabalho.Controllers
             
             
             await _context.SaveChangesAsync();
-            return RedirectToAction("Index");
+            
+            return RedirectToAction("Details");
         }
 
         private bool TuristAnswerExists(int id)

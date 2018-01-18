@@ -6,6 +6,7 @@
     ViewData["Title"] = "Create";
 }
 
+{
 <h2>Questionario</h2>
 
 <form asp-action="Create">
@@ -57,7 +58,7 @@
 
                             <td><p>          </p></td>
                             @foreach (var item2 in item.Answer)
-                {
+                            {
                                 <td></td>
                                 <td>
                                     <input type="radio" name="AnswerID" value=@item2.AnswerID />
@@ -74,10 +75,12 @@
         </form>
 
 
-        @{
+        @{ 
             var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
             var nextDisabled = !Model.HasNextPage ? "disabled" : "";
         }
+            
+        
 
         <!--<a asp-action="Create"
            asp-route-page="(Model.PageIndex + 1)"
@@ -89,7 +92,7 @@
         {
 
 
-            
+
             <button type="submit" name="Concluir" value="true" class="btn btn-default">Concluir</button>
         }
         else
@@ -98,6 +101,7 @@
 
         }
 
+         
 
         <!--asp-route-sortOrder="ViewData["CurrentSort"]"
         asp-route-currentFilter="ViewData["CurrentFilter"]"-->

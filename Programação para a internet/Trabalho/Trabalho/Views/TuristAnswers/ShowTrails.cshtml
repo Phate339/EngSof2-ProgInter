@@ -1,0 +1,17 @@
+@model IEnumerable<Trabalho.Models.Trails>
+
+@{
+    ViewData["Title"] = "ShowTrails";
+}
+@foreach (var item in Model)
+{
+<h2>@Html.DisplayFor(modelItem => item.TrailsName)</h2>
+}
+
+
+@foreach (var item in Model)
+{
+    <label>O trilho @Html.DisplayFor(modelItem => item.TrailsName) trata-se de @Html.DisplayFor(modelItem => item.Description) aberto em @Html.DisplayFor(modelItem => item.InitialDate) com a sua ultima</label>
+    <label>manutencao em @Html.DisplayFor(modelItem => item.TrailsStateDate) com uma distancia de @Html.DisplayFor(modelItem => item.Distance)km </label>
+}
+

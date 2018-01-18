@@ -1,48 +1,112 @@
-@model Trabalho.Models.TuristAnswer
+@model IEnumerable<Trabalho.Models.TuristAnswer>
 
 @{
     ViewData["Title"] = "Details";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>TuristAnswer</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.SurveyNumber)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.SurveyNumber)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.AnswerDate)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.AnswerDate)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.TuristAnswerState)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.TuristAnswerState)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Answer)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Answer.AnswerID)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Turist)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Turist.Email)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.TuristAnswerID">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+
+    @if (Model.Count() != 0)
+    {
+
+
+    
+<h2>As suas respostas</h2>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Pergunta
+            </th>
+            <th>
+                Resposta selecionada
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+        <td>@Html.DisplayFor(modelItem => item.Answer.Questions.QuestionsToClient)</td>
+
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Answer.PossibleAnswer)
+        </td>
+
+            <tr></tr>
+
+            <!--<td>
+                <a asp-action="Edit" asp-route-id="item.TuristAnswerID">Edit</a> |
+                <a asp-action="Details" asp-route-id="item.TuristAnswerID">Details</a> |
+                <a asp-action="Delete" asp-route-id="item.TuristAnswerID">Delete</a>
+            </td>-->
+
+        }
+        </tbody>
+    </table>
+
+ 
+    int dificuldade1 = 0;
+    int dificuldade2 = 0;
+    int dificuldade3 = 0;
+
+    @foreach (var item in Model)
+    {
+        if (item.Answer.DifficultyID == 1)
+        {
+            dificuldade1++;
+
+        }else if (item.Answer.DifficultyID == 2)
+        {
+            dificuldade2++;
+
+        }
+        else
+        {
+            dificuldade3++;
+
+        }
+
+    }
+
+    <form asp-action="DeleteConfirmed">
+        <button type="submit" name="id" value="2" class="btn btn-default" asp-action="Delete">Apagar as suas respostas</button>
+    </form>
+
+@if ((dificuldade1 > dificuldade2) && (dificuldade1 > dificuldade3))
+{
+    <form asp-action="ShowTrails">
+        <button type="submit" name="dificuldade" value="1" class="btn btn-default" asp-action ="ShowTrails">Mostrar trilho mais adequado com as suas respostas</button>
+        
+    </form>
+
+}else if ((dificuldade2 > dificuldade1) && (dificuldade2 > dificuldade3))
+{
+    <form asp-action="ShowTrails">
+        <button type="submit" name="dificuldade" value="2" class="btn btn-default" asp-action="ShowTrails">Mostrar trilho mais adequado com as suas respostas</button>
+        
+    </form>
+
+}else if ((dificuldade3 > dificuldade1) && (dificuldade3 > dificuldade2))
+{
+    <form asp-action="ShowTrails">
+        <button type="submit" name="dificuldade" value="3" class="btn btn-default" asp-action="ShowTrails">Mostrar trilho mais adequado com as suas respostas</button>
+        
+    </form>
+
+}
+        }
+        else
+        {
+            <label>Não tem de momento nenhuma resposta guardada por favor <a asp-area="" asp-controller="TuristAnswers" asp-action="Create">clique aqui></a> para responder ao nosso questionário ou clique na opcao de responder questionario do menu</label>
+
+        }
+
+    
+    
+    <div id="fillbackground">
+    </div>
