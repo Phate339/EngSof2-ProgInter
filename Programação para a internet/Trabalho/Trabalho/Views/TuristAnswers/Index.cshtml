@@ -10,33 +10,43 @@
 <table class="table">
     <thead>
         <tr>
-                <th>
-                   Pergunta
-                </th>
+            <th>
+                Pergunta
+            </th>
             <th>
                 Resposta selecionada
-            </th>               
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-            <td>
-                @Html.DisplayFor(modelItem => item.Answer.Questions.QuestionsToClient)
-            </td>
+
+        @foreach (var item in Model)
+        {
+        <td>@Html.DisplayFor(modelItem => item.Answer.Questions.QuestionsToClient)</td>
+
+
             <td>
                 @Html.DisplayFor(modelItem => item.Answer.PossibleAnswer)
             </td>
-            
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.TuristAnswerID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.TuristAnswerID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.TuristAnswerID">Delete</a>
-            </td>
-        
-}
-    </tbody>
-</table>
 
-<div id="fillbackground">
-</div>
+            <tr></tr>
+
+            <!--<td>
+                <a asp-action="Edit" asp-route-id="item.TuristAnswerID">Edit</a> |
+                <a asp-action="Details" asp-route-id="item.TuristAnswerID">Details</a> |
+                <a asp-action="Delete" asp-route-id="item.TuristAnswerID">Delete</a>
+            </td>-->
+
+        }
+        </tbody>
+    </table>
+
+<form asp-action="DeleteConfirmed">
+    <button type="submit" name="id" value="2" class="btn btn-default" asp-action="Delete">Cancelar</button>
+  </form>
+<form asp-action="Edit">
+    <input type="submit" name="Mostrar trilho" value="Mostrar trilho" class="btn btn-default" />
+    </form>
+    <div id="fillbackground">
+    </div>

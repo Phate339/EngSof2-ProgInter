@@ -21,8 +21,8 @@ namespace Trabalho.Controllers
         // GET: TuristAnswers
         public async Task<IActionResult> Index()
         {
-            
-            var trabalhoDbContext = _context.TuristAnswer.Include(t => t.Answer).Where(r=>r.AnswerID==r.Answer.AnswerID).Include(t => t.Turist);
+            var trabalhoDbContext = _context.TuristAnswer.Where(t => t.TuristID == 2).Include(t => t.Answer).ThenInclude(y => y.Questions);
+            //var trabalhoDbContext = _context.TuristAnswer.Include(t => t.Answer).Where(r=>r.AnswerID==r.Answer.AnswerID).Include(t => t.Turist);
             return View(await trabalhoDbContext.ToListAsync());
         }
 
@@ -79,7 +79,7 @@ namespace Trabalho.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(string sortOrder, string currentFilter, string searchString, int? page, [Bind("TuristAnswerID,SurveyNumber,AnswerDate,TuristAnswerState,TuristID,AnswerID")] TuristAnswer turistAnswer)
+        public async Task<IActionResult> Create(string sortOrder, string currentFilter, string searchString, int? page, bool concluir, [Bind("TuristAnswerID,SurveyNumber,AnswerDate,TuristAnswerState,TuristID,AnswerID")] TuristAnswer turistAnswer)
         {
             ViewData["CurrentSort"] = sortOrder;
 
@@ -98,35 +98,41 @@ namespace Trabalho.Controllers
             var lista = from z in _context.Questions.Include(a => a.Answer) select z;
 
             int pageSize = 1;
-            turistAnswer.SurveyNumber = 1;
-            turistAnswer.AnswerDate = System.DateTime.Today;
-            turistAnswer.TuristID = 1;
-            turistAnswer.TuristAnswerState = true;
+
 
             if (ModelState.IsValid && ModelState.Count > 0)
             {
-                if ( turistAnswer.AnswerID != 0)
+                if (turistAnswer.AnswerID != 0)
                 {
 
 
                     turistAnswer.SurveyNumber = 1;
                     turistAnswer.AnswerDate = System.DateTime.Today;
-                    turistAnswer.TuristID = 1;
+                    turistAnswer.TuristID = 2;
                     turistAnswer.TuristAnswerState = true;
                     _context.Add(turistAnswer);
                     await _context.SaveChangesAsync();
                 }
 
-                //return RedirectToAction("Create");
+
+
+
 
             }
-            return View(await PaginatedList<Questions>.CreateAsync(lista.AsNoTracking(), page ?? 1, pageSize));
-            /* ViewData["AnswerID"] = new SelectList(_context.Answer, "AnswerID", "AnswerID", turistAnswer.AnswerID);
-             ViewData["TuristID"] = new SelectList(_context.Turist, "TuristID", "TuristID", turistAnswer.TuristID);*/
+            if (concluir)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(await PaginatedList<Questions>.CreateAsync(lista.AsNoTracking(), page ?? 1, pageSize));
+                /* ViewData["AnswerID"] = new SelectList(_context.Answer, "AnswerID", "AnswerID", turistAnswer.AnswerID);
+                 ViewData["TuristID"] = new SelectList(_context.Turist, "TuristID", "TuristID", turistAnswer.TuristID);*/
+            }
         }
 
-        // GET: TuristAnswers/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+            // GET: TuristAnswers/Edit/5
+            public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -205,8 +211,15 @@ namespace Trabalho.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var turistAnswer = await _context.TuristAnswer.SingleOrDefaultAsync(m => m.TuristAnswerID == id);
-            _context.TuristAnswer.Remove(turistAnswer);
+            var turistAnswer2 = _context.TuristAnswer;
+            foreach(var id2 in turistAnswer2.Where(a => a.TuristID==id))
+            {
+                var turistAnswer = await _context.TuristAnswer.SingleOrDefaultAsync(m => m.TuristAnswerID == id2.TuristAnswerID);
+                _context.TuristAnswer.Remove(turistAnswer);
+            }
+            
+            
+            
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }
