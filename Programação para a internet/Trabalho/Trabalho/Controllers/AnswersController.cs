@@ -19,10 +19,19 @@ namespace Trabalho.Controllers
         }
 
         // GET: Answers
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-            var trabalhoDbContext = _context.Answer.Include(a => a.Difficulty).Include(a => a.Questions);
-            return View(await trabalhoDbContext.ToListAsync());
+
+            ViewData["CurrentFilter"] = searchString;
+            var answers = from s in _context.Answer.Include(a => a.Difficulty).Include(a => a.Questions)
+                           select s;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                answers = answers.Where(s => s.Questions.QuestionsToClient.Contains(searchString));
+            }
+
+            return View(await answers.AsNoTracking().ToListAsync());
         }
 
         // GET: Answers/Details/5

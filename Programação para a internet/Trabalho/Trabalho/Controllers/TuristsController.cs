@@ -6,22 +6,35 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Trabalho.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace Trabalho.Controllers
 {
     public class TuristsController : Controller
     {
+ 
         private readonly TrabalhoDbContext _context;
 
-        public TuristsController(TrabalhoDbContext context)
+        public TuristsController( TrabalhoDbContext context)
         {
+     
             _context = context;    
         }
 
         // GET: Turists
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-            return View(await _context.Turist.ToListAsync());
+
+            ViewData["CurrentFilter"] = searchString;
+            var turist = from s in _context.Turist
+                         select s;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                turist = turist.Where(s => s.TuristName.Contains(searchString) || s.Email.Contains(searchString));
+            }
+
+            return View(await turist.AsNoTracking().ToListAsync());
         }
 
         // GET: Turists/Details/5
@@ -53,7 +66,7 @@ namespace Trabalho.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("TuristID,TuristName,Phone,Genre,Birthday,NIF,Email,EmergencyContact,TuristState")] Turist turist)
+        public async Task<IActionResult> Create([Bind("TuristID,TuristName,Phone,Genre,Birthday,NIF,Email,EmergencyContact,TuristState,TypeTurist")] Turist turist)
         {
             if (ModelState.IsValid)
             {
@@ -85,8 +98,9 @@ namespace Trabalho.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("TuristID,TuristName,Phone,Genre,Birthday,NIF,Email,EmergencyContact,TuristState")] Turist turist)
+        public async Task<IActionResult> Edit(int id, [Bind("TuristID,TuristName,Phone,Genre,Birthday,NIF,Email,EmergencyContact,TuristState,TypeTurist")] Turist turist)
         {
+
             if (id != turist.TuristID)
             {
                 return NotFound();
@@ -96,8 +110,13 @@ namespace Trabalho.Controllers
             {
                 try
                 {
+           
                     _context.Update(turist);
+
+
                     await _context.SaveChangesAsync();
+
+
                 }
                 catch (DbUpdateConcurrencyException)
                 {

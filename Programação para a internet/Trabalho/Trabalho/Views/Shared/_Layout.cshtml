@@ -152,7 +152,7 @@
                                     <li><a asp-area="" asp-controller="TuristAnswers" asp-action="Create">Responder Questionario</a></li>
                                 </ul>
                             </li>
-
+                            @if (User.IsInRole("Professor")) { 
                             <li class="dropdown dropdown-mm">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Perguntas/Respostas<b class="caret"></b></a>
 
@@ -169,11 +169,12 @@
 
                                 </ul>
                             </li>
-
+                            }
 
                             <li><a asp-area="" asp-controller="Home" asp-action="About">Sobre</a></li>
-
+                            @if(User.IsInRole("Admin")) { 
                             <li><a asp-area="" asp-controller="Turists" asp-action="Index">Painel de Utilizadores</a></li>
+                            }
                         </ul>
 			  
                     </div>

@@ -74,37 +74,40 @@ namespace Trabalho.Models
                     new Turist
                     {
                         TuristName = " João",
-                        Phone = 963123456,
+                        Phone = "963123456",
                         Genre = "Masculino",
                         Birthday = DateTime.Parse("01-09-1996"),
                         NIF = 313212454,
                         Email = "joao@gmail.com",
-                        EmergencyContact = 963123456,
-                        TuristState = true
+                        EmergencyContact = "963123456",
+                        TuristState = true,
+                        TypeTurist = "Admin"
                     },
 
                    new Turist
                    {
                        TuristName = "Luis",
-                       Phone = 963124356,
+                       Phone = "963124356",
                        Genre = "Masculino",
                        Birthday = DateTime.Parse("01-09-1991"),
                        NIF = 313212431,
                        Email = "luis@gmail.com",
-                       EmergencyContact = 963124356,
-                       TuristState = true
+                       EmergencyContact = "963124356",
+                       TuristState = true,
+                       TypeTurist = "Professor"
                    },
 
                      new Turist
                      {
                          TuristName = "André",
-                         Phone = 963112156,
+                         Phone = "963112156",
                          Genre = "Masculino",
                          Birthday = DateTime.Parse("01-09-1995"),
                          NIF = 313666431,
                          Email = "andre@gmail.com",
-                         EmergencyContact = 963112156,
-                         TuristState = false
+                         EmergencyContact = "963112156",
+                         TuristState = false,
+                         TypeTurist = "Turista"
                      }
                 );
 

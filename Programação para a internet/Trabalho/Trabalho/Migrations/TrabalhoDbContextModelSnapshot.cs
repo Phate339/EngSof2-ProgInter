@@ -23,7 +23,8 @@ namespace Trabalho.Migrations
 
                     b.Property<int>("DifficultyID");
 
-                    b.Property<string>("PossibleAnswer");
+                    b.Property<string>("PossibleAnswer")
+                        .IsRequired();
 
                     b.Property<int>("QuestionsID");
 
@@ -55,7 +56,8 @@ namespace Trabalho.Migrations
 
                     b.Property<bool>("QuestionsState");
 
-                    b.Property<string>("QuestionsToClient");
+                    b.Property<string>("QuestionsToClient")
+                        .IsRequired();
 
                     b.HasKey("QuestionsID");
 
@@ -100,19 +102,23 @@ namespace Trabalho.Migrations
                     b.Property<string>("Email")
                         .IsRequired();
 
-                    b.Property<int>("EmergencyContact");
+                    b.Property<string>("EmergencyContact")
+                        .IsRequired();
 
                     b.Property<string>("Genre")
                         .IsRequired();
 
                     b.Property<int>("NIF");
 
-                    b.Property<int>("Phone");
+                    b.Property<string>("Phone")
+                        .IsRequired();
 
                     b.Property<string>("TuristName")
                         .IsRequired();
 
                     b.Property<bool?>("TuristState");
+
+                    b.Property<string>("TypeTurist");
 
                     b.HasKey("TuristID");
 

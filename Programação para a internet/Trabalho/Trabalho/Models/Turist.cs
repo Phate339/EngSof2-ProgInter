@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Trabalho.Infrastructure;
 
 namespace Trabalho.Models
 {
@@ -17,7 +18,7 @@ namespace Trabalho.Models
 
         [RegularExpression(@"(2\d{8})|(9[1236]\d{7})", ErrorMessage = "Contacto Inválido")]
         [Required(ErrorMessage = "Por favor indroduza o contacto")]
-        public int Phone { get; set; }
+        public string Phone { get; set; }
 
         [Required(ErrorMessage = "Tem de seleccionar o genero")]
         public string Genre { get; set; }
@@ -27,7 +28,7 @@ namespace Trabalho.Models
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = false)]
         public DateTime Birthday { get; set; }
 
-        [RegularExpression(@"(\d{9})", ErrorMessage = "NIF Inválido")]
+        [CodeNIF]
         public int NIF { get; set; }
 
         [Required(ErrorMessage = "Por favor indroduza o email")]
@@ -37,10 +38,12 @@ namespace Trabalho.Models
 
         [RegularExpression(@"(2\d{8})|(9[1236]\d{7})", ErrorMessage = "Contacto Inválido")]
         [Required(ErrorMessage = "Por favor indroduza o contacto de emergencia")]
-        public int EmergencyContact { get; set; }
+        public string EmergencyContact { get; set; }
 
 
         public Boolean? TuristState { get; set; }
+
+        public string TypeTurist { get; set; }
 
 
         public List<TuristAnswer> TuristAnswer { get; set; }

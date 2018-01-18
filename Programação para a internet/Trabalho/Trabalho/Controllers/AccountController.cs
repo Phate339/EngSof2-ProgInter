@@ -14,6 +14,7 @@ using Trabalho.Models.AccountViewModels;
 using Trabalho.Services;
 using Trabalho.Data;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Trabalho.Models.ViewModels;
 
 namespace Trabalho.Controllers
 {
@@ -122,7 +123,7 @@ namespace Trabalho.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, PhoneNumber = model.Phone  };
                 turist = new Turist
                 {
                     Email = model.Email,
@@ -132,6 +133,7 @@ namespace Trabalho.Controllers
                     Genre = model.Genre,
                     Birthday=model.Birthday,
                     EmergencyContact = model.EmergencyContact,
+                    TypeTurist = model.TypeTurist,
                     TuristState = true
                 };
 
@@ -140,9 +142,18 @@ namespace Trabalho.Controllers
                 {
 
 
+                    if (turist.TypeTurist == "Admin") { 
+                        await _userManager.AddToRoleAsync(user, "Admin");
+                    }
+                    if (turist.TypeTurist == "Professor")
+                    {
+                        await _userManager.AddToRoleAsync(user, "Professor");
+                    }
+                    if (turist.TypeTurist == "Turista")
+                    {
+                        await _userManager.AddToRoleAsync(user, "Turista");
+                    }
 
-                    await _userManager.AddToRoleAsync(user, "Turist"); //Priviégios do Turista
-                            
 
                     _context.Add(turist);
                     await _context.SaveChangesAsync();
@@ -157,7 +168,7 @@ namespace Trabalho.Controllers
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     _logger.LogInformation(3, "User created a new account with password.");
 
-
+             
                     return RedirectToLocal(returnUrl);
                 }
                 AddErrors(result);

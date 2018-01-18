@@ -20,19 +20,19 @@ namespace Trabalho.Data
             const string turistPass = adminPass;
 
 
-            if (!await roleManager.RoleExistsAsync("Administrator"))
+            if (!await roleManager.RoleExistsAsync("Admin"))
             {
-                await roleManager.CreateAsync(new IdentityRole("Administrator"));
+                await roleManager.CreateAsync(new IdentityRole("Admin"));
             }
 
-            if (!await roleManager.RoleExistsAsync("Teacher"))
+            if (!await roleManager.RoleExistsAsync("Professor"))
             {
-                await roleManager.CreateAsync(new IdentityRole("Teacher"));
+                await roleManager.CreateAsync(new IdentityRole("Professor"));
             }
 
-            if (!await roleManager.RoleExistsAsync("Turist"))
+            if (!await roleManager.RoleExistsAsync("Turista"))
             {
-                await roleManager.CreateAsync(new IdentityRole("Turist"));
+                await roleManager.CreateAsync(new IdentityRole("Turista"));
             }
 
             // Create other roles ...
@@ -44,9 +44,9 @@ namespace Trabalho.Data
                 await userManager.CreateAsync(admin, adminPass);
             }
 
-            if (!await userManager.IsInRoleAsync(admin, "Administrator"))
+            if (!await userManager.IsInRoleAsync(admin, "Admin"))
             {
-                await userManager.AddToRoleAsync(admin, "Administrator");
+                await userManager.AddToRoleAsync(admin, "Admin");
             }
 
             ApplicationUser teacher = await userManager.FindByNameAsync(teacherName);
@@ -56,9 +56,9 @@ namespace Trabalho.Data
                 await userManager.CreateAsync(teacher, teacherPass);
             }
 
-            if (!await userManager.IsInRoleAsync(teacher, "Teacher"))
+            if (!await userManager.IsInRoleAsync(teacher, "Professor"))
             {
-                await userManager.AddToRoleAsync(teacher, "Teacher");
+                await userManager.AddToRoleAsync(teacher, "Professor");
             }
 
 
@@ -69,9 +69,9 @@ namespace Trabalho.Data
                 await userManager.CreateAsync(turist, turistPass);
             }
 
-            if (!await userManager.IsInRoleAsync(turist, "Turist"))
+            if (!await userManager.IsInRoleAsync(turist, "Turista"))
             {
-                await userManager.AddToRoleAsync(turist, "Turist");
+                await userManager.AddToRoleAsync(turist, "Turista");
             }
 
 
