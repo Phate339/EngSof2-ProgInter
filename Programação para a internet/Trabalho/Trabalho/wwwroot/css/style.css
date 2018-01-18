@@ -2442,3 +2442,6 @@ ul.nav-tabs.nav-tabs-right > li:last-child {
     /* Remove any browser-default margins. */
    /* margin: 0;*/
 /*}*/
+#textbackground{
+    background-color:#ffffff;
+}

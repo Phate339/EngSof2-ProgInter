@@ -7,101 +7,118 @@
 }
 
 {
-<h2>Questionario</h2>
-
 <form asp-action="Create">
     <div class="form-horizontal">
-        <h4>Responda ao seguinte questionario para saber que trilho lhe sera mais recomendado</h4>
-        <hr />
+        <div class="block-contained">
+            <div class="panel panel-default panel-pricing text-center">
+                <h2 class="panel-title">
+                    <div class="panel-pricing-price">
+                        <p>Responda ao seguinte questionario para saber </p>
+                        <p>que trilho lhe sera mais recomendado</p>
+                    </div>
 
-        <table class="table-condensed">
+                </h2>
 
-            <thead>
-                @foreach (var item in Model)
-                {
-                    @if (item.QuestionsState == true)
-                    {
 
-                        <tr>
-                            <th>
-                                Pergunta
-                            </th>
-                            <th></th>
-                            <td><p>          </p></td>
-                            <th>
-                                Resposta 1
-                            </th>
-                            <td><p>          </p></td>
-                            <th>
-                                Resposta 2
-                            </th>
-                            <td><p>          </p></td>
-                            <th>
-                                Resposta 3
-                            </th>
 
-                        </tr>
-                    }
-                    else
-                    {
-                    <th>Pergunta Desativada</th>
-                    }
-                }
-                </thead>
-                <tbody>
-                    @foreach (var item in Model.Where(q => q.QuestionsState == true))
-                    {
+                <table class="table-condensed center-block">
 
-                    <td>
-                        @Html.DisplayFor(modelItem => item.QuestionsToClient)
-                    </td>
+                    <thead>
+                        <tr></tr>
+                        @foreach (var item in Model)
+                        {
+                            @if (item.QuestionsState == true)
+                            {
 
-                            <td><p>          </p></td>
+                                <tr>
+                                    <th style="font-size:25px"  >
+                                        Pergunta
+                                    </th>
+                                    <th></th>
+                                    
+                                    <th style="font-size:25px" >
+                                        Resposta 1
+                                    </th>
+                                    <th>|</th>
+                                    <th></th>
+                                    <th style="font-size:25px" >
+                                        Resposta 2
+                                    </th>
+                                    <th>|</th>
+                                    <th></th>
+                                    <th style="font-size:25px" >
+                                        Resposta 3
+                                    </th>
+                                    <th>|</th>
+
+                                </tr>
+                            }
+                            else
+                            {
+                            <th style="font-size:20px">Pergunta Desativada</th>
+                            }
+                        }
+                        </thead>
+                        <tbody>
+                           <tr></tr>
+                            @foreach (var item in Model.Where(q => q.QuestionsState == true))
+                            {
+
+                            <td style="font-size:20px">
+                                @Html.DisplayFor(modelItem => item.QuestionsToClient)
+                            </td>
+
                             @foreach (var item2 in item.Answer)
                             {
                                 <td></td>
                                 <td>
                                     <input type="radio" name="AnswerID" value=@item2.AnswerID />
-                                    <label>
+                                    <label style="font-size:20px">
                                         @Html.DisplayFor(modelItem => item2.PossibleAnswer)
                                     </label>
 
                                 </td>
+                                <td>|</td>
                             }
 
-                    }
-                    </tbody>
-                </table>
+                            }
+                            </tbody>
+                        </table>
+                        </>
+                    </div>
+                </div>
+
+
+
+                @{
+                    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+                    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+                }
+
+
+
+                <!--<a asp-action="Create"
+                   asp-route-page="(Model.PageIndex + 1)"
+                   class="btn btn-default nextDisabled">
+                    Next
+                </a>-->
+
+                @if (nextDisabled != "")
+                {
+
+
+
+                    <button type="submit" name="Concluir" value="true" class="btn btn-default">Concluir</button>
+                }
+                else
+                {
+                    <input type="submit" value="Seguinte" class="btn btn-default @nextDisabled" asp-route-page="@(Model.PageIndex + 1)" />
+
+                }
+            </div>
         </form>
 
 
-        @{ 
-            var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
-            var nextDisabled = !Model.HasNextPage ? "disabled" : "";
-        }
-            
-        
-
-        <!--<a asp-action="Create"
-           asp-route-page="(Model.PageIndex + 1)"
-           class="btn btn-default nextDisabled">
-            Next
-        </a>-->
-
-        @if (nextDisabled != "")
-        {
-
-
-
-            <button type="submit" name="Concluir" value="true" class="btn btn-default">Concluir</button>
-        }
-        else
-        {
-            <input type="submit" value="Seguinte" class="btn btn-default @nextDisabled" asp-route-page="@(Model.PageIndex + 1)" />
-
-        }
-
-         
 
         <!--asp-route-sortOrder="ViewData["CurrentSort"]"
         asp-route-currentFilter="ViewData["CurrentFilter"]"-->
