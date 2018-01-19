@@ -1,4 +1,4 @@
-﻿@model Trabalho.Models.Trails
+﻿@model IEnumerable<Trabalho.Models.Trails>
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -144,38 +144,57 @@
                     <div class="col-md-4 text-center">
                         <span class="fa-stack fa-5x">
                             <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fa fa-group fa-stack-1x fa-inverse"></i>
+                            <i class="fa fa-image fa-stack-1x fa-inverse"></i>
                         </span>
-                        <h4 class="text-weight-strong">
-                            Trilho 1
-                        </h4>
-                        <p>Um trilho mais esforçado e que puxa mais pela resistencia de todos os atletas</p>
-                        <p>
+                        
+                            @foreach (var item in Model.Where(t => t.TrailsID == 1))
+                            {
+                                <h4 class="text-weight-strong">
+                                    @Html.DisplayFor(modelItem => item.TrailsName)
+                                </h4>
+<p style="text-align:left">O trilho @Html.DisplayFor(modelItem => item.TrailsName) trata-se de @Html.DisplayFor(modelItem => item.Description) aberto em @Html.DisplayFor(modelItem => item.InitialDate) com a sua ultima
+     manutencao em @Html.DisplayFor(modelItem => item.TrailsStateDate) com uma distancia de @Html.DisplayFor(modelItem => item.Distance)km</p>
+                            }
                             <a href="#" class="btn btn-more i-right">Ver +<i class="fa fa-angle-right"></i></a>
                         </p>
                     </div>
                     <div class="col-md-4 text-center">
                         <span class="fa-stack fa-5x">
                             <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                            <i class="fa fa-image fa-stack-1x fa-inverse"></i>
                         </span>
-                        <h4 class="text-weight-strong">
-                            Trilho 2
-                        </h4>
-                        <p>Um trilho mais equilibrado para quem quer um desafio mas nao um desafio tao grande</p>
-                        <p>
+                       
+                        @foreach (var item in Model.Where(t => t.TrailsID == 2))
+                        {
+                            <h4 class="text-weight-strong">
+                                @Html.DisplayFor(modelItem => item.TrailsName)
+                            </h4>
+                            <p style="text-align:left">
+                                O trilho @Html.DisplayFor(modelItem => item.TrailsName) trata-se de @Html.DisplayFor(modelItem => item.Description) aberto em @Html.DisplayFor(modelItem => item.InitialDate) com a sua ultima
+                                manutencao em @Html.DisplayFor(modelItem => item.TrailsStateDate) com uma distancia de @Html.DisplayFor(modelItem => item.Distance)km
+
+                            </p>
+                        }
                             <a href="#" class="btn btn-more i-right">Ver + <i class="fa fa-angle-right"></i></a>
                         </p>
                     </div>
                     <div class="col-md-4 text-center">
                         <span class="fa-stack fa-5x">
                             <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fa fa-cogs fa-stack-1x fa-inverse"></i>
+                            <i class="fa fa-image fa-stack-1x fa-inverse"></i>
                         </span>
-                        <h4 class="text-weight-strong">
-                            Trilho 3
-                        </h4>
-                        <p>Um trilho para quem quer apenas apreciar a natureza</p>
+                        
+                        @foreach (var item in Model.Where(t => t.TrailsID == 3))
+                        {
+                            <h4 class="text-weight-strong">
+                                @Html.DisplayFor(modelItem =>item.TrailsName)
+                            </h4>
+                            <p style="text-align:left">
+                                O trilho @Html.DisplayFor(modelItem => item.TrailsName) trata-se de @Html.DisplayFor(modelItem => item.Description) aberto em @Html.DisplayFor(modelItem => item.InitialDate) com a sua ultima
+                                manutencao em @Html.DisplayFor(modelItem => item.TrailsStateDate) com uma distancia de @Html.DisplayFor(modelItem => item.Distance)km
+                           
+                            </p>
+                        }
                         <p>
                             <a href="#" class="btn btn-more i-right">Ver + <i class="fa fa-angle-right"></i></a>
                         </p>
