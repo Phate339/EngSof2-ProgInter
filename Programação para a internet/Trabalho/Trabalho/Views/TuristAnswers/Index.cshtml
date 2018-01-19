@@ -5,17 +5,17 @@
 }
 
 
-<h2>As suas respostas</h2>
+<h2 style="font-size:50px;padding-top:100px;color:chocolate">As suas respostas</h2>
 
 
 <table class="table-hover">
     <thead>
         <tr>
             <th>
-                Pergunta
+                <h3>Pergunta</h3>
             </th>
             <th>
-                Resposta selecionada
+                <h3> Resposta selecionada</h3>
             </th>
             <th></th>
         </tr>
@@ -24,11 +24,12 @@
 
         @foreach (var item in Model)
         {
-        <td>@Html.DisplayFor(modelItem => item.Answer.Questions.QuestionsToClient)</td>
+        <td>
+            <h3>@Html.DisplayFor(modelItem => item.Answer.Questions.QuestionsToClient)</h3></td>
 
 
             <td>
-                @Html.DisplayFor(modelItem => item.Answer.PossibleAnswer)
+                <h3> @Html.DisplayFor(modelItem => item.Answer.PossibleAnswer)</h3>
             </td>
 
             <tr></tr>
