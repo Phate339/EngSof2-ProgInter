@@ -6,7 +6,7 @@
 <div class="text-center" style="height:1000px;padding-top:250px;">
     <h1 class="text-center" style="color:chocolate;font-size:50px; font-style:italic;">Bem Vindo ao <a href="#Bot">Trails4Health</a></h1>
     <a>
-        <h2 class="text-center" style="color:chocolate;font-size:15px; text-underline-position:below;">Regista-te ja na tua nova aventura</h2>
+        <h2 class="text-center" style="color:chocolate;font-size:15px; text-underline-position:below;"> <a asp-controller="Account" asp-action="Register">Regista-te ja</a> na tua nova aventura</h2>
     </a>
 </div>
  <!--Slideshow-->
@@ -76,7 +76,7 @@
                                 para uma avaliação para que possamos ver o Trilho mais recomendado para si.
                             </h4>
                             <p class="pull-right">A única coisa que você tem de fazer é responder a um questionário.</p>
-                            <a a asp-area="" asp-controller="Answers" asp-action="Create" class="btn btn-more btn-lg"><i class="fa fa-plus"></i> Responder Questionário</a>
+                            <a asp-area="" asp-controller="TuristAnswers" asp-action="Create" class="btn btn-more btn-lg"><i class="fa fa-plus"></i> Responder Questionário</a>
                         </div>
                         <div class="col-md-6 hidden-xs">
                             <img src="~/images/Slide2.jpg" alt="Slide 2" class="center-block img-responsive">
@@ -88,51 +88,8 @@
 
         <!--<div id="background-wrapper" class="city">-->
         <!--Campos Random-->
-        <div class="showcase block block-border-bottom-grey">
-            <div class="container">
-                <div class="item-carousel" data-toggle="owlcarousel" data-owlcarousel-settings='{"items":4, "pagination":false, "navigation":true, "itemsScaleUp":true}'>
-                    <div class="item">
-                        <a asp-area="" asp-controller="Answers" asp-action="Create" class="overlay-wrapper">
-                            <img src="~/images/newform.png" alt="Create new Survey" class="img-responsive underlay">
-                            <span class="overlay">
-                                <span class="overlay-content"> <span class="h4">Criar novas Perguntas</span> </span>
-                            </span>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a asp-area="" asp-controller="Surveys" asp-action="Index" class="overlay-wrapper">
-                            <img src="~/images/checksurvey.png" alt="My surveys" class="img-responsive underlay">
-                            <span class="overlay">
-                                <span class="overlay-content"> <span class="h4">As minhas Perguntas</span> </span>
-                            </span>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a asp-area="" asp-controller="Answers" asp-action="Create" class="overlay-wrapper">
-                            <img src="~/images/createanswers.png" alt="Create answer" class="img-responsive underlay">
-                            <span class="overlay">
-                                <span class="overlay-content"> <span class="h4">Novo Questionário</span> </span>
-                            </span>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a asp-area="" asp-controller="Answers" asp-action="Index" class="overlay-wrapper">
-                            <img src="~/images/myanswer.png" alt="My answer" class="img-responsive underlay">
-                            <span class="overlay">
-                                <span class="overlay-content"> <span class="h4">Os meus Questionários</span> </span>
-                            </span>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href=# class="overlay-wrapper">
-                            <img src="~/images/trails.png" alt="Trails" class="img-responsive underlay">
-                            <span class="overlay">
-                                <span class="overlay-content"> <span class="h4">Trilhos</span> </span>
-                            </span>
-                        </a>
-                    </div>
-                </div>
-            </div>
+        <div class="block-contained">
+
         </div>
         <!--Os nossos trilhos-->
         <a id="Bot">
@@ -206,48 +163,6 @@
 
         <!--Os nossos Questionarios-->
         <div class="block-contained">
-            <h2 class="block-title">
-                Os nossos Questionários
-            </h2>
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="panel panel-default panel-pricing text-center">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                Questionario de Condição Fisica
-                            </h4>
-                        </div>
-                        <div class="panel-pricing-price">Venha ver qual o trilho mais recomendado para a sua condição fisica</div>
-                        <div class="panel-body">
-                            <ul class="list-dotted">
-                                <li>A sua idade, altura e peso</li>
-                                <li>Registo Medico</li>
-                                <li>Doenças e Alergias</li>
-                            </ul>
-                            <a href="#" class="btn btn-primary btn-sm">Escolher Questionário</a>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="panel panel-default panel-pricing panel-pricing-highlighted text-center">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                Questionário sobre o trilho
-                            </h4>
-                        </div>
-                        <div class="panel-pricing-price">Venha responder a este questionário sobre a sua opinião do trilho</div>
-                        <div class="panel-body">
-                            <ul class="list-dotted">
-                                <li>Ficou satisfeito</li>
-                                <li>Disponibilizou tudo o que era preciso</li>
-                                <li>Tinha todos os recursos necessarios a mao</li>
-                            </ul>
-                            <a href="#" class="btn btn-primary btn-sm">Escolher Questionário</a>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
         </div>
     </div>

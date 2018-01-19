@@ -1,14 +1,16 @@
-@model Trabalho.Models.Answer
+@model Trabalho.Models.ApplicationUser
+
 
 @{
     ViewData["Title"] = "Delete";
 }
 
-<h2 style="color:chocolate;">Eliminar Resposta</h2>
-<h3 style="color:chocolate;">Tem a certeza que pretende eliminar esta resposta?</h3>
+
+<h2>Eliminar Utilizador</h2>
+<h3>Tem a certeza que pretende eliminar este utilizador?</h3>
 <hr />
 <div>
-    <input type="hidden" asp-for="AnswerID" />
+    <input type="hidden" asp-for="Id" />
     <form asp-action="Delete">
         <div class="form-actions no-color">
             <a asp-action="Index" class="btn btn-more">
@@ -17,6 +19,7 @@
 
             </a>
             <input type="submit" value="Eliminar" class="btn btn-more" style="font-size:20px" />
+
 
         </div>
     </form>

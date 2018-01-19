@@ -8,11 +8,11 @@ namespace Trabalho.Models.AccountViewModels
 {
     public class LoginViewModel
     {
-        [Required]
-       // [EmailAddress]
+        [Required(ErrorMessage = "Por favor indroduza o seu nome de login!")]
+        //[EmailAddress]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Por favor introduza a sua password!")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 

@@ -4,21 +4,20 @@
     ViewData["Title"] = "Delete";
 }
 
-<h2>Eliminar Inquerito</h2>
-<h3>Tem a certeza que pretende eliminar este inquerito?</h3>
+<h2 style="color:chocolate;">Eliminar Inquerito</h2>
+<h3 style="color:chocolate;">Tem a certeza que pretende eliminar este inquerito?</h3>
 <hr />
 <div >
     <input type="hidden" asp-for="QuestionsID" />
     <form asp-action="Delete">
         <div class="form-actions no-color">
-            <input type="submit" value="Eliminar" class="btn btn-more" /> 
-      
-            <a asp-action="Index"class="btn btn-more" >
-            <i class="fa fa-arrow-left">
-</i>Voltar
-            
+            <a asp-action="Index" class="btn btn-more">
+                <i class="fa fa-arrow-left">
+                </i>Voltar
+
             </a>
-          
+            <input type="submit" value="Eliminar" class="btn btn-more" style="font-size:20px" /> 
+      
         </div>
     </form>
 </div>

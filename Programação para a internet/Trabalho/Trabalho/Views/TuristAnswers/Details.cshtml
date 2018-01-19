@@ -19,10 +19,10 @@
     <thead>
         <tr>
             <th>
-               <h3>Pergunta</h3> 
+               <h3 style="color:chocolate">Pergunta</h3> 
             </th>
             <th>
-                <h3>Resposta selecionada</h3>
+                <h3 style="color:chocolate">Resposta selecionada</h3>
             </th>
             <th></th>
         </tr>
@@ -76,7 +76,7 @@
 
        
     <form asp-action="DeleteConfirmed">
-        <button type="submit" name="id" value="2" class="btn btn-default" asp-action="Delete">Apagar as suas respostas</button>
+        <button type="submit" name="id" value="2" class="btn btn-more" asp-action="Delete">Apagar as suas respostas</button>
     </form>
        
     
@@ -84,21 +84,21 @@
 @if ((dificuldade1 > dificuldade2) && (dificuldade1 > dificuldade3))
 {
     <form asp-action="ShowTrails">
-        <button type="submit" name="dificuldade" value="1" class="btn btn-default" asp-action ="ShowTrails">Mostrar trilho mais adequado com as suas respostas</button>
+        <button type="submit" name="dificuldade" value="1" class="btn btn-more" asp-action ="ShowTrails">Mostrar trilho mais adequado com as suas respostas</button>
         
     </form>
 
 }else if ((dificuldade2 > dificuldade1) && (dificuldade2 > dificuldade3))
 {
     <form asp-action="ShowTrails">
-        <button type="submit" name="dificuldade" value="2" class="btn btn-default" asp-action="ShowTrails">Mostrar trilho mais adequado com as suas respostas</button>
+        <button type="submit" name="dificuldade" value="2" class="btn btn-more" asp-action="ShowTrails">Mostrar trilho mais adequado com as suas respostas</button>
         
     </form>
 
 }else if ((dificuldade3 > dificuldade1) && (dificuldade3 > dificuldade2))
 {
     <form asp-action="ShowTrails">
-        <button type="submit" name="dificuldade" value="3" class="btn btn-default" asp-action="ShowTrails">Mostrar trilho mais adequado com as suas respostas</button>
+        <button type="submit" name="dificuldade" value="3" class="btn btn-more" asp-action="ShowTrails">Mostrar trilho mais adequado com as suas respostas</button>
         
     </form>
 

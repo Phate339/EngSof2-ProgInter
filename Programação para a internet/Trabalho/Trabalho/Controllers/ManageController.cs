@@ -61,14 +61,58 @@ namespace Trabalho.Controllers
                 Email = user.Email,
                 Phone = user.PhoneNumber,
                 EmergencyContact = user.PhoneNumber
-                
+          
            
             };
 
             return View(model);
         }
 
-   
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Index(IndexViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var user = await _userManager.GetUserAsync(User);
+
+
+
+            var turistuser = user.UserName;
+            if (model.TuristName != turistuser)
+            {
+                var setEmailResult = await _userManager.SetEmailAsync(user, model.TuristName);
+            }
+
+            var contato = user.PhoneNumber;
+            if (model.Phone != contato)
+            {
+                var setEmailResult = await _userManager.SetEmailAsync(user, model.Phone);
+            }
+
+            var email = user.Email;
+            if (model.Email != email)
+            {
+                var setEmailResult = await _userManager.SetEmailAsync(user, model.Email);
+            }
+
+            var phone = user.PhoneNumber;
+            if (model.Phone != phone)
+            {
+                var setPhoneResult = await _userManager.SetPhoneNumberAsync(user, model.Phone);
+          
+            }
+
+      
+            return RedirectToAction(nameof(Index));
+
+
+        }
+
+
 
         //
         // POST: /Manage/RemoveLogin

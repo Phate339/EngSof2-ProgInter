@@ -4,36 +4,35 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Lista de Respostas e de Dificuldades associadas aos Inqueritos</h2>
+<h2 style="color:chocolate; font-size:40px">Lista de Respostas e de Dificuldades associadas aos Inqueritos</h2>
 <hr />
 
 <form asp-action="Index" method="get">
     <div class="form-actions no-color">
         <p>
-            Procurar por Pergunta: <input type="text" name="SearchString" value="@ViewData["currentFilter"]" />
+            <h4 style="color:chocolate;font-size:15px">Procurar por Pergunta: </h4><input type="text" name="SearchString" value="@ViewData["currentFilter"]" />
             <input type="submit" value="Procurar" class="btn btn-more" /> 
-            <div>
-                <a asp-action="Index" class="btn btn-more">
-                    <i class="fa fa-hand-o-down">
-                    </i>Lista inteira de Respostas
-                </a>
 
-            </div>
+            <a asp-action="Index" class="btn btn-more">
+                <i class="fa fa-hand-o-down">
+                </i>Lista inteira de Respostas
+            </a>
+      
         </p>
     </div>
 </form>
 <hr />
 
-<table class="table">
+<table class="table" style="border:5px solid chocolate; border-radius:50px ">
     <thead>
-        <tr>
-            <th>
+        <tr style="font-size:30px">
+            <th style="color:chocolate;">
                 Pergunta
             </th>
-            <th>
+            <th style="color:chocolate;">
                     Resposta
              </th>
-            <th>
+            <th style="color:chocolate;">
                 Dificuldade
             </th>
          
@@ -41,9 +40,9 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
+            @foreach (var item in Model) {
+        <tr style="font-size:25px">
+            <td >
                 @Html.DisplayFor(modelItem => item.Questions.QuestionsToClient)
             </td>
             <td>
@@ -55,11 +54,16 @@
           
             <td>
 
+                <a asp-action="Edit" asp-route-id="@item.AnswerID" class="btn btn-more">
+                    Editar
+                    <i class="glyphicon glyphicon-edit">
+
+                    </i>
+                </a>
+
                 <a asp-action="Delete" asp-route-id="@item.AnswerID"class="btn btn-more">     Eliminar
-<i class="fa fa-arrows-alt">
+                <i class="fa fa-arrows-alt"></i></a>
 
-
-</i></a>
             </td>
         </tr>
 }

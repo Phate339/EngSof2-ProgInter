@@ -40,8 +40,9 @@ namespace Trabalho.Controllers
             return View(await trabalhoDbContext.ToListAsync());
         }
 
-        [Authorize(Roles ="Professor,Turista,Admin")]
+
         // GET: TuristAnswers/Details/5
+        [Authorize(Roles = "Professor,Turista")]
         public async Task<IActionResult> Details(int? id)
         {
             /*if (id == null)
@@ -76,7 +77,7 @@ namespace Trabalho.Controllers
             return View(await trabalhoDbContext.ToListAsync());
         }
         // GET: TuristAnswers/Create
-        [Authorize(Roles = "Professor,Turista,Admin")]
+        [Authorize(Roles = "Professor,Turista")]
         public async Task<IActionResult> Create(string sortOrder, string currentFilter, string searchString, int? page)
         {
             /* ViewData["AnswerID"] = new SelectList(_context.Answer, "AnswerID", "AnswerID");
@@ -123,7 +124,7 @@ namespace Trabalho.Controllers
         // POST: TuristAnswers/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize(Roles = "Professor,Turista,Admin")]
+        [Authorize(Roles = "Professor,Turista")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(string sortOrder, string currentFilter, string searchString, int? page, bool concluir, [Bind("TuristAnswerID,SurveyNumber,AnswerDate,TuristAnswerState,TuristID,AnswerID")] TuristAnswer turistAnswer)

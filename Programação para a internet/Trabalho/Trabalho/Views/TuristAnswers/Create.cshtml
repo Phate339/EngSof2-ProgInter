@@ -108,11 +108,11 @@
 
 
 
-                    <button type="submit" name="Concluir" value="true" class="btn btn-default">Concluir</button>
+                    <button type="submit" name="Concluir" value="true" class="btn btn-more">Concluir</button>
                 }
                 else
                 {
-                    <input type="submit" value="Seguinte" class="btn btn-default @nextDisabled" asp-route-page="@(Model.PageIndex + 1)" />
+                    <input type="submit" value="Seguinte" class="btn btn-more @nextDisabled" asp-route-page="@(Model.PageIndex + 1)" />
 
                 }
             </div>

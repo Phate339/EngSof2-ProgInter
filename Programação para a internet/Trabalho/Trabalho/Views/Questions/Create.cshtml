@@ -4,27 +4,27 @@
     ViewData["Title"] = "Create";
 }
 
-<h2>Criar Inquerito</h2>
+<h2 style="color:chocolate; font-size:40px">Criar Inquerito</h2>
 <hr />
-<form asp-action="Create" class="alert alert-success">
+<form asp-action="Create" >
     <div class="form-horizontal">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
-            <label asp-for="QuestionsToClient" class="col-md-2 control-label">Pergunta</label>
+            <label asp-for="QuestionsToClient" class="col-md-2 control-label" style="color:chocolate">Pergunta</label>
             <div class="col-md-10">
                 <input asp-for="QuestionsToClient" class="form-control" />
                 <span asp-validation-for="QuestionsToClient" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="QuestionsState" class="col-md-2 control-label">Estado da Pergunta</label>
-            <div class="fa-edit dropdown-menu-right">
+            <label asp-for="QuestionsState" class="col-md-2 control-label" style="color:chocolate">Estado da Pergunta</label>
+            <div class="fa-edit dropdown-menu-right" style="color:chocolate">
                 @Html.DropDownListFor(model => model.QuestionsState, (IEnumerable<SelectListItem>)ViewData["Select_YN"])
             </div>
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Criar" class="btn btn-more" />
+                <input type="submit" value="Criar" class="btn btn-more" style="font-size:20px" />
             </div>
         </div>
     </div>

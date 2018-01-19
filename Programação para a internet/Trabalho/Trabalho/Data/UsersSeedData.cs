@@ -12,7 +12,9 @@ namespace Trabalho.Data
     {
         public static async Task EnsurePopulatedAsync(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
         {
+            
             const string adminName = "Admin";
+            const string adminEmail = "Admin@gmail.com";
             const string adminPass = "Secret123$";
             const string teacherName = "alan";
             const string teacherPass = adminPass;
@@ -24,7 +26,7 @@ namespace Trabalho.Data
             {
                 await roleManager.CreateAsync(new IdentityRole("Admin"));
             }
-
+            /*
             if (!await roleManager.RoleExistsAsync("Professor"))
             {
                 await roleManager.CreateAsync(new IdentityRole("Professor"));
@@ -34,13 +36,13 @@ namespace Trabalho.Data
             {
                 await roleManager.CreateAsync(new IdentityRole("Turista"));
             }
-
+            */
             // Create other roles ...
 
             ApplicationUser admin = await userManager.FindByNameAsync(adminName);
             if (admin == null)
             {
-                admin = new ApplicationUser { UserName = adminName };
+                admin = new ApplicationUser { UserName = adminName, Email=adminEmail };
                 await userManager.CreateAsync(admin, adminPass);
             }
 
@@ -48,7 +50,7 @@ namespace Trabalho.Data
             {
                 await userManager.AddToRoleAsync(admin, "Admin");
             }
-
+            /*
             ApplicationUser teacher = await userManager.FindByNameAsync(teacherName);
             if (teacher == null)
             {
@@ -73,7 +75,7 @@ namespace Trabalho.Data
             {
                 await userManager.AddToRoleAsync(turist, "Turista");
             }
-
+            */
 
         }
     }

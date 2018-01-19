@@ -1,0 +1,66 @@
+@model IEnumerable<ApplicationUser>
+
+
+
+  <h2 style="color:chocolate; font-size:40px">Lista de Utilizadores</h2>
+<hr />
+
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            <h4 style="color:chocolate;font-size:15px">Procurar por Email: </h4><input type="text" name="SearchString" value="@ViewData["currentFilter"]" />
+            <input type="submit" value="Procurar" class="btn btn-more" />
+          
+                <a asp-action="Index" class="btn btn-more">
+                    <i class="fa fa-hand-o-down">
+                    </i>Lista inteira de Utilizadores
+                </a>
+
+          
+        </p>
+    </div>
+</form>
+<hr />
+<table class="table" >
+    <thead>
+        <tr style="font-size:30px">
+            <th style="color:chocolate;">
+                Nome de Utilizador
+            </th>
+            <th style="color:chocolate;">
+                Email
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (ApplicationUser item in Model)
+        {
+         
+                <tr style="font-size:25px" >
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+
+           
+                    <td>
+                   
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-more">
+                            Eliminar
+                            <i class="fa fa-arrows-alt">
+                            </i>
+                        </a>
+
+
+                    </td>
+                </tr>
+            
+           
+        }
+    </tbody>
+</table>
+<div id="fillbackground">
+</div>
+ 

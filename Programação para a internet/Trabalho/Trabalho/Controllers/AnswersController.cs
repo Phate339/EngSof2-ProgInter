@@ -95,8 +95,8 @@ namespace Trabalho.Controllers
             {
                 return NotFound();
             }
-            ViewData["DifficultyID"] = new SelectList(_context.Difficulty, "DifficultyID", "DifficultyID", answer.DifficultyID);
-            ViewData["QuestionsID"] = new SelectList(_context.Questions, "QuestionsID", "QuestionsID", answer.QuestionsID);
+            ViewData["DifficultyID"] = new SelectList(_context.Difficulty, "DifficultyID", "DifficultyName", answer.DifficultyID);
+            ViewData["QuestionsID"] = new SelectList(_context.Questions, "QuestionsID", "QuestionsToClient", answer.QuestionsID);
             return View(answer);
         }
 

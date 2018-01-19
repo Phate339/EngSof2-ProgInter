@@ -3,13 +3,13 @@
     ViewData["Title"] = "Register";
 }
 
-<h2>Registo</h2>
-<h4>Aqui começa a sua jornada Registe-se!</h4>
+<h2 style="color:chocolate;">Registo</h2>
+<h4 style="color:chocolate;">Aqui começa a sua jornada Registe-se!</h4>
 <hr />
-<form asp-controller="Account" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+<form asp-controller="Account" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal" style="font-size:20px">
     <div asp-validation-summary="All" class="text-danger"></div>
     <div class="form-group">
-        <label asp-for="TuristName" class="col-md-2 control-label">Nome</label>
+        <label asp-for="TuristName" class="col-md-2 control-label" style="color:chocolate;">Nome</label>
         <div class="col-md-10">
             <input asp-for="TuristName" class="form-control" />
             <span asp-validation-for="TuristName" class="text-danger"></span>
@@ -17,7 +17,7 @@
     </div>
     <hr />
     <div class="form-group">
-        <label asp-for="Email" class="col-md-2 control-label"></label>
+        <label asp-for="Email" class="col-md-2 control-label" style="color:chocolate;"></label>
         <div class="col-md-10">
             <input asp-for="Email" class="form-control" />
             <span asp-validation-for="Email" class="text-danger"></span>
@@ -25,7 +25,7 @@
     </div>
     <hr />
     <div class="form-group">
-        <label asp-for="Phone" class="col-md-2 control-label">Telemovel</label>
+        <label asp-for="Phone" class="col-md-2 control-label" style="color:chocolate;">Telemovel</label>
         <div class="col-md-10">
             <input asp-for="Phone" class="form-control" />
             <span asp-validation-for="Phone" class="text-danger"></span>
@@ -33,7 +33,7 @@
     </div>
     <hr />
     <div class="form-group">
-        <label asp-for="Birthday" class="col-md-2 control-label">Data de Nascimento</label>
+        <label asp-for="Birthday" class="col-md-2 control-label" style="color:chocolate;">Data de Nascimento</label>
         <div class="col-md-10">
             <input asp-for="Birthday" class="form-control" placeholder="dd/mm/aaaa" />
             <span asp-validation-for="Birthday" class="text-danger"></span>
@@ -41,7 +41,7 @@
      </div>
     <hr />
     <div class="form-group">
-        <label asp-for="NIF" class="col-md-2 control-label"></label>
+        <label asp-for="NIF" class="col-md-2 control-label" style="color:chocolate;"></label>
         <div class="col-md-10">
             <input asp-for="NIF" class="form-control" />
             <span asp-validation-for="NIF" class="text-danger"></span>
@@ -49,10 +49,10 @@
     </div>
     <hr/>
     <div class="form-group">
-        <label asp-for="Genre" class="col-md-2 control-label">Genero</label>
+        <label asp-for="Genre" class="col-md-2 control-label" style="color:chocolate;">Genero</label>
         <div class="col-md-10">
         <select asp-for="Genre" class="form-control" name="Genre">
-            <option value="">Selecione o seu genero</option>
+            <option value="">-- Selecione o seu Género --</option>
             <option value="Masculino">Masculino</option>
             <option value="Feminino">Feminino</option>
         </select>
@@ -60,7 +60,7 @@
     </div>
     <hr />
     <div class="form-group">
-        <label asp-for="EmergencyContact" class="col-md-2 control-label"></label>
+        <label asp-for="EmergencyContact" class="col-md-2 control-label" style="color:chocolate;">Contato De Emergencia</label>
         <div class="col-md-10">
             <input asp-for="EmergencyContact" class="form-control" />
             <span asp-validation-for="EmergencyContact" class="text-danger"></span>
@@ -68,9 +68,10 @@
     </div>
     <hr />
     <div class="form-group">
-        <label asp-for="TypeTurist" class="col-md-2 control-label">Tipo de Utilizador</label>
+        <label asp-for="TypeTurist" class="col-md-2 control-label"style="color:chocolate;">Tipo de Utilizador</label>
         <div class="col-md-10">
             <select asp-for="TypeTurist" class="form-control" name="TypeTurist">
+                <option value="">-- Você é? --</option>
                 <option value="Admin">Admin</option>
                 <option value="Professor">Professor</option>
                 <option value="Turista">Turista</option>
@@ -79,7 +80,7 @@
     </div>
     <hr />
     <div class="form-group">
-        <label asp-for="Password" class="col-md-2 control-label"></label>
+        <label asp-for="Password" class="col-md-2 control-label" style="color:chocolate;">Password</label>
         <div class="col-md-10">
             <input asp-for="Password" class="form-control" />
             <span asp-validation-for="Password" class="text-danger"></span>
@@ -87,17 +88,23 @@
     </div>
     <hr />
     <div class="form-group">
-        <label asp-for="ConfirmPassword" class="col-md-2 control-label"></label>
+        <label asp-for="ConfirmPassword" class="col-md-2 control-label" style="color:chocolate;">Confirmar Password</label>
         <div class="col-md-10">
             <input asp-for="ConfirmPassword" class="form-control" />
             <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
         </div>
     </div>
     <hr />
+
+
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <button type="submit" class="btn btn-more">Registar</button>
+            <a asp-controller="Home" asp-action="Index" class="btn btn-more">Cancelar</a>
+            <div class="pull-right">
+                <button type="submit" class="btn btn-more" style="font-size:20px">Registar</button>
+            </div>
         </div>
+
     </div>
 </form>
 

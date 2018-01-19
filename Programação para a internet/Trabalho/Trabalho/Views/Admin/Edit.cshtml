@@ -1,0 +1,51 @@
+@model Trabalho.Models.ApplicationUser
+
+
+
+
+
+<h2 style="color:chocolate" font-size:40px">Editar Perfil</h2>
+
+
+
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<form asp-action="Edit" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="UserName" style="color:chocolate">Nome De Utilizador</label>
+    
+            <input asp-for="UserName" class="form-control" />
+   
+    </div>
+    <hr />
+    <div class="form-group">
+        <label asp-for="Email" style="color:chocolate">Email</label>
+   
+         <input asp-for="Email" class="form-control" />
+    
+    </div>
+    <hr />
+    <div class="form-group">
+        <label for="password" style="color:chocolate">Nova Password(Caso queira alterar!)</label>
+        <input name="password" class="form-control" />
+    </div>
+    <div class="form-group">
+        <div >
+            <a asp-controller="Home" asp-action="Index" class="btn btn-more">
+                <i class="fa fa-arrow-left">
+                </i>Voltar
+            </a>
+            <div class="pull-right">
+                <button type="submit" class="btn btn-more" style="font-size:20px">Guardar</button>
+            </div>
+        </div>
+
+    </div>
+
+
+</form> 
+
+
+<div id="fillbackground">
+</div>

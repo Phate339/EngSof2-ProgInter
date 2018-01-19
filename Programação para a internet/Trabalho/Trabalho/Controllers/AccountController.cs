@@ -48,7 +48,7 @@ namespace Trabalho.Controllers
             _logger = loggerFactory.CreateLogger<AccountController>();
             _context = context;
 
-            UsersSeedData.EnsurePopulatedAsync(userManager, roleManager).Wait();
+          UsersSeedData.EnsurePopulatedAsync(userManager, roleManager).Wait();
 
         }
 
@@ -123,7 +123,7 @@ namespace Trabalho.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, PhoneNumber = model.Phone  };
+                var user = new ApplicationUser { UserName = model.TuristName , Email = model.Email, PhoneNumber = model.Phone,   };
                 turist = new Turist
                 {
                     Email = model.Email,

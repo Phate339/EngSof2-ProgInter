@@ -24,15 +24,17 @@
 
         @foreach (var item in Model)
         {
-        <td>
-            <h3>@Html.DisplayFor(modelItem => item.Answer.Questions.QuestionsToClient)</h3></td>
+            <tr>
+                <td>
+                    <h3>@Html.DisplayFor(modelItem => item.Answer.Questions.QuestionsToClient)</h3>
+                </td>
 
 
-            <td>
-                <h3> @Html.DisplayFor(modelItem => item.Answer.PossibleAnswer)</h3>
-            </td>
+                <td>
+                    <h3> @Html.DisplayFor(modelItem => item.Answer.PossibleAnswer)</h3>
+                </td>
 
-            <tr></tr>
+            </tr>
 
             <!--<td>
                 <a asp-action="Edit" asp-route-id="item.TuristAnswerID">Edit</a> |
@@ -72,14 +74,14 @@
 
 
 <form asp-action="DeleteConfirmed">
-    <button type="submit" name="id" value="2" class="btn btn-default" asp-action="Delete">Cancelar</button>
+    <button type="submit" name="id" value="2" class="btn btn-more" asp-action="Delete">Cancelar</button>
   </form>
 
 
 @if ((dificuldade1 > dificuldade2) && (dificuldade1 > dificuldade3))
 {
     <form asp-action="ShowTrails">
-        <button type="submit" name="dificuldade" value="1" class="btn btn-default" asp-action="ShowTrails">Mostrar trilho mais adequado com as suas respostas</button>
+        <button type="submit" name="dificuldade" value="1" class="btn btn-more" asp-action="ShowTrails">Mostrar trilho mais adequado com as suas respostas</button>
         
     </form>
 
@@ -87,7 +89,7 @@
 else if ((dificuldade2 > dificuldade1) && (dificuldade2 > dificuldade3))
 {
     <form asp-action="ShowTrails">
-        <button type="submit" name="dificuldade" value="2" class="btn btn-default" asp-action="ShowTrails">Mostrar trilho mais adequado com as suas respostas</button>
+        <button type="submit" name="dificuldade" value="2" class="btn btn-more" asp-action="ShowTrails">Mostrar trilho mais adequado com as suas respostas</button>
         
     </form>
 
@@ -95,7 +97,7 @@ else if ((dificuldade2 > dificuldade1) && (dificuldade2 > dificuldade3))
 else if ((dificuldade3 > dificuldade1) && (dificuldade3 > dificuldade2))
 {
     <form asp-action="ShowTrails">
-        <button type="submit" name="dificuldade" value="3" class="btn btn-default" asp-action="ShowTrails">Mostrar trilho mais adequado com as suas respostas</button>
+        <button type="submit" name="dificuldade" value="3" class="btn btn-more" asp-action="ShowTrails">Mostrar trilho mais adequado com as suas respostas</button>
         
     </form>
 
