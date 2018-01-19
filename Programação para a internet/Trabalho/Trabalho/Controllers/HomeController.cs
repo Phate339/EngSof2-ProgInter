@@ -4,15 +4,26 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Trabalho.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 //using Trabalho.Models.ViewModels;
 
 namespace Trabalho.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly TrabalhoDbContext _context;
+
+        public HomeController(TrabalhoDbContext context)
         {
-            return View();
+            _context = context;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            var trabalhoDbContext = _context.Trails.Include(t=>t.Difficulty);
+
+            return View(await trabalhoDbContext.ToListAsync());
         }
 
         public IActionResult login()
